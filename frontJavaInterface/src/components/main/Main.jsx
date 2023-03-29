@@ -1,4 +1,6 @@
+import { useEffect, useState } from "react"
 import styled from "styled-components"
+import { api } from '../../services/api.js'
 
 const StyledTable = styled.table`
     margin: 2rem 2rem 0;
@@ -18,34 +20,49 @@ const StyledTable = styled.table`
     }
 `
 
+const ChamaItem = () => {
+    const [ item, setItem] = useState([])
+    useEffect(() =>{
+        api.get('/posts').then(response => { 
+            console.log(response)
+            setItem(response.data)})
+    }, [])
+
+    return (
+        <tr>
+            {item.map(item => {
+                    return (
+                    <>
+                        <td>{item.cod}</td>
+                        <td>{item.nome}</td>
+                        <td>{item.valor}</td>
+                        <td>{item.estoque}</td>
+                        <td>{item.dataCadastro}</td>  
+                        <td>testes botao</td>
+                    </>)
+            })
+            }
+        </tr>
+    )
+}
+
 export const Main = () => {
     return (
         <>
             <StyledTable>
-                <tr>
-                    <th>cod</th>
-                    <th>nome</th>
-                    <th>valor</th>
-                    <th>estoque</th>
-                    <th>data cadastro</th>
-                    <th>ações</th>
-                </tr>
-                <tr>
-                    <td>1234</td>
-                    <td>jeremias</td>
-                    <td>-1</td>
-                    <td>1</td>
-                    <td>31102000</td>
-                    <td>deletar</td>
-                </tr>
-                <tr>
-                    <td>1234</td>
-                    <td>jeremias</td>
-                    <td>-1</td>
-                    <td>1</td>
-                    <td>31102000</td>
-                    <td>deletar</td>
-                </tr>
+                <thead>
+                    <tr>
+                        <th>cod</th>
+                        <th>nome</th>
+                        <th>valor</th>
+                        <th>estoque</th>
+                        <th>data cadastro</th>
+                        <th>ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <ChamaItem />
+                </tbody>
             </StyledTable>
         </>
     )

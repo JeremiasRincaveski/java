@@ -2,8 +2,11 @@
   "posts": [
     {
       "id": 1,
-      "title": "json-server",
-      "author": "typicode"
+      "cod": 123,
+      "nome": "maicon",
+      "valor": 11111,
+      "estoque": 1,
+      "dataCadastro": "31/10/2000"
     }
   ]
 }
