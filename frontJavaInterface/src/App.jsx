@@ -15,9 +15,11 @@ function App() {
   `
 
   return (
-    <StyledDiv>
+    <>
       <GlobalStyle/>
-    </StyledDiv>
+      <StyledDiv>
+      </StyledDiv>
+    </>
   )
 }
 
