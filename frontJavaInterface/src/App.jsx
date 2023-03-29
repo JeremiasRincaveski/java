@@ -1,5 +1,6 @@
 import { createGlobalStyle, ThemeProvider } from "styled-components"
-import { StyledDiv } from "./components/container/Container"
+import { Container } from "./components/container/Container"
+import { Header } from "./components/Header/Header"
 import { MyContext } from "./context/MyContext"
 import { theme } from './theme/theme'
 
@@ -7,7 +8,7 @@ function App() {
 
   const GlobalStyle = createGlobalStyle`
   body{
-    background-color:${props => props.theme.colors.softWhite};
+    background-color:${props => props.theme.colors.softGray};
     /* font-family: 'Roboto', sans-serif; */
     font-family: Arial, Helvetica, sans-serif;
     font-size: 19px;
@@ -23,8 +24,9 @@ function App() {
     <ThemeProvider theme={theme}>
       <MyContext.Provider value={{}}>
         <GlobalStyle />
-        <StyledDiv>
-        </StyledDiv>
+        <Container>
+          <Header />
+        </Container>
       </MyContext.Provider>
     </ThemeProvider>
   )
