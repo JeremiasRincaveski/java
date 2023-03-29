@@ -5,16 +5,13 @@ const StyledHeader = styled.header`
     color: ${props => props.theme.colors.white};
 `
 const StyledDiv = styled.div`
-
-
-
 `
 
 export const Header = () => {
     return (
         <StyledHeader>
             <StyledDiv>
-                teste
+                ddd
             </StyledDiv>
         </StyledHeader>
     )
