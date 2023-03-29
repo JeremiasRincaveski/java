@@ -11,14 +11,13 @@ const StyledHeader = styled.header`
         padding: 0 2rem;
     }
 `
-// const StyledDiv = styled.div`
-// `
 
 export const Header = () => {
     return (
         <StyledHeader>
             <ul>
                 <li>teste</li>
+
             </ul>
             <ul>
                 <li>teste2</li>

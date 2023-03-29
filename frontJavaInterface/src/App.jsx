@@ -1,6 +1,7 @@
 import { createGlobalStyle, ThemeProvider } from "styled-components"
 import { Container } from "./components/container/Container"
 import { Header } from "./components/header/Header"
+import { Nav } from "./components/nav/Nav"
 import { MyContext } from "./context/MyContext"
 import { theme } from './theme/theme'
 
@@ -26,6 +27,7 @@ function App() {
         <GlobalStyle />
         <Container>
           <Header />
+          <Nav />
         </Container>
       </MyContext.Provider>
     </ThemeProvider>
