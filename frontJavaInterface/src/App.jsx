@@ -1,9 +1,23 @@
+import { createGlobalStyle } from "styled-components"
+import {  StyledDiv } from "./components/container/Container"
 
 function App() {
+
+  const GlobalStyle = createGlobalStyle`
+  body{
+    font-family: 'Roboto Serif', serif;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+  }
+  `
+
   return (
-    <div className="App">
-     oi
-    </div>
+    <StyledDiv>
+      <GlobalStyle/>
+    </StyledDiv>
   )
 }
 
