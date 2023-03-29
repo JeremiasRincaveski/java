@@ -20,24 +20,25 @@ const StyledTable = styled.table`
     }
 `
 
-const ChamaItem = () => {
-    const [ item, setItem] = useState([])
-    useEffect(() =>{
-        api.get('/posts').then(response => { 
-            console.log(response)
-            setItem(response.data)})
-    }, [])
+const GetList = () => {
+    const [item, setItem] = useState([]);
+
+    useEffect(() => {
+        api.get('/posts').then(response => {
+            setItem(response.data);
+        })
+    }, []);
 
     return (
         <tr>
-            {item.map(item => {
-                    return (
+            {item.map((item, index) => {
+                return (
                     <>
                         <td>{item.cod}</td>
                         <td>{item.nome}</td>
                         <td>{item.valor}</td>
                         <td>{item.estoque}</td>
-                        <td>{item.dataCadastro}</td>  
+                        <td>{item.dataCadastro}</td>
                         <td>testes botao</td>
                     </>)
             })
@@ -61,7 +62,7 @@ export const Main = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    <ChamaItem />
+                    <GetList />
                 </tbody>
             </StyledTable>
         </>
