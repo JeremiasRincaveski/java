@@ -1,6 +1,6 @@
 import { createGlobalStyle, ThemeProvider } from "styled-components"
 import { Container } from "./components/container/Container"
-import { Header } from "./components/Header/Header"
+import { Header } from "./components/header/Header"
 import { MyContext } from "./context/MyContext"
 import { theme } from './theme/theme'
 
