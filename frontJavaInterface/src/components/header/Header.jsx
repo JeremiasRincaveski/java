@@ -3,16 +3,27 @@ import styled from "styled-components";
 const StyledHeader = styled.header`
     background-color: ${props => props.theme.colors.softDark};
     color: ${props => props.theme.colors.white};
+    display: flex;
+    justify-content: space-between;
+
+    li{
+        display: inline;
+        padding: 0 2rem;
+    }
 `
-const StyledDiv = styled.div`
-`
+// const StyledDiv = styled.div`
+// `
 
 export const Header = () => {
     return (
         <StyledHeader>
-            <StyledDiv>
-                teste 1
-            </StyledDiv>
+            <ul>
+                <li>teste</li>
+            </ul>
+            <ul>
+                <li>teste2</li>
+                <li>teste2</li>
+            </ul>
         </StyledHeader>
     )
 }
