@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { AiOutlineFileSearch, AiOutlinePlusCircle } from "react-icons/ai";
+import { CiBoxList } from "react-icons/ci";
 
 const StyledNav = styled.nav`
     width: 100%;
@@ -11,6 +12,29 @@ const StyledNav = styled.nav`
     margin-bottom: 1rem;
     box-shadow: 0 0.063rem 0.188rem rgb(31 50 81 / 12%), 0 0.063rem 0.125rem rgb(31 50 81 / 24%);
 
+        ul:first-of-type{
+            li{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 30px;
+                position: relative;
+                background-color: back;
+                
+
+                svg{
+                    position: absolute;
+                    left: 0;
+                    bottom: 0;
+                    margin-bottom: -0.8px;
+                   
+                }
+
+                span{
+                    margin-left: .2rem;
+                }
+            }
+        }
         li{
             display: inline;
             list-style: none;
@@ -65,10 +89,10 @@ const StyledButton = styled.button`
 
 `
 
-const Button = ({color, btnName='CustumBtn', Icon, size, bgColor, fColor}) =>{
+const Button = ({ color, btnName = 'CustumBtn', Icon, size, bgColor, fColor }) => {
     return (
-        <StyledButton bgColor={bgColor} fColor={fColor}> 
-           {Icon ?  <Icon size={size} color={color} /> : <></>}
+        <StyledButton bgColor={bgColor} fColor={fColor}>
+            {Icon ? <Icon size={size} color={color} /> : <></>}
             {btnName}
         </StyledButton>
     )
@@ -84,20 +108,31 @@ const StyledInput = styled.input`
 `
 
 const Input = () => {
-    return <StyledInput placeholder='Buscar'/>
+    return <StyledInput placeholder='Buscar' />
 
 }
 
 const SearchIcon = ({ size, color }) => {
-    return <AiOutlineFileSearch size={size} color={color}/>
+    return <AiOutlineFileSearch size={size} color={color} />
 };
+
+const StyledList = styled.li`
+    font-family: 'Bebas Neue', cursive;
+    font-size: 25px;
+    
+
+
+`
 
 export const Nav = () => {
     return (
         <>
             <StyledNav>
                 <ul>
-                    <li>teste</li>
+                    <StyledList>
+                        <CiBoxList size={35}/>
+                        <span>controle total</span>
+                    </StyledList>
                 </ul>
                 <ul>
                     <li>teste2</li>
@@ -106,14 +141,14 @@ export const Nav = () => {
             </StyledNav>
             <StyledDiv>
                 <div>
-                    <Button btnName={'Adicionar Produto'} Icon={AiOutlinePlusCircle} size={25}  fColor={'#fff'}color={'#fff'} bgColor={'#00a65a'} />
+                    <Button btnName={'Adicionar Produto'} Icon={AiOutlinePlusCircle} size={25} fColor={'#fff'} color={'#fff'} bgColor={'#00a65a'} />
                     <Button />
                     <Button />
                 </div>
                 <div>
-                    <Input  />
+                    <Input />
                     <button>
-                        <SearchIcon size="30px"  />
+                        <SearchIcon size="30px" />
                     </button>
                 </div>
             </StyledDiv>
