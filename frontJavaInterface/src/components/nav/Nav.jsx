@@ -88,7 +88,7 @@ const Input = () => {
 
 }
 
-const SearchIcon = ({ size, color  }) => {
+const SearchIcon = ({ size, color }) => {
     return <AiOutlineFileSearch size={size} color={color}/>
 };
 
