@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { AiOutlineFileSearch } from "react-icons/ai";
+import { AiOutlineFileSearch, AiOutlinePlusCircle } from "react-icons/ai";
 
 const StyledNav = styled.nav`
     width: 100%;
@@ -24,12 +24,23 @@ const StyledDiv = styled.div`
     margin: 0 2rem;
     display: flex;
     justify-content: space-between;
+    
+    div:first-of-type{
+        display: flex;
 
+        button{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: .2rem;
+        }
+    }
+    
     div:last-of-type{
         display: flex;
         width: 340px;
         height: 40px;
-
+        
 
         button{
             align-items: center;
@@ -42,29 +53,38 @@ const StyledDiv = styled.div`
     }
 `
 const StyledButton = styled.button`
-    width: 130px;
-    height: 32px;
+    width: 160px;
+    height: 36px;
     border-radius: 5px;
     border: none;
     margin-right: 0.5rem;
     cursor: pointer;
+    background-color: ${props => props.bgColor};
+    color: ${props => props.fColor};
+    
+
 `
 
-const Button = ({color, btnName='CustumBtn', Icon}) =>{
-    return <StyledButton backgroudColor={color} Icon={Icon}>
-        {btnName}
-    </StyledButton>
+const Button = ({color, btnName='CustumBtn', Icon, size, bgColor, fColor}) =>{
+    return (
+        <StyledButton bgColor={bgColor} fColor={fColor}> 
+           {Icon ?  <Icon size={size} color={color} /> : <></>}
+            {btnName}
+        </StyledButton>
+    )
 }
+
 
 const StyledInput = styled.input`
     background-color: ${props => props.theme.colors.SoftWhite};
     width:340px;
     outline: none;
+    padding: 0 0 0 .5rem;
 
 `
 
 const Input = () => {
-    return <StyledInput />
+    return <StyledInput placeholder='Buscar'/>
 
 }
 
@@ -86,7 +106,7 @@ export const Nav = () => {
             </StyledNav>
             <StyledDiv>
                 <div>
-                    <Button />
+                    <Button btnName={'Adicionar Produto'} Icon={AiOutlinePlusCircle} size={25}  fColor={'#fff'}color={'#fff'} bgColor={'#00a65a'} />
                     <Button />
                     <Button />
                 </div>

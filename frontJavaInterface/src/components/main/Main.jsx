@@ -31,7 +31,7 @@ const GetList = () => {
 
     return (
         <tr>
-            {item.map((item, index) => {
+            {item.map(item  => {
                 return (
                     <>
                         <td>{item.cod}</td>
@@ -40,9 +40,9 @@ const GetList = () => {
                         <td>{item.estoque}</td>
                         <td>{item.dataCadastro}</td>
                         <td>testes botao</td>
-                    </>)
-            })
-            }
+                    </>
+                );
+            })}
         </tr>
     )
 }
@@ -62,6 +62,8 @@ export const Main = () => {
                     </tr>
                 </thead>
                 <tbody>
+                    <GetList />
+                    <GetList />
                     <GetList />
                 </tbody>
             </StyledTable>
