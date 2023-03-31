@@ -12,29 +12,6 @@ const StyledNav = styled.nav`
     margin-bottom: 1rem;
     box-shadow: 0 0.063rem 0.188rem rgb(31 50 81 / 12%), 0 0.063rem 0.125rem rgb(31 50 81 / 24%);
 
-        ul:first-of-type{
-            li{
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                height: 30px;
-                position: relative;
-                background-color: back;
-                
-
-                svg{
-                    position: absolute;
-                    left: 0;
-                    bottom: 0;
-                    margin-bottom: -0.8px;
-                   
-                }
-
-                span{
-                    margin-left: .2rem;
-                }
-            }
-        }
         li{
             display: inline;
             list-style: none;
@@ -65,7 +42,6 @@ const StyledDiv = styled.div`
         width: 340px;
         height: 40px;
         
-
         button{
             align-items: center;
             justify-content: center;
@@ -89,7 +65,7 @@ const StyledButton = styled.button`
 
 `
 
-const Button = ({ color, btnName = 'CustumBtn', Icon, size, bgColor, fColor }) => {
+const Button = ({ color, btnName = 'CustomBtn', Icon, size, bgColor, fColor }) => {
     return (
         <StyledButton bgColor={bgColor} fColor={fColor}>
             {Icon ? <Icon size={size} color={color} /> : <></>}
@@ -97,7 +73,6 @@ const Button = ({ color, btnName = 'CustumBtn', Icon, size, bgColor, fColor }) =
         </StyledButton>
     )
 }
-
 
 const StyledInput = styled.input`
     background-color: ${props => props.theme.colors.SoftWhite};
@@ -119,20 +94,21 @@ const SearchIcon = ({ size, color }) => {
 const StyledList = styled.li`
     font-family: 'Bebas Neue', cursive;
     font-size: 25px;
-    
-
-
 `
+
+export const LogoSvg = () => {
+    return (
+        <StyledList>
+            <CiBoxList size={35} />
+            <span>controle total</span>
+        </StyledList>)
+}
 
 export const Nav = () => {
     return (
         <>
             <StyledNav>
                 <ul>
-                    <StyledList>
-                        <CiBoxList size={35}/>
-                        <span>controle total</span>
-                    </StyledList>
                 </ul>
                 <ul>
                     <li>teste2</li>

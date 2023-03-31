@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { LogoSvg } from "../nav/Nav";
 
 const StyledHeader = styled.header`
     background-color: ${props => props.theme.colors.softDark};
@@ -16,7 +17,9 @@ export const Header = () => {
     return (
         <StyledHeader>
             <ul>
-                <li>teste</li>
+                <li>
+                    <LogoSvg />
+                </li>
 
             </ul>
             <ul>
