@@ -9,6 +9,9 @@ const StyledDiv = styled.div`
     z-index: 1000;
     width: 15px;
     height: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 `
 
 const ModalWrapper = styled.div`

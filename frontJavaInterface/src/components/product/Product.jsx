@@ -6,7 +6,6 @@ const ContentWrapper = styled.div`
     height: 500px;
     width: 700px;
     background-color: #fff;
-
 `
 const content = styled.div`
 
