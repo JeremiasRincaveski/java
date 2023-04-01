@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
 import { AiOutlineFileSearch, AiOutlinePlusCircle } from "react-icons/ai";
+import { MyContext } from '../../context/MyContext';
 
 const StyledNav = styled.nav`
     width: 100%;
@@ -64,9 +65,9 @@ const StyledButton = styled.button`
 
 `
 
-const Button = ({ color, btnName = 'CustomBtn', Icon, size, bgColor, fColor }) => {
+const Button = ({ color, btnName = 'CustomBtn', Icon, size, bgColor, fColor, onClick }) => {
     return (
-        <StyledButton bgColor={bgColor} fColor={fColor}>
+        <StyledButton bgColor={bgColor} fColor={fColor} onClick={onClick}>
             {Icon ? <Icon size={size} color={color} /> : <></>}
             {btnName}
         </StyledButton>
@@ -92,6 +93,7 @@ const SearchIcon = ({ size, color }) => {
 
 
 export const Nav = () => {
+    const { handleModalOpen } = useContext(MyContext);
     return (
         <>
             <StyledNav>
@@ -104,7 +106,15 @@ export const Nav = () => {
             </StyledNav>
             <StyledDiv>
                 <div>
-                    <Button btnName={'Adicionar Produto'} Icon={AiOutlinePlusCircle} size={25} fColor={'#fff'} color={'#fff'} bgColor={'#00a65a'} />
+                    <Button 
+                        btnName={'Adicionar Produto'} 
+                        Icon={AiOutlinePlusCircle} 
+                        size={25} 
+                        fColor={'#fff'} 
+                        color={'#fff'} 
+                        bgColor={'#00a65a'}
+                        onClick={handleModalOpen}
+                        />
                     <Button />
                     <Button />
                 </div>

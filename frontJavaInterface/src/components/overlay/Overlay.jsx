@@ -1,4 +1,7 @@
+import { useContext } from "react"
 import styled from "styled-components"
+import { MyContext } from "../../context/MyContext"
+
 
 const StyledDiv = styled.div`
     top: 0;
@@ -10,9 +13,10 @@ const StyledDiv = styled.div`
     z-index: 1;
 `
 
-export const Overlay = ({ children, onclick={} }) => {
+export const Overlay = ({ children, onClick }) => {
+    const { handleCloseModal } = useContext(MyContext);
     return (
-        <StyledDiv onclick={onclick}>
+        <StyledDiv onClick={handleCloseModal} >
             {children}
         </StyledDiv>
     )

@@ -1,3 +1,4 @@
+import { useState } from "react"
 import { createGlobalStyle, ThemeProvider } from "styled-components"
 import { Container } from "./components/container/Container"
 import { Header } from "./components/header/Header"
@@ -5,11 +6,18 @@ import { Main } from "./components/main/Main"
 import { Nav } from "./components/nav/Nav"
 import { MyContext } from "./context/MyContext"
 import { theme } from './theme/theme'
-import { Modal } from "./components/modal/Modal"
 import { Product } from "./components/product/Product"
 
 function App() {
-  
+const [modalIsOpen, setModalIsOpen] = useState(false);
+
+const handleModalOpen = () =>{
+  setModalIsOpen(true)
+}
+
+const handleCloseModal = () =>{
+  setModalIsOpen(false)
+}
   const GlobalStyle = createGlobalStyle`
   body{
     background-color:${props => props.theme.colors.softGray};
@@ -26,7 +34,7 @@ function App() {
   
   return (
     <ThemeProvider theme={theme}>
-      <MyContext.Provider value={{}}>
+      <MyContext.Provider value={{ handleModalOpen, modalIsOpen, handleCloseModal, setModalIsOpen }}>
         <GlobalStyle />
         <Container>
           <Header />
