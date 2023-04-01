@@ -2,13 +2,14 @@ import styled from "styled-components"
 import { Overlay } from "../overlay/Overlay"
 
 const StyledDiv = styled.div`
-    position: relative;
-    left: 50%;
-    top: 50%;
-    translate: translate(-50%, -50%);
-    z-index: 1000;
-    width: 15px;
-    height: 15px;
+    height: 500px;
+    width: 700px;
+    background-color: #fff;
+    position: absolute;
+    top:50%;
+    left:50%;
+    margin-top: calc((500px / 2) * -1);
+    margin-left: calc((700px / 2) * -1);
 `
 
 const ModalWrapper = styled.div`

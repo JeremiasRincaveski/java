@@ -3,9 +3,7 @@ import styled from 'styled-components'
 import { Modal } from '../modal/Modal'
 
 const ContentWrapper = styled.div`
-    height: 500px;
-    width: 700px;
-    background-color: #fff;
+
 
 `
 const content = styled.div`

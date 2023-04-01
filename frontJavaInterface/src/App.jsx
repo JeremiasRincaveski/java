@@ -32,7 +32,7 @@ function App() {
           <Header />
           <Nav />
           <Main />
-
+          <Product />
         </Container>
       </MyContext.Provider>
     </ThemeProvider>
