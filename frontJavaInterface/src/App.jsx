@@ -15,8 +15,11 @@ const handleModalOpen = () =>{
   setModalIsOpen(true)
 }
 
-const handleCloseModal = () =>{
-  setModalIsOpen(false)
+const handleCloseModal = (e) =>{
+  if (e.currentTarget === e.target){
+    setModalIsOpen(false)
+  }
+  
 }
   const GlobalStyle = createGlobalStyle`
   body{

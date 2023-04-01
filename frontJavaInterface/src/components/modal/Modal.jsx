@@ -12,6 +12,7 @@ const StyledDiv = styled.div`
     left:50%;
     margin-top: calc((500px / 2) * -1);
     margin-left: calc((700px / 2) * -1);
+    z-index: 1000;
 `
 
 const ModalWrapper = styled.div`
