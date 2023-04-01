@@ -5,7 +5,7 @@ import { Main } from "./components/main/Main"
 import { Nav } from "./components/nav/Nav"
 import { MyContext } from "./context/MyContext"
 import { theme } from './theme/theme'
-import { Modal } from "./components/overlay/Overlay"
+import { Modal } from "./components/modal/Modal"
 
 function App() {
 
@@ -31,7 +31,7 @@ function App() {
           <Header />
           <Nav />
           <Main />
-          <Modal />
+          <Modal/>
         </Container>
       </MyContext.Provider>
     </ThemeProvider>

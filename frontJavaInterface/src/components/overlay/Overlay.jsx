@@ -7,9 +7,10 @@ const StyledDiv = styled.div`
     bottom: 0;
     background-color: rgba(7, 7, 7, 0.8);
     position: absolute;
+    z-index: 1;
 `
 
-export const Modal = ({children}) => {
+export const Overlay = ({children}) => {
     return (
         <StyledDiv>
             {children}
