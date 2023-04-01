@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 import { AiOutlineFileSearch, AiOutlinePlusCircle } from "react-icons/ai";
-import { CiBoxList } from "react-icons/ci";
 
 const StyledNav = styled.nav`
     width: 100%;
@@ -91,18 +90,6 @@ const SearchIcon = ({ size, color }) => {
     return <AiOutlineFileSearch size={size} color={color} />
 };
 
-const StyledList = styled.li`
-    font-family: 'Bebas Neue', cursive;
-    font-size: 25px;
-`
-
-export const LogoSvg = () => {
-    return (
-        <StyledList>
-            <CiBoxList size={35} />
-            <span>controle total</span>
-        </StyledList>)
-}
 
 export const Nav = () => {
     return (
