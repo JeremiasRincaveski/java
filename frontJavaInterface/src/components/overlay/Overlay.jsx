@@ -17,7 +17,7 @@ export const Overlay = ({ children }) => {
     const { handleCloseModal } = useContext(MyContext);
     return (
         <StyledDiv onClick={handleCloseModal} >
-            {children}
+           {children}
         </StyledDiv>
     )
 }
