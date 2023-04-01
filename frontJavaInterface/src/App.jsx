@@ -9,11 +9,11 @@ import { Modal } from "./components/modal/Modal"
 import { Product } from "./components/product/Product"
 
 function App() {
-
+  
   const GlobalStyle = createGlobalStyle`
   body{
     background-color:${props => props.theme.colors.softGray};
-    /* font-family: 'Roboto', sans-serif; */
+    font-family: 'Roboto', sans-serif;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 19px;
     padding: 0;
@@ -32,11 +32,7 @@ function App() {
           <Header />
           <Nav />
           <Main />
-<<<<<<< HEAD
           <Product />
-=======
-          <Product/>
->>>>>>> 7d8699a8a277cf3771a777946f8356b3286e4541
         </Container>
       </MyContext.Provider>
     </ThemeProvider>

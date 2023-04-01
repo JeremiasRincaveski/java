@@ -18,13 +18,18 @@ const ModalWrapper = styled.div`
 `
 
 export const Modal = ({ children, isOpen=false, onCloseModal }) => {
-    return (
-        <Overlay onclick={onCloseModal}>
-            <StyledDiv>
-                <ModalWrapper>
-                    {children}
-                </ModalWrapper>
-            </StyledDiv>
-        </Overlay>        
+    return(
+        <>
+            {isOpen &&(
+                <Overlay onclick={onCloseModal}>
+                    <StyledDiv>
+                        <ModalWrapper>
+                            {children}
+                        </ModalWrapper>
+                    </StyledDiv>
+                </Overlay>        
+            )}
+        </>
     )
 }
+ 
