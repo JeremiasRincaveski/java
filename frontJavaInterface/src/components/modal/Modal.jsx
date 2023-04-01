@@ -11,11 +11,18 @@ const StyledDiv = styled.div`
     height: 15px;
 `
 
-export const Modal = () => {
+const ModalWrapper = styled.div`
+    background-color: ${props => props.theme.colors.white};
+
+`
+
+export const Modal = ({ children, isOpen=false, onCloseModal }) => {
     return (
-        <Overlay>
+        <Overlay onclick={onCloseModal}>
             <StyledDiv>
-                <p>jeremias</p>
+                <ModalWrapper>
+                    {children}
+                </ModalWrapper>
             </StyledDiv>
         </Overlay>        
     )

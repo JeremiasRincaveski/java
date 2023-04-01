@@ -10,9 +10,9 @@ const StyledDiv = styled.div`
     z-index: 1;
 `
 
-export const Overlay = ({children}) => {
+export const Overlay = ({ children, onclick={} }) => {
     return (
-        <StyledDiv>
+        <StyledDiv onclick={onclick}>
             {children}
         </StyledDiv>
     )
