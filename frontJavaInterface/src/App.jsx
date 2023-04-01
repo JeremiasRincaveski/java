@@ -32,7 +32,11 @@ function App() {
           <Header />
           <Nav />
           <Main />
+<<<<<<< HEAD
           <Product />
+=======
+          <Product/>
+>>>>>>> 7d8699a8a277cf3771a777946f8356b3286e4541
         </Container>
       </MyContext.Provider>
     </ThemeProvider>
