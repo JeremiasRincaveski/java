@@ -10,21 +10,22 @@ import { Product } from "./components/product/Product"
 
 function App() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
-
+  const [editItemModal, setEditItemModal] = useState(false);
   const handleModalOpen = () => {
     setModalIsOpen(true)
+    setEditItemModal(true)
   }
 
   const handleCloseModal = (e) => {
     if (e.currentTarget === e.target) {
       setModalIsOpen(false)
+      setEditItemModal(false)
     }
 
   }
   const GlobalStyle = createGlobalStyle`
   body{
     background-color:${props => props.theme.colors.softGray};
-    font-family: 'Roboto', sans-serif;
     font-family: Arial, Helvetica, sans-serif;
     padding: 0;
     margin: 0;
@@ -47,7 +48,7 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <MyContext.Provider value={{ handleModalOpen, modalIsOpen, handleCloseModal }}>
+      <MyContext.Provider value={{ handleModalOpen, modalIsOpen, handleCloseModal, editItemModal, setEditItemModal }}>
         <GlobalStyle />
         <Container>
           <Header />

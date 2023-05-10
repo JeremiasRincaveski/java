@@ -1,9 +1,11 @@
-import {  useState } from "react"
+import {  useContext, useState } from "react"
 import styled from "styled-components"
 import { api } from '../../services/api.js'
 import { Nav } from "../nav/Nav.jsx"
 import { Button } from "../CustomButton/CustomButtom.jsx"
 import { MdDeleteSweep, MdEditDocument } from "react-icons/md";
+import { Modal } from "../modal/Modal.jsx"
+import { MyContext } from "../../context/MyContext.jsx"
 
 const StyledTable = styled.table`
     margin: 2rem 2rem 0;
@@ -14,7 +16,7 @@ const StyledTable = styled.table`
     border-collapse: collapse;
 
     th, td {
-        padding: .5rem;
+        padding: .2rem;
         border: 2px solid ${props => props.theme.colors.darkGray};
       
     }
@@ -29,20 +31,27 @@ const StyledTable = styled.table`
 `
 
 export const Main = () => {
+    const { handleCloseModal, editItemModal, setEditItemModal } = useContext(MyContext)
     const [item, setItem] = useState([]);
-
+    
     const getList = () => {
         api.get('/posts').then(response => {
             setItem(response.data);
         });
     };
+
+    const removeItem = async (id) => {
+        await api.delete(`/posts/${id}`);
+        const newList = item.filter((item) => item.id !== id);
+        setItem(newList);
+    }
     
     return (
         <>
             <Nav 
                 getProdustList={getList}
             />
-            <StyledTable>
+            <StyledTable onClick={handleCloseModal}>
                 <thead>
                     <tr>
                         <th>cod</th>
@@ -54,8 +63,8 @@ export const Main = () => {
                     </tr>
                 </thead>
                 <tbody>
-                        {item.map(item => (
-                            <tr key={item.id}>
+                        {item.map((item, index) => (
+                            <tr key={index}>
                                 <td>{item.cod}</td>
                                 <td>{item.nome}</td>
                                 <td>{item.valor}</td>
@@ -63,23 +72,31 @@ export const Main = () => {
                                 <td>{item.dataCadastro}</td>
                                 <td>
                                     <Button 
-                                        wSize={'40px'}
+                                        wSize={'30px'}
+                                        hSize={'30px'}
                                         btnName=''
                                         Icon={MdDeleteSweep}
-                                        size={25}
+                                        size={22}
+                                        onClick={() => removeItem(item.id)}
                                         
                                     />
                                     <Button 
-                                        wSize={'40px'}
+                                        wSize={'30px'}
+                                        hSize={'30px'}
                                         btnName=''
                                         Icon={MdEditDocument}
-                                        size={25}
+                                        size={22}
+                                        onClick={setEditItemModal}
                                     />
-                                    
                                 </td>
                             </tr>
                         ))}
                 </tbody>
+                <Modal isOpen={editItemModal}>
+                    <div onClick={handleCloseModal}>
+                        ff
+                    </div>
+                </Modal>
             </StyledTable>
         </>
     )

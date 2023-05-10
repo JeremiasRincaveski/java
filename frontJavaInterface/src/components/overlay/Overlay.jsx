@@ -13,10 +13,10 @@ const StyledDiv = styled.div`
     z-index: 1;
 `
 
-export const Overlay = ({ children }) => {
+export const Overlay = ({ children, closeModal }) => {
     const { handleCloseModal } = useContext(MyContext);
     return (
-        <StyledDiv onClick={handleCloseModal} >
+        <StyledDiv onClick={handleCloseModal} closeModal={closeModal}>
            {children}
         </StyledDiv>
     )
