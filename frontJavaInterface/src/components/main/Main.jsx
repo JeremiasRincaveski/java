@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import styled from "styled-components"
 import { api } from '../../services/api.js'
+import { Nav } from "../nav/Nav.jsx"
 
 const StyledTable = styled.table`
     margin: 2rem 2rem 0;
@@ -20,23 +21,23 @@ const StyledTable = styled.table`
     }
     `
 
-const getList = () => {
+
+
+export const Main = () => {
     const [item, setItem] = useState([]);
 
-    useEffect(() => {
+    const getList = () => {
         api.get('/posts').then(response => {
             setItem(response.data);
         })
-    }, []);
-
-    return item;
-}
-
-export const Main = () => {
-    const item = getList();
+    
+    }
     
     return (
         <>
+            <Nav 
+                getProdustList={getList}
+            />
             <StyledTable>
                 <thead>
                     <tr>

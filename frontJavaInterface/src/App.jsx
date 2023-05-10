@@ -51,7 +51,6 @@ function App() {
         <GlobalStyle />
         <Container>
           <Header />
-          <Nav />
           <Main />
           <Product />
         </Container>

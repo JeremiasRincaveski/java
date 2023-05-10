@@ -100,7 +100,7 @@ const Input = () => {
 
 }
 
-export const Nav = () => {
+export const Nav = ( {getProdustList} ) => {
     const { handleModalOpen } = useContext(MyContext);
     return (
         <>
@@ -123,7 +123,10 @@ export const Nav = () => {
                         bgColor={'#00a65a'}
                         onClick={handleModalOpen}
                     />
-                    <Button />
+                    <Button 
+                        btnName='Get list of all products'
+                        onClick={getProdustList}
+                    />
                     <Button />
                 </div>
                 <div>
