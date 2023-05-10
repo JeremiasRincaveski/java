@@ -18,9 +18,9 @@ const StyledTable = styled.table`
     tr:nth-child(even) {
         background-color: ${props => props.theme.colors.softGray};
     }
-`
+    `
 
-const GetList = () => {
+const getList = () => {
     const [item, setItem] = useState([]);
 
     useEffect(() => {
@@ -29,25 +29,12 @@ const GetList = () => {
         })
     }, []);
 
-    return (
-        <tr>
-            {item.map(item  => {
-                return (
-                    <>
-                        <td>{item.cod}</td>
-                        <td>{item.nome}</td>
-                        <td>{item.valor}</td>
-                        <td>{item.estoque}</td>
-                        <td>{item.dataCadastro}</td>
-                        <td>testes botao</td>
-                    </>
-                );
-            })}
-        </tr>
-    )
+    return item;
 }
 
 export const Main = () => {
+    const item = getList();
+    
     return (
         <>
             <StyledTable>
@@ -62,9 +49,16 @@ export const Main = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    <GetList />
-                    <GetList />
-                    <GetList />
+                        {item.map(item => (
+                            <tr key={item.id}>
+                                <td>{item.cod}</td>
+                                <td>{item.nome}</td>
+                                <td>{item.valor}</td>
+                                <td>{item.estoque}</td>
+                                <td>{item.dataCadastro}</td>
+                                <td>testes botao</td>
+                            </tr>
+                        ))}
                 </tbody>
             </StyledTable>
         </>

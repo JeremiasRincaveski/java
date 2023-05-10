@@ -27,14 +27,12 @@ const StyledList = styled.div`
     font-size: 35px;
     display: flex;
    
-
     span{
        top: 0;
        position: absolute;
-       margin-top:16px;
+       margin-top:13px;
        left: 0;
        margin-left:100px;
-
     }
 `
 const SvgIcon = () =>{
@@ -47,7 +45,6 @@ const SvgIcon = () =>{
         </>
     )
 }
-
 
 export const Header = () => {
     return (

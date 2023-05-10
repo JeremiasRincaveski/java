@@ -20,13 +20,13 @@ const ModalWrapper = styled.div`
 
 `
 
-export const Modal = ({ children, isOpen=false, onClick = () =>{}}) => {
+export const Modal = ({ children, isOpen=false }) => {
 
 
     return(
         <>
             {isOpen &&(
-                <Overlay onclick={onClick}>
+                <Overlay>
                     <StyledDiv>
                         <ModalWrapper>
                             {children}

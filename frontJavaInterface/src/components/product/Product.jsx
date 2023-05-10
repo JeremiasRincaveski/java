@@ -13,22 +13,12 @@ const StyledInput = styled.input`
     height: 1rem;
     padding: .4rem;
     border: 1px solid ${props => props.theme.colors.softGray};
-    input::-webkit-outer-spin-button,
-        input::-webkit-inner-spin-button {
-             display: none;
-            -webkit-appearance: none;
-            margin: 0;
-            }
-
-        input[type=number] {
-            -moz-appearance: textfield;
-        }
 `
 
-const Input = ({type, placeholder}) => {
+const Input = ({ type, placeholder }) => {
     return (
         <StyledInput type='number'>
-            
+
         </StyledInput>
     )
 }
@@ -39,10 +29,9 @@ export const Product = () => {
         <Modal isOpen={modalIsOpen}>
             <ContentForm>
                 <fieldset>
-                <legend>localize um produto abaixo</legend>
-                <Input/>
+                    <legend>localize um produto abaixo</legend>
+                    <Input />
                 </fieldset>
-
             </ContentForm>
         </Modal>
     )

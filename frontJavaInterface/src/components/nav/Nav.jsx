@@ -53,9 +53,9 @@ const StyledDiv = styled.div`
     }
 `
 const StyledButton = styled.button`
-    width: 160px;
-    height: 36px;
-    border-radius: 5px;
+    width: ${props => props.wSize || '150px'};
+    height: ${props => props.hSize || '36px'}; 
+    border-radius: ${props => props.bRadius || '5px'};
     border: none;
     margin-right: 0.5rem;
     cursor: pointer;
@@ -65,9 +65,9 @@ const StyledButton = styled.button`
 
 `
 
-const Button = ({ color, btnName = 'CustomBtn', Icon, size, bgColor, fColor, onClick }) => {
+const Button = ({ color, btnName = 'CustomBtn', Icon, size, bgColor, fColor, onClick, wSize, bRadius, hSize }) => {
     return (
-        <StyledButton bgColor={bgColor} fColor={fColor} onClick={onClick}>
+        <StyledButton bgColor={bgColor} fColor={fColor} onClick={onClick} wSize={wSize} bRadius={bRadius} hSize={hSize}>
             {Icon ? <Icon size={size} color={color} /> : <></>}
             {btnName}
         </StyledButton>
@@ -83,46 +83,51 @@ const StyledInput = styled.input`
 `
 
 const Input = () => {
-    return <StyledInput placeholder='Buscar' />
+    return (
+        <>
+            <StyledInput placeholder='Buscar' />
+            <Button
+                Icon={AiOutlineFileSearch}
+                btnName=''
+                size={25}
+                wSize={'60px'}
+                bRadius={'0'}
+                hSize={'100%'}
+            />
+        </>
+    )
+
 
 }
-
-const SearchIcon = ({ size, color }) => {
-    return <AiOutlineFileSearch size={size} color={color} />
-};
-
 
 export const Nav = () => {
     const { handleModalOpen } = useContext(MyContext);
     return (
         <>
             <StyledNav>
-                <ul>
+                {/* <ul>
                 </ul>
                 <ul>
                     <li>teste2</li>
                     <li>teste2</li>
-                </ul>
+                </ul> */}
             </StyledNav>
             <StyledDiv>
                 <div>
-                    <Button 
-                        btnName={'Adicionar Produto'} 
-                        Icon={AiOutlinePlusCircle} 
-                        size={25} 
-                        fColor={'#fff'} 
-                        color={'#fff'} 
+                    <Button
+                        btnName={'Adicionar Produto'}
+                        Icon={AiOutlinePlusCircle}
+                        size={25}
+                        fColor={'#fff'}
+                        color={'#fff'}
                         bgColor={'#00a65a'}
                         onClick={handleModalOpen}
-                        />
+                    />
                     <Button />
                     <Button />
                 </div>
                 <div>
                     <Input />
-                    <button>
-                        <SearchIcon size="30px" />
-                    </button>
                 </div>
             </StyledDiv>
 
