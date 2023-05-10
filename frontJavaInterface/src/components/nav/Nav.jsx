@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import styled from 'styled-components'
 import { AiOutlineFileSearch, AiOutlinePlusCircle } from "react-icons/ai";
 import { MyContext } from '../../context/MyContext';
+import { Button } from '../CustomButton/CustomButtom';
 
 const StyledNav = styled.nav`
     width: 100%;
@@ -52,27 +53,6 @@ const StyledDiv = styled.div`
         }
     }
 `
-const StyledButton = styled.button`
-    width: ${props => props.wSize || '150px'};
-    height: ${props => props.hSize || '36px'}; 
-    border-radius: ${props => props.bRadius || '5px'};
-    border: none;
-    margin-right: 0.5rem;
-    cursor: pointer;
-    background-color: ${props => props.bgColor};
-    color: ${props => props.fColor};
-    
-
-`
-
-const Button = ({ color, btnName = 'CustomBtn', Icon, size, bgColor, fColor, onClick, wSize, bRadius, hSize }) => {
-    return (
-        <StyledButton bgColor={bgColor} fColor={fColor} onClick={onClick} wSize={wSize} bRadius={bRadius} hSize={hSize}>
-            {Icon ? <Icon size={size} color={color} /> : <></>}
-            {btnName}
-        </StyledButton>
-    )
-}
 
 const StyledInput = styled.input`
     background-color: ${props => props.theme.colors.SoftWhite};
@@ -96,11 +76,9 @@ const Input = () => {
             />
         </>
     )
-
-
 }
 
-export const Nav = () => {
+export const Nav = ( {getProdustList} ) => {
     const { handleModalOpen } = useContext(MyContext);
     return (
         <>
@@ -123,7 +101,10 @@ export const Nav = () => {
                         bgColor={'#00a65a'}
                         onClick={handleModalOpen}
                     />
-                    <Button />
+                    <Button 
+                        btnName='Get list of all products'
+                        onClick={getProdustList}
+                    />
                     <Button />
                 </div>
                 <div>

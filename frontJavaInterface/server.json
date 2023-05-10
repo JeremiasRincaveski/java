@@ -7,6 +7,14 @@
       "valor": 11111,
       "estoque": 1,
       "dataCadastro": "31/10/2000"
+    },
+    {
+      "id": 2,
+      "cod": 246,
+      "nome": "tehhhd",
+      "valor": 22222,
+      "estoque": 11,
+      "dataCadastro": "31/10/2100"
     }
   ]
 }

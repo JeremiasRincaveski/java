@@ -1,7 +1,6 @@
 import styled from "styled-components"
 import { Overlay } from "../overlay/Overlay"
-import { useContext } from "react"
-import { MyContext } from "../../context/MyContext"
+
 
 const StyledDiv = styled.div`
     height: 500px;
@@ -20,8 +19,7 @@ const ModalWrapper = styled.div`
 
 `
 
-export const Modal = ({ children, isOpen=false }) => {
-
+export const Modal = ( { children, isOpen=false } ) => {
 
     return(
         <>
