@@ -15,9 +15,9 @@ const StyledInput = styled.input`
     border: 1px solid ${props => props.theme.colors.softGray};
 `
 
-const Input = ({ type, placeholder }) => {
+const InputField = ({ type, placeholder }) => {
     return (
-        <StyledInput type='number'>
+        <StyledInput type='number' placeholder='oi'>
 
         </StyledInput>
     )
@@ -28,10 +28,7 @@ export const Product = () => {
     return (
         <Modal isOpen={modalIsOpen}>
             <ContentForm>
-                <fieldset>
-                    <legend>localize um produto abaixo</legend>
-                    <Input />
-                </fieldset>
+
             </ContentForm>
         </Modal>
     )

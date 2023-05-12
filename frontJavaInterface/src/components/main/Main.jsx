@@ -1,4 +1,4 @@
-import {  useContext, useState } from "react"
+import {  useContext, useEffect, useState } from "react"
 import styled from "styled-components"
 import { api } from '../../services/api.js'
 import { Nav } from "../nav/Nav.jsx"
@@ -40,12 +40,13 @@ export const Main = () => {
         });
     };
 
+    
     const removeItem = async (id) => {
         await api.delete(`/posts/${id}`);
         const newList = item.filter((item) => item.id !== id);
         setItem(newList);
     }
-    
+
     return (
         <>
             <Nav 
