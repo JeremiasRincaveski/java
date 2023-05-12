@@ -94,7 +94,6 @@ export const Main = () => {
                 </tbody>
                 <Modal isOpen={editItemModal}>
                     <div onClick={handleCloseModal}>
-                        ff
                     </div>
                 </Modal>
             </StyledTable>
