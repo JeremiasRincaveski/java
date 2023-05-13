@@ -1,16 +1,17 @@
 import { useState } from "react"
-import { createGlobalStyle, ThemeProvider } from "styled-components"
+import {  ThemeProvider } from "styled-components"
 import { Container } from "./components/container/Container"
 import { Header } from "./components/header/Header"
 import { Main } from "./components/main/Main"
-import { Nav } from "./components/nav/Nav"
 import { MyContext } from "./context/MyContext"
 import { theme } from './theme/theme'
 import { Product } from "./components/product/Product"
+import { GlobalStyle } from "./components/styles/GlobalStyles"
 
 function App() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [editItemModal, setEditItemModal] = useState(false);
+  const [item, setItem] = useState([ ]);
   const handleModalOpen = () => {
     setModalIsOpen(true)
     setEditItemModal(true)
@@ -21,34 +22,11 @@ function App() {
       setModalIsOpen(false)
       setEditItemModal(false)
     }
-
   }
-  const GlobalStyle = createGlobalStyle`
-  body{
-    background-color:${props => props.theme.colors.softGray};
-    font-family: Arial, Helvetica, sans-serif;
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    outline: none;
-    border: none;
-
-    input::-webkit-outer-spin-button,
-      input::-webkit-inner-spin-button {
-        display: none;
-        -webkit-appearance: none;
-        margin: 0;
-      }
-
-    input[type=number] {
-      appearance: textfield;
-    }
-  }
-  `
-
+  
   return (
     <ThemeProvider theme={theme}>
-      <MyContext.Provider value={{ handleModalOpen, modalIsOpen, handleCloseModal, editItemModal, setEditItemModal }}>
+      <MyContext.Provider value={{ handleModalOpen, modalIsOpen, handleCloseModal, editItemModal, setEditItemModal, item, setItem }}>
         <GlobalStyle />
         <Container>
           <Header />

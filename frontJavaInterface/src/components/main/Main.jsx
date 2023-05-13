@@ -7,6 +7,7 @@ import { MdDeleteSweep, MdEditDocument } from "react-icons/md";
 import { Modal } from "../modal/Modal.jsx"
 import { MyContext } from "../../context/MyContext.jsx"
 import { Box, Skeleton } from "@mui/material"
+import { SearchComponent } from "../search/Search.jsx"
 
 
 
@@ -34,13 +35,16 @@ const StyledTable = styled.table`
     td:last-of-type{
         width: 100px;
     }
+
+   .modalOn{
+    background-color: red;
+   }
 `
 
 export const Main = () => {
-    const { handleCloseModal, editItemModal, setEditItemModal } = useContext(MyContext)
-    const [item, setItem] = useState([]);
-    const [isLoading, setIsLoading] = useState(false)
-
+    const { handleCloseModal, editItemModal, setEditItemModal, item, setItem, modalIsOpen } = useContext(MyContext)
+    const [isLoading, setIsLoading] = useState(false);
+    const [search, setSearch] = useState('');
 
     const getList = () => {
         setIsLoading(true);
@@ -49,14 +53,14 @@ export const Main = () => {
                 setItem(response.data);
             });
             setIsLoading(false);
-        }, 3000);
+        }, 2000);
     };
 
     useEffect(() => {
 
         getList();
 
-    }, [])
+    }, []);
 
     const removeItem = async (id) => {
         setIsLoading(true);
@@ -69,15 +73,26 @@ export const Main = () => {
             }, 1000);
         } catch (err) {
             console.log(err);
-        }
-    }
+        };
+    };
 
     return (
         <>
-            <Nav
-                getProdustList={getList}
-            />
-            <StyledTable onClick={handleCloseModal} isloading={isLoading}>
+            <Box>
+                <Nav
+                    getProdustList={getList}
+                />
+                <SearchComponent
+                    search={search}
+                    setSearch={setSearch}
+                    isOpen={modalIsOpen}
+                />
+            </Box>
+            <StyledTable 
+                onClick={handleCloseModal}
+                isloading={isLoading}
+                
+                >
                 {isLoading ? (
                     <Box>
                         <Skeleton
@@ -100,14 +115,14 @@ export const Main = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {item.map((item, index) => (
+                            {item.filter((item)=> item.nome.toLowerCase().includes(search.toLowerCase())).map((item, index) => (
                                 <tr key={index}>
                                     <td>{item.id}</td>
                                     <td>{item.nome}</td>
                                     <td>{item.valor}</td>
                                     <td>{item.estoque}</td>
                                     <td>{item.dataCadastro}</td>
-                                    <td>
+                                    <td>            
                                         <Button
                                             wSize={'30px'}
                                             hSize={'30px'}
@@ -131,11 +146,12 @@ export const Main = () => {
                         </tbody>
                         <Modal isOpen={editItemModal}>
                             <div onClick={handleCloseModal}>
+                                d
                             </div>
                         </Modal>
                     </>
                 )}
             </StyledTable>
         </>
-    )
-}
+    );
+};

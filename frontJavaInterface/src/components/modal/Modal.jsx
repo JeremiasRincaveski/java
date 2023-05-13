@@ -21,7 +21,7 @@ export const Modal = ( { children, isOpen=false } ) => {
         <>
             {isOpen &&(
                 <Overlay>
-                    <ModalWrapper>
+                    <ModalWrapper className={ isOpen ? 'ModalOn' : ''}>
                         {children}
                     </ModalWrapper>
                 </Overlay>        
@@ -30,3 +30,18 @@ export const Modal = ( { children, isOpen=false } ) => {
     )
 }
  
+// .modalOn {
+//     animation-name: modalOn;
+//     animation-duration: .5s;
+// }
+
+// @keyframes modalOn {
+//     from {
+//         opacity: 0;
+//         transform: translateY(-70%);
+//     }
+//     to {
+//         opacity: 0.9;
+//         transform: translateY(0);
+//     }
+// }
