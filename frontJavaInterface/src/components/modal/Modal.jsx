@@ -5,7 +5,7 @@ import { Overlay } from "../overlay/Overlay"
 const StyledDiv = styled.div`
     height: 500px;
     width: 700px;
-    background-color: #fff;
+    background-color: blue;
     position: absolute;
     top:50%;
     left:50%;
@@ -26,9 +26,7 @@ export const Modal = ( { children, isOpen=false } ) => {
             {isOpen &&(
                 <Overlay>
                     <StyledDiv>
-                        <ModalWrapper>
-                            {children}
-                        </ModalWrapper>
+                        {children}
                     </StyledDiv>
                 </Overlay>        
             )}
