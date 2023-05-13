@@ -2,34 +2,28 @@ import styled from "styled-components"
 import { Overlay } from "../overlay/Overlay"
 
 
-const StyledDiv = styled.div`
+const ModalWrapper = styled.div`
     height: 500px;
     width: 700px;
-    background-color: #fff;
+    border-radius: 10px;
     position: absolute;
     top:50%;
     left:50%;
     margin-top: calc((500px / 2) * -1);
     margin-left: calc((700px / 2) * -1);
     z-index: 1000;
-`
-
-const ModalWrapper = styled.div`
-    background-color: ${props => props.theme.colors.white};
-
+    background-color: ${props => props.theme.colors.softGray};
+    box-shadow: 0 0.875rem 1.75rem rgb(31 50 81 / 25%), 0 0.625rem 0.625rem rgb(31 50 81 / 22%);
 `
 
 export const Modal = ( { children, isOpen=false } ) => {
-
     return(
         <>
             {isOpen &&(
                 <Overlay>
-                    <StyledDiv>
-                        <ModalWrapper>
-                            {children}
-                        </ModalWrapper>
-                    </StyledDiv>
+                    <ModalWrapper>
+                        {children}
+                    </ModalWrapper>
                 </Overlay>        
             )}
         </>

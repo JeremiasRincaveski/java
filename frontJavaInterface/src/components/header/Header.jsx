@@ -1,64 +1,88 @@
-import styled from "styled-components";
-import { CiBoxList } from "react-icons/ci";
 
+import { alpha, styled } from '@mui/material/styles';
+import AppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
+import Toolbar from '@mui/material/Toolbar';
+import IconButton from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
+import InputBase from '@mui/material/InputBase';
+import SearchIcon from '@mui/icons-material/Search';
+import AssignmentIcon from '@mui/icons-material/Assignment';
 
-const StyledHeader = styled.header`
-    background-color: ${props => props.theme.colors.softDark};
-    color: ${props => props.theme.colors.white};
-    display: flex;
-    justify-content: space-between;
-    position: relative;
-    
-        li{
-            padding: 0 2rem;
-            display:flex;
-            align-items: center;
-        }
+const Search = styled('div')(({ theme }) => ({
+  position: 'relative',
+  borderRadius: theme.shape.borderRadius,
+  backgroundColor: alpha(theme.palette.common.white, 0.15),
+  '&:hover': {
+    backgroundColor: alpha(theme.palette.common.white, 0.25),
+  },
+  marginLeft: 0,
+  width: '100%',
+  [theme.breakpoints.up('sm')]: {
+    marginLeft: theme.spacing(1),
+    width: 'auto',
+  },
+}));
 
-        ul:last-of-type{
-            li{
-                display: inline;
-            }
-        }
-    
-`
-const StyledList = styled.div`
-    font-family: 'Bebas Neue', cursive;
-    font-size: 35px;
-    display: flex;
-   
-    span{
-       top: 0;
-       position: absolute;
-       margin-top:13px;
-       left: 0;
-       margin-left:100px;
-    }
-`
-const SvgIcon = () =>{
-    return(
-        <>
-            <StyledList>
-                <CiBoxList size={35} />
-                <span>controle total</span>
-            </StyledList>
-        </>
-    )
-}
+const SearchIconWrapper = styled('div')(({ theme }) => ({
+  padding: theme.spacing(0, 2),
+  height: '100%',
+  position: 'absolute',
+  pointerEvents: 'none',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+}));
+
+const StyledInputBase = styled(InputBase)(({ theme }) => ({
+  color: 'inherit',
+  '& .MuiInputBase-input': {
+    padding: theme.spacing(1, 1, 1, 0),
+    // vertical padding + font size from searchIcon
+    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
+    transition: theme.transitions.create('width'),
+    width: '100%',
+    [theme.breakpoints.up('sm')]: {
+      width: '12ch',
+      '&:focus': {
+        width: '20ch',
+      },
+    },
+  },
+}));
 
 export const Header = () => {
-    return (
-        <StyledHeader>
-            <ul>
-                <li>
-                    <SvgIcon />
-                </li>
-
-            </ul>
-            <ul>
-                <li>teste2</li>
-                <li>teste2</li>
-            </ul>
-        </StyledHeader>
-    )
+  return (
+    <Box sx={{ flexGrow: 1 }}>
+      <AppBar position="static">
+        <Toolbar>
+          <IconButton
+            size="large"
+            edge="start"
+            color="inherit"
+            aria-label="open drawer"
+            sx={{ mr: 0 }}
+          >
+            <AssignmentIcon />
+          </IconButton>
+          <Typography
+            variant="h6"
+            noWrap
+            component="div"
+            sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block', textTransform: 'uppercase' } }}
+          >
+            controle total
+          </Typography>
+          <Search>
+            <SearchIconWrapper>
+              <SearchIcon />
+            </SearchIconWrapper>
+            <StyledInputBase
+              placeholder="Search item…"
+            />
+          </Search>
+        </Toolbar>
+      </AppBar>
+    </Box>
+  )
 }
