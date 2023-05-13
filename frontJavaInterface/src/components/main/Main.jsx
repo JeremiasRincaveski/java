@@ -1,4 +1,4 @@
-import {  useContext, useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import styled from "styled-components"
 import { api } from '../../services/api.js'
 import { Nav } from "../nav/Nav.jsx"
@@ -6,15 +6,21 @@ import { Button } from "../CustomButton/CustomButtom.jsx"
 import { MdDeleteSweep, MdEditDocument } from "react-icons/md";
 import { Modal } from "../modal/Modal.jsx"
 import { MyContext } from "../../context/MyContext.jsx"
+import { Box, Skeleton } from "@mui/material"
+
+
 
 const StyledTable = styled.table`
     margin: 2rem 2rem 0;
     width: calc(100% - 4rem);
-    background-color: ${props => props.theme.colors.softWhite};
-    border: none;
     text-align: left;
     border-collapse: collapse;
+    padding: 0;
 
+    tr{
+        background-color: ${(props) => (props.isloading ? 'transparent' : props.theme.colors.softWhite)};
+    }
+    
     th, td {
         padding: .2rem;
         border: 2px solid ${props => props.theme.colors.darkGray};
@@ -33,70 +39,102 @@ const StyledTable = styled.table`
 export const Main = () => {
     const { handleCloseModal, editItemModal, setEditItemModal } = useContext(MyContext)
     const [item, setItem] = useState([]);
-    
+    const [isLoading, setIsLoading] = useState(false)
+
+
     const getList = () => {
-        api.get('/posts').then(response => {
-            setItem(response.data);
-        });
+        setIsLoading(true);
+        setTimeout(() => {
+            api.get('/itens').then(response => {
+                setItem(response.data);
+            });
+            setIsLoading(false);
+        }, 3000);
     };
 
-    
+    useEffect(() => {
+
+        getList();
+
+    }, [])
+
     const removeItem = async (id) => {
-        await api.delete(`/posts/${id}`);
-        const newList = item.filter((item) => item.id !== id);
-        setItem(newList);
+        setIsLoading(true);
+        try {
+            await api.delete(`/itens/${id}`);
+            const newList = item.filter((item) => item.id !== id);
+            setTimeout(() => {
+                setItem(newList);
+                setIsLoading(false);
+            }, 1000);
+        } catch (err) {
+            console.log(err);
+        }
     }
 
     return (
         <>
-            <Nav 
+            <Nav
                 getProdustList={getList}
             />
-            <StyledTable onClick={handleCloseModal}>
-                <thead>
-                    <tr>
-                        <th>cod</th>
-                        <th>nome</th>
-                        <th>valor</th>
-                        <th>estoque</th>
-                        <th>data cadastro</th>
-                        <th>ações</th>
-                    </tr>
-                </thead>
-                <tbody>
-                        {item.map((item, index) => (
-                            <tr key={index}>
-                                <td>{item.cod}</td>
-                                <td>{item.nome}</td>
-                                <td>{item.valor}</td>
-                                <td>{item.estoque}</td>
-                                <td>{item.dataCadastro}</td>
-                                <td>
-                                    <Button 
-                                        wSize={'30px'}
-                                        hSize={'30px'}
-                                        btnName=''
-                                        Icon={MdDeleteSweep}
-                                        size={22}
-                                        onClick={() => removeItem(item.id)}
-                                        
-                                    />
-                                    <Button 
-                                        wSize={'30px'}
-                                        hSize={'30px'}
-                                        btnName=''
-                                        Icon={MdEditDocument}
-                                        size={22}
-                                        onClick={setEditItemModal}
-                                    />
-                                </td>
+            <StyledTable onClick={handleCloseModal} isloading={isLoading}>
+                {isLoading ? (
+                    <Box>
+                        <Skeleton
+                            height={40}
+                        />
+                        <Skeleton
+                            height={item.length * 40}
+                        />
+                    </Box>
+                ) : (
+                    <>
+                        <thead>
+                            <tr>
+                                <th>cod</th>
+                                <th>nome</th>
+                                <th>valor</th>
+                                <th>estoque</th>
+                                <th>data cadastro</th>
+                                <th>ações</th>
                             </tr>
-                        ))}
-                </tbody>
-                <Modal isOpen={editItemModal}>
-                    <div onClick={handleCloseModal}>
-                    </div>
-                </Modal>
+                        </thead>
+                        <tbody>
+                            {item.map((item, index) => (
+                                <tr key={index}>
+                                    <td>{item.id}</td>
+                                    <td>{item.nome}</td>
+                                    <td>{item.valor}</td>
+                                    <td>{item.estoque}</td>
+                                    <td>{item.dataCadastro}</td>
+                                    <td>
+                                        <Button
+                                            wSize={'30px'}
+                                            hSize={'30px'}
+                                            btnName=''
+                                            Icon={MdDeleteSweep}
+                                            size={22}
+                                            onClick={() => removeItem(item.id)}
+
+                                        />
+                                        <Button
+                                            wSize={'30px'}
+                                            hSize={'30px'}
+                                            btnName=''
+                                            Icon={MdEditDocument}
+                                            size={22}
+                                            onClick={setEditItemModal}
+                                        />
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                        <Modal isOpen={editItemModal}>
+                            <div onClick={handleCloseModal}>
+                            </div>
+                        </Modal>
+                    </>
+                )}
             </StyledTable>
         </>
     )

@@ -8,7 +8,7 @@ const StyledDiv = styled.div`
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(7, 7, 7, 0.8);
+    background-color: rgba(7, 7, 7, 0.3);
     position: absolute;
     z-index: 1;
 `
