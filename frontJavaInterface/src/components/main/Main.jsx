@@ -1,5 +1,4 @@
 import { useContext, useEffect, useState } from "react"
-import styled from "styled-components"
 import { api } from '../../services/api.js'
 import { Nav } from "../nav/Nav.jsx"
 import { Button } from "../CustomButton/CustomButtom.jsx"
@@ -8,38 +7,8 @@ import { Modal } from "../modal/Modal.jsx"
 import { MyContext } from "../../context/MyContext.jsx"
 import { Box, Skeleton } from "@mui/material"
 import { SearchComponent } from "../search/Search.jsx"
+import { StyledTable } from "../styles/GlobalStyles.js"
 
-
-
-const StyledTable = styled.table`
-    margin: 2rem 2rem 0;
-    width: calc(100% - 4rem);
-    text-align: left;
-    border-collapse: collapse;
-    padding: 0;
-
-    tr{
-        background-color: ${(props) => (props.isloading ? 'transparent' : props.theme.colors.softWhite)};
-    }
-    
-    th, td {
-        padding: .2rem;
-        border: 2px solid ${props => props.theme.colors.darkGray};
-      
-    }
-
-    tr:nth-child(even) {
-        background-color: ${props => props.theme.colors.softGray};
-    } 
-
-    td:last-of-type{
-        width: 100px;
-    }
-
-   .modalOn{
-    background-color: red;
-   }
-`
 
 export const Main = () => {
     const { handleCloseModal, editItemModal, setEditItemModal, item, setItem, modalIsOpen } = useContext(MyContext)
@@ -49,7 +18,7 @@ export const Main = () => {
     const getList = () => {
         setIsLoading(true);
         setTimeout(() => {
-            api.get('/itens').then(response => {
+            (api).get('/itens').then(response => {
                 setItem(response.data);
             });
             setIsLoading(false);
@@ -115,7 +84,7 @@ export const Main = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {item.filter((item)=> item.nome.toLowerCase().includes(search.toLowerCase())).map((item, index) => (
+                            {item.filter((item)=> item.nome?.toLowerCase().includes(search.toLowerCase())).map((item, index) => (
                                 <tr key={index}>
                                     <td>{item.id}</td>
                                     <td>{item.nome}</td>

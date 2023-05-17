@@ -9,13 +9,11 @@ const StyledButton = styled.button`
     cursor: pointer;
     background-color: ${props => props.bgColor};
     color: ${props => props.fColor};
-    
-
 `
 
-export const Button = ({ color, btnName = 'CustomBtn', Icon, size, bgColor, fColor, onClick, wSize, bRadius, hSize }) => {
+export const Button = ({ color, btnName = 'CustomBtn', Icon, size, bgColor, fColor, onClick, wSize, bRadius, hSize, style, type, disabled }) => {
     return (
-        <StyledButton bgColor={bgColor} fColor={fColor} onClick={onClick} wSize={wSize} bRadius={bRadius} hSize={hSize}>
+        <StyledButton bgColor={bgColor} fColor={fColor} onClick={onClick} wSize={wSize} bRadius={bRadius} hSize={hSize} style={style} type={type} disabled={disabled}>
             {Icon ? <Icon size={size} color={color} /> : <></>}
             {btnName}
         </StyledButton>
