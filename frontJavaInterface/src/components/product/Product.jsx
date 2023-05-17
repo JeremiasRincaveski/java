@@ -75,7 +75,7 @@ export const Product = () => {
         <Modal isOpen={modalIsOpen}>
             <ContentForm >
                 <div>
-                    <Input label={'código'} name={'cod'} value={cod} type='number' onChange={handleInputChange} />
+                    <Input label={'código'} name={'cod'} value={cod} type={'number'} onChange={handleInputChange} />
                     <Input label={'nome'} name={'nome'} value={nome} onChange={handleInputChange} />
                     <Input label={'valor unitário'} name={'valor'} value={valor} onChange={handleInputChange} />
                     <Input label={' qt. estoque'} name={'estoque'} value={estoque} onChange={handleInputChange} />

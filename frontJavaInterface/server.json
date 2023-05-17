@@ -78,22 +78,6 @@
       "valor": "",
       "estoque": "",
       "dataCadastro": "",
-      "id": 1128
-    },
-    {
-      "cod": "",
-      "nome": "",
-      "valor": "",
-      "estoque": "",
-      "dataCadastro": "",
-      "id": 1129
-    },
-    {
-      "cod": "",
-      "nome": "",
-      "valor": "",
-      "estoque": "",
-      "dataCadastro": "",
       "id": 1130
     },
     {
@@ -151,6 +135,14 @@
       "estoque": "234",
       "dataCadastro": "234",
       "id": 1137
+    },
+    {
+      "cod": "11",
+      "nome": "maicon dimas",
+      "valor": "la ele",
+      "estoque": "12",
+      "dataCadastro": "20/02/2000",
+      "id": 1138
     }
   ]
 }

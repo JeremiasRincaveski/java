@@ -9,6 +9,9 @@ const StyledButton = styled.button`
     cursor: pointer;
     background-color: ${props => props.bgColor};
     color: ${props => props.fColor};
+    &:disabled{
+        background-color: #ccc;
+    }
 `
 
 export const Button = ({ color, btnName = 'CustomBtn', Icon, size, bgColor, fColor, onClick, wSize, bRadius, hSize, style, type, disabled }) => {
