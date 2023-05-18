@@ -75,19 +75,20 @@ export const StyledInput = styled.div`
     flex: 0 0 17%;
 
     label {
-        width: 200px;
+      width: 250px;
     }
 
     input {
-        align-self: flex-end;
-        border: none;
-        border-radius: 5px;
-        height: 100%;
-        padding: .2rem;
-        text-transform: uppercase;
-        flex: 1 0 150px;
-        outline: none;
-        box-shadow: 0 0.063rem 0.188rem rgb(31 50 81 / 12%), 0 0.063rem 0.125rem rgb(31 50 81 / 24%);
+      align-self: flex-end;
+      border: none;
+      border-radius: 5px;
+      height: 100%;
+      padding: .2rem ;
+      text-transform: uppercase;
+      flex: 1 0 150px;
+      outline: none;
+      box-shadow: 0 0.063rem 0.188rem rgb(31 50 81 / 12%), 0 0.063rem 0.125rem rgb(31 50 81 / 24%);
 
     }
+    
 `

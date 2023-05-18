@@ -26,9 +26,7 @@ export const Main = () => {
     };
 
     useEffect(() => {
-
         getList();
-
     }, []);
 
     const removeItem = async (id) => {
@@ -67,9 +65,6 @@ export const Main = () => {
                         <Skeleton
                             height={40}
                         />
-                        <Skeleton
-                            height={item.length * 40}
-                        />
                     </Box>
                 ) : (
                     <>
@@ -86,7 +81,7 @@ export const Main = () => {
                         <tbody>
                             {item.filter((item)=> item.nome?.toLowerCase().includes(search.toLowerCase())).map((item, index) => (
                                 <tr key={index}>
-                                    <td>{item.id}</td>
+                                    <td>{item.cod}</td>
                                     <td>{item.nome}</td>
                                     <td>{item.valor}</td>
                                     <td>{item.estoque}</td>

@@ -3,14 +3,13 @@ import { Modal } from '../modal/Modal'
 import { MyContext } from '../../context/MyContext'
 import { ContentForm, StyledInput } from '../styles/GlobalStyles'
 import { Button } from '../CustomButton/CustomButtom'
-import axios from 'axios'
 import { api } from '../../services/api'
 
-const Input = ({ type = 'text', label, disabled, onChange, name, value }) => {
+const Input = ({ type = 'text', label, disabled, onChange, name, value, id}) => {
     return (
         <StyledInput>
             <label htmlFor={label}>{label}</label>
-            <input id={label} type={type} disabled={disabled} onChange={onChange} name={name} value={value} />
+            <input id={label} type={type} disabled={disabled} onChange={onChange} name={name} value={value} autoComplete='off' />
         </StyledInput>
     )
 }
@@ -22,8 +21,22 @@ export const Product = () => {
     const [estoque, setEstoque] = useState('');
     const [dataCadastro, setDataCadastro] = useState('');
     const { modalIsOpen } = useContext(MyContext);
+    const disabled = cod && nome && valor ;
 
     const handleInputChange = (event) => {
+        
+        const date = new Date;
+
+        let day = date.getDate();
+        let month = date.getMonth() + 1;
+        let year = date.getFullYear();
+
+        if (month < 10) {
+            month = '0' + month;
+        }
+
+        const formattedDate = day + '/' + month + '/' + year
+
         const { name, value } = event.target;
 
         if (name === 'cod') {
@@ -34,13 +47,9 @@ export const Product = () => {
             setValor(value);
         } else if (name === 'estoque') {
             setEstoque(value);
-        } else if (name === 'dataCadastro') {
-            setDataCadastro(value);
-        }
-
+        } 
+        setDataCadastro(formattedDate);
     };
-
-    const disabled =  cod && nome && valor && estoque && dataCadastro;
 
     const handleSubmit = () => {
         // Criação do objeto com os dados coletados do formulário
@@ -56,11 +65,9 @@ export const Product = () => {
         api.post('/itens', novoItem)
             .then((response) => {
                 console.log('Item criado com sucesso:', response.data);
-                // Realize qualquer ação adicional necessária após a criação do item no banco de dados
             })
             .catch((error) => {
                 console.error('Erro ao criar o item:', error);
-                // Lide com o erro de forma apropriada
             });
 
         // Limpar os campos de entrada após o envio do formulário
@@ -73,13 +80,13 @@ export const Product = () => {
 
     return (
         <Modal isOpen={modalIsOpen}>
-            <ContentForm >
+            <ContentForm onSubmit={handleSubmit}>
                 <div>
                     <Input label={'código'} name={'cod'} value={cod} type={'number'} onChange={handleInputChange} />
                     <Input label={'nome'} name={'nome'} value={nome} onChange={handleInputChange} />
                     <Input label={'valor unitário'} name={'valor'} value={valor} onChange={handleInputChange} />
-                    <Input label={' qt. estoque'} name={'estoque'} value={estoque} onChange={handleInputChange} />
-                    <Input label={'data de cadastro'} name={'dataCadastro'} value={dataCadastro} onChange={handleInputChange} />
+                    <Input label={' qt. estoque'} name={'estoque'} value={estoque}  onChange={handleInputChange} />
+                    <Input label={'data de cadastro'} name={'dataCadastro'} value={dataCadastro} onChange={handleInputChange} disabled={true}  id={'last'}/>
                 </div>
                 <Button
                     wSize={'430px'}
@@ -87,7 +94,6 @@ export const Product = () => {
                     fColor={'white'}
                     style={{ alignSelf: 'flex-end' }}
                     type={'submit'}
-                    onClick={handleSubmit}
                     disabled={!disabled}
                 />
             </ContentForm>
