@@ -25,14 +25,6 @@
       "id": 3
     },
     {
-      "cod": "1",
-      "nome": "facebook",
-      "valor": "20",
-      "estoque": "",
-      "dataCadastro": "preencha todos os campos",
-      "id": 6
-    },
-    {
       "cod": "2",
       "nome": "maicon dimas alecrim",
       "valor": "432",
@@ -47,6 +39,38 @@
       "estoque": "2",
       "dataCadastro": "17/05/2023",
       "id": 9
+    },
+    {
+      "cod": "2",
+      "nome": "algodão",
+      "valor": "15,20",
+      "estoque": "1",
+      "dataCadastro": "18/05/2023",
+      "id": 10
+    },
+    {
+      "cod": "12",
+      "nome": "algo",
+      "valor": "28,10",
+      "estoque": "3",
+      "dataCadastro": "18/05/2023",
+      "id": 11
+    },
+    {
+      "cod": "34",
+      "nome": "alguma coisa",
+      "valor": "12",
+      "estoque": "3",
+      "dataCadastro": "18/05/2023",
+      "id": 12
+    },
+    {
+      "cod": "12",
+      "nome": "ryan lucas",
+      "valor": "9999",
+      "estoque": "10",
+      "dataCadastro": "19/05/2023",
+      "id": 13
     }
   ]
 }

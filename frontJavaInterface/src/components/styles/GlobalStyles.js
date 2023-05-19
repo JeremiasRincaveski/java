@@ -64,8 +64,7 @@ export const ContentForm = styled.form`
         display: flex;
         flex-direction: column;
         gap: 1rem;
-       
-    }
+      }
 `
 export const StyledInput = styled.div`
     display: flex;
@@ -91,4 +90,17 @@ export const StyledInput = styled.div`
 
     }
     
+`
+export const StyledDiv = styled.div`
+  width: calc(100% - 4rem);
+  margin: 1rem 2rem;
+  display: flex;
+  display: flex;
+
+    button{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: .2rem;
+    }
 `

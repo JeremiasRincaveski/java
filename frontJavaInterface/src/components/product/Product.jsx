@@ -62,7 +62,7 @@ export const Product = () => {
         };
 
         // Envio da solicitação POST para a API
-        api.post('/itens', novoItem)
+         api.post('/itens', novoItem)
             .then((response) => {
                 console.log('Item criado com sucesso:', response.data);
             })

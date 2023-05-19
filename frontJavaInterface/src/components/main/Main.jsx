@@ -94,7 +94,6 @@ export const Main = () => {
                                             Icon={MdDeleteSweep}
                                             size={22}
                                             onClick={() => removeItem(item.id)}
-
                                         />
                                         <Button
                                             wSize={'30px'}
