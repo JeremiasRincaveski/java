@@ -3,7 +3,12 @@ import { Modal } from '../modal/Modal'
 import { MyContext } from '../../context/MyContext'
 import { ContentForm, StyledInput } from '../styles/GlobalStyles'
 import { Button } from '../CustomButton/CustomButtom'
-import { api } from '../../services/api'
+import axios from 'axios'
+
+export const api = axios.create({
+    baseURL: 'http://localhost:8080'
+})
+
 
 const Input = ({ type = 'text', label, disabled, onChange, name, value, id}) => {
     return (
@@ -62,7 +67,7 @@ export const Product = () => {
         };
 
         // Envio da solicitação POST para a API
-         api.post('/itens', novoItem)
+         api.post('/product', novoItem)
             .then((response) => {
                 console.log('Item criado com sucesso:', response.data);
             })

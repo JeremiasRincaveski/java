@@ -1,5 +1,4 @@
 import { useContext, useEffect, useState } from "react"
-import { api } from '../../services/api.js'
 import { Nav } from "../nav/Nav.jsx"
 import { Button } from "../CustomButton/CustomButtom.jsx"
 import { MdDeleteSweep, MdEditDocument } from "react-icons/md";
@@ -8,6 +7,7 @@ import { MyContext } from "../../context/MyContext.jsx"
 import { Box, Skeleton } from "@mui/material"
 import { SearchComponent } from "../search/Search.jsx"
 import { StyledTable } from "../styles/GlobalStyles.js"
+import axios from "axios";
 
 
 export const Main = () => {
@@ -18,7 +18,7 @@ export const Main = () => {
     const getList = () => {
         setIsLoading(true);
         setTimeout(() => {
-            (api).get('/itens').then(response => {
+            (api).get('/product').then(response => {
                 setItem(response.data);
             });
             setIsLoading(false);
@@ -32,7 +32,7 @@ export const Main = () => {
     const removeItem = async (id) => {
         setIsLoading(true);
         try {
-            await api.delete(`/itens/${id}`);
+            await api.delete(`/product/${id}`);
             const newList = item.filter((item) => item.id !== id);
             setTimeout(() => {
                 setItem(newList);

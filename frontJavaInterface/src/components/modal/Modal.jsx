@@ -20,7 +20,7 @@ export const Modal = ( { children, isOpen=false } ) => {
     return(
         <>
             {isOpen &&(
-                <Overlay>
+            <Overlay>
                     <ModalWrapper className={ isOpen ? 'ModalOn' : ''}>
                         {children}
                     </ModalWrapper>
