@@ -40,9 +40,9 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
         transition: theme.transitions.create('width'),
         width: '100%',
         [theme.breakpoints.up('sm')]: {
-            width: '12ch',
+            width: '13ch',
             '&:focus': {
-                width: '20ch',
+                width: '30ch',
             },
         },
     },
@@ -54,7 +54,7 @@ export const SearchComponent = ({ search, setSearch }) => {
                 <SearchIcon />
             </SearchIconWrapper>
             <StyledInputBase
-                placeholder="Search item…"
+                placeholder="Procurar itens…"
                 onChange={(ev) => setSearch(ev.target.value)}
                 value={search}
                 />

@@ -8,6 +8,7 @@ import { MyContext } from "../../context/MyContext.jsx"
 import { Box, Skeleton } from "@mui/material"
 import { SearchComponent } from "../search/Search.jsx"
 import { StyledTable } from "../styles/GlobalStyles.js"
+import EditProduct from "../editProduct/index.jsx";
 
 
 export const Main = () => {
@@ -16,7 +17,7 @@ export const Main = () => {
     const [search, setSearch] = useState('');
 
     const getList = () => {
-        setIsLoading(true);
+        setIsLoading(false);
         setTimeout(() => {
             (api).get('/product').then(response => {
                 setItem(response.data);
@@ -31,9 +32,9 @@ export const Main = () => {
     }, []);
 
     const removeItem = async (id) => {
-        setIsLoading(true);
+        setIsLoading(false);
         try {
-            await api.delete(`/itens/${id}`);
+            await api.delete(`/product/${id}`);
             const newList = item.filter((item) => item.id !== id);
             setTimeout(() => {
                 setItem(newList);
@@ -108,11 +109,12 @@ export const Main = () => {
                                 </tr>
                             ))}
                         </tbody>
-                        <Modal isOpen={editItemModal}>
-                            <div onClick={handleCloseModal}>
-                                d
-                            </div>
-                        </Modal>
+                        {editItemModal && (
+                            <EditProduct isOpen={editItemModal}>
+                                <div onClick={handleCloseModal}>
+                                </div>
+                            </EditProduct>
+                        )}
                     </>
                 )}
             </StyledTable>

@@ -41,12 +41,16 @@ export const Product = () => {
 
         if (name === 'cod') {
             setCod(value);
+            console.log(value)
         } else if (name === 'nome') {
             setNome(value);
+            console.log(value)
         } else if (name === 'valor') {
             setValor(value);
+            console.log(value)
         } else if (name === 'estoque') {
             setEstoque(value);
+            console.log(value)
         } 
         setDataCadastro(formattedDate);
     };
@@ -54,15 +58,15 @@ export const Product = () => {
     const handleSubmit = () => {
         // Criação do objeto com os dados coletados do formulário
         const novoItem = {
-            cod,
-            nome,
-            valor,
-            estoque,
-            dataCadastro,
+            // cod,
+            name: nome,
+            price: valor,
+            stock: estoque,
+            date: dataCadastro,
         };
 
         // Envio da solicitação POST para a API
-         api.post('/itens', novoItem)
+         api.post('/product', novoItem)
             .then((response) => {
                 console.log('Item criado com sucesso:', response.data);
             })
