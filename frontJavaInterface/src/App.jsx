@@ -11,7 +11,7 @@ import { GlobalStyle } from "./components/styles/GlobalStyles"
 function App() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [editItemModal, setEditItemModal] = useState(false);
-  const [item, setItem] = useState([ ]);
+  const [item, setItem] = useState([]);
   const handleModalOpen = () => {
     setModalIsOpen(true)
     setEditItemModal(true)

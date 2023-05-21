@@ -18,8 +18,9 @@ export const Main = () => {
     const getList = () => {
         setIsLoading(true);
         setTimeout(() => {
-            (api).get('/itens').then(response => {
+            (api).get('/product').then(response => {
                 setItem(response.data);
+                console.log(response.data)
             });
             setIsLoading(false);
         }, 2000);
@@ -79,13 +80,13 @@ export const Main = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {item.filter((item)=> item.nome?.toLowerCase().includes(search.toLowerCase())).map((item, index) => (
+                            {item.filter((item)=> item.name?.toLowerCase().includes(search.toLowerCase())).map((item, index) => (
                                 <tr key={index}>
-                                    <td>{item.cod}</td>
-                                    <td>{item.nome}</td>
-                                    <td>{item.valor}</td>
-                                    <td>{item.estoque}</td>
-                                    <td>{item.dataCadastro}</td>
+                                    <td>{item.id}</td>
+                                    <td>{item.name}</td>
+                                    <td>{item.price}</td>
+                                    <td>{item.stock}</td>
+                                    <td>{item.date}</td>
                                     <td>            
                                         <Button
                                             wSize={'30px'}
