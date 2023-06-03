@@ -47,6 +47,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
         },
     },
 }));
+
 export const SearchComponent = ({ search, setSearch }) => {
     return (
         <Search>

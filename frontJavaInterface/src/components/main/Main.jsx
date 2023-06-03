@@ -3,7 +3,6 @@ import { api } from '../../services/api.js'
 import { Nav } from "../nav/Nav.jsx"
 import { Button } from "../CustomButton/CustomButtom.jsx"
 import { MdDeleteSweep, MdEditDocument } from "react-icons/md";
-import { Modal } from "../modal/Modal.jsx"
 import { MyContext } from "../../context/MyContext.jsx"
 import { Box, Skeleton } from "@mui/material"
 import { SearchComponent } from "../search/Search.jsx"
@@ -15,13 +14,14 @@ export const Main = () => {
     const { handleCloseModal, editItemModal, setEditItemModal, item, setItem, modalIsOpen } = useContext(MyContext)
     const [isLoading, setIsLoading] = useState(false);
     const [search, setSearch] = useState('');
+    const [teste, setTeste] = useState('')
 
     const getList = () => {
-        setIsLoading(false);
+        setIsLoading(true);
+        console.log(teste,editItemModal)
         setTimeout(() => {
             (api).get('/product').then(response => {
-                setItem(response.data);
-                console.log(response.data)
+                setItem(response.data)
             });
             setIsLoading(false);
         }, 2000);
@@ -32,7 +32,7 @@ export const Main = () => {
     }, []);
 
     const removeItem = async (id) => {
-        setIsLoading(false);
+        setIsLoading(true);
         try {
             await api.delete(`/product/${id}`);
             const newList = item.filter((item) => item.id !== id);
@@ -59,15 +59,15 @@ export const Main = () => {
             </Box>
             <StyledTable 
                 onClick={handleCloseModal}
-                isloading={isLoading}
-                
+                // isloading={isLoading.toString()}
                 >
                 {isLoading ? (
-                    <Box>
-                        <Skeleton
-                            height={40}
-                        />
-                    </Box>
+                    <h2>carregando...</h2>
+                    // <Box>
+                    //     <Skeleton
+                    //         height={40}
+                    //     />
+                    // </Box>
                 ) : (
                     <>
                         <thead>
@@ -103,17 +103,17 @@ export const Main = () => {
                                             btnName=''
                                             Icon={MdEditDocument}
                                             size={22}
-                                            onClick={setEditItemModal}
+                                            onClick={()=>{
+                                                setEditItemModal(true)
+                                                setTeste(item.id)
+                                            }}
                                         />
                                     </td>
                                 </tr>
                             ))}
                         </tbody>
                         {editItemModal && (
-                            <EditProduct isOpen={editItemModal}>
-                                <div onClick={handleCloseModal}>
-                                </div>
-                            </EditProduct>
+                            <EditProduct teste={teste} />
                         )}
                     </>
                 )}

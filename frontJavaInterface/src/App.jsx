@@ -13,13 +13,13 @@ function App() {
   const [editItemModal, setEditItemModal] = useState(false);
   const [item, setItem] = useState([]);
   const handleModalOpen = () => {
-    setModalIsOpen(true)
+    
     setEditItemModal(true)
   }
 
   const handleCloseModal = (e) => {
     if (e.currentTarget === e.target) {
-      setModalIsOpen(false)
+      
       setEditItemModal(false)
     }
   }
@@ -31,7 +31,7 @@ function App() {
         <Container>
           <Header />
           <Main />
-          <Product />
+          {/* <Product /> */}
         </Container>
       </MyContext.Provider>
     </ThemeProvider>

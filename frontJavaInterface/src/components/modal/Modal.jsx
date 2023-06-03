@@ -1,7 +1,6 @@
 import styled from "styled-components"
 import { Overlay } from "../overlay/Overlay"
 
-
 const ModalWrapper = styled.div`
     height: 500px;
     width: 700px;
@@ -16,12 +15,14 @@ const ModalWrapper = styled.div`
     box-shadow: 0 0.875rem 1.75rem rgb(31 50 81 / 25%), 0 0.625rem 0.625rem rgb(31 50 81 / 22%);
 `
 
-export const Modal = ( { children, isOpen=false } ) => {
+export const Modal = ( { children, isOpen=true } ) => {
     return(
         <>
-            {isOpen &&(
+
+        <h1>asa</h1>
+            {true &&(
                 <Overlay>
-                    <ModalWrapper className={ isOpen ? 'ModalOn' : ''}>
+                    <ModalWrapper /*className={ isOpen ? 'ModalOn' : ''}*/>
                         {children}
                     </ModalWrapper>
                 </Overlay>        

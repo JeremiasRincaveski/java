@@ -21,4 +21,3 @@ export const Overlay = ({ children, closeModal }) => {
         </StyledDiv>
     )
 }
-

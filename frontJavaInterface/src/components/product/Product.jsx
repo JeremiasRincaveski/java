@@ -83,7 +83,7 @@ export const Product = () => {
     };
 
     return (
-        <Modal isOpen={modalIsOpen}>
+        <Modal>
             <ContentForm onSubmit={handleSubmit}>
                 <div>
                     <Input label={'código'} name={'cod'} value={cod} type={'number'} onChange={handleInputChange} />

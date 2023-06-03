@@ -11,11 +11,11 @@ export const GlobalStyle = createGlobalStyle`
     border: none;
 
     input::-webkit-outer-spin-button,
-      input::-webkit-inner-spin-button {
-        display: none;
-        -webkit-appearance: none;
-        margin: 0;
-      }
+    input::-webkit-inner-spin-button {
+      display: none;
+      -webkit-appearance: none;
+      margin: 0;
+    }
 
     input[type=number] {
       appearance: textfield;
@@ -31,13 +31,12 @@ export const StyledTable = styled.table`
     padding: 0;
 
     tr{
-        background-color: ${(props) => (props.isloading ? 'transparent' : props.theme.colors.softWhite)};
+        background-color: ${(props) => props.theme.colors.softWhite};
     }
     
     th, td {
         padding: .2rem;
         border: 2px solid ${props => props.theme.colors.darkGray};
-      
     }
 
     tr:nth-child(even) {
@@ -67,29 +66,27 @@ export const ContentForm = styled.form`
       }
 `
 export const StyledInput = styled.div`
-    display: flex;
-    align-items: center;
-    padding: .5rem 0;
-    height: 2rem;
-    flex: 0 0 17%;
+  display: flex;
+  align-items: center;
+  padding: .5rem 0;
+  height: 2rem;
+  flex: 0 0 17%;
 
-    label {
-      width: 250px;
-    }
+  label {
+    width: 250px;
+  }
 
-    input {
-      align-self: flex-end;
-      border: none;
-      border-radius: 5px;
-      height: 100%;
-      padding: .2rem ;
-      text-transform: uppercase;
-      flex: 1 0 150px;
-      outline: none;
-      box-shadow: 0 0.063rem 0.188rem rgb(31 50 81 / 12%), 0 0.063rem 0.125rem rgb(31 50 81 / 24%);
-
-    }
-    
+  input {
+    align-self: flex-end;
+    border: none;
+    border-radius: 5px;
+    height: 100%;
+    padding: .2rem ;
+    text-transform: uppercase;
+    flex: 1 0 150px;
+    outline: none;
+    box-shadow: 0 0.063rem 0.188rem rgb(31 50 81 / 12%), 0 0.063rem 0.125rem rgb(31 50 81 / 24%);
+  }
 `
 export const StyledDiv = styled.div`
   width: calc(100% - 4rem);
@@ -97,10 +94,10 @@ export const StyledDiv = styled.div`
   display: flex;
   display: flex;
 
-    button{
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: .2rem;
-    }
+  button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .2rem;
+  }
 `
