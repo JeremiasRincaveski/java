@@ -8,8 +8,7 @@ import { MyContext } from "../../context/MyContext.jsx"
 import { Box, Skeleton } from "@mui/material"
 import { SearchComponent } from "../search/Search.jsx"
 import { StyledTable } from "../styles/GlobalStyles.js"
-import EditProduct from "../editProduct/index.jsx";
-
+import { EditProduct } from "../editProduct/index.jsx";
 
 export const Main = () => {
     const { handleCloseModal, editItemModal, setEditItemModal, item, setItem, modalIsOpen } = useContext(MyContext)
@@ -17,11 +16,10 @@ export const Main = () => {
     const [search, setSearch] = useState('');
 
     const getList = () => {
-        setIsLoading(false);
+        setIsLoading(true);
         setTimeout(() => {
             (api).get('/product').then(response => {
                 setItem(response.data);
-                console.log(response.data)
             });
             setIsLoading(false);
         }, 2000);
@@ -110,10 +108,9 @@ export const Main = () => {
                             ))}
                         </tbody>
                         {editItemModal && (
-                            <EditProduct isOpen={editItemModal}>
-                                <div onClick={handleCloseModal}>
-                                </div>
-                            </EditProduct>
+                           <Modal isOpen={editItemModal}>
+                                <EditProduct />
+                            </Modal>
                         )}
                     </>
                 )}
