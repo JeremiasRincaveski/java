@@ -31,7 +31,7 @@ function App() {
 
   const handleCloseModal = (e) => {
     if (e.currentTarget === e.target) {
-      
+      setModalIsOpen(false)
       setEditItemModal(false)
     }
   }

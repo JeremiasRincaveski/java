@@ -6,12 +6,12 @@ import { EditProduct } from '../editProduct'
 
 export const Container = () => {
   return (
-    <div>
+    <>
       <Header />
       <Main />
       <Product />
       <EditProduct />
-    </div>
+    </>
   )
 }
 

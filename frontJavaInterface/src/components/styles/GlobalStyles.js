@@ -32,7 +32,7 @@ export const StyledTable = styled.table`
     padding: 0;
 
     tr{
-      background-color: ${(props) => (props.isloading ? 'transparent' : props.theme.colors.softWhite)};
+      background-color: ${(props) =>  props.theme.colors.softWhite};
     }
     
     th,td {
@@ -66,6 +66,8 @@ export const StyledTable = styled.table`
     }
 
 `
+
+
 
 export const ContentForm = styled.form`
     width: 100%;

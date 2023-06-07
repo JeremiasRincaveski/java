@@ -62,7 +62,6 @@ export const Main = () => {
             ) : (
                 <StyledTable
                     onClick={handleCloseModal}
-                    isloading={isLoading}
                 >
                     <>
                         <thead>
