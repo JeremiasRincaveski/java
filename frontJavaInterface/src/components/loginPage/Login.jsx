@@ -31,7 +31,7 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function SignIn() {
- const { password, userName, handleInputs, error, handleLogin} = React.useContext(MyContext);
+ const { password, userName, handleInputs, handleLogin, passwordError, userError} = React.useContext(MyContext);
 
     return (
         <ThemeProvider theme={defaultTheme}>
@@ -53,8 +53,8 @@ export default function SignIn() {
                     </Typography>
                     <Box component="form" noValidate sx={{ mt: 1 }}>
                         <TextField
-                            error={error}
-                            helperText={error ? 'Login incorreto' : false}
+                            error={userError}
+                            helperText={userError ? 'Login incorreto' : false}
                             margin="normal"
                             required
                             fullWidth
@@ -67,8 +67,8 @@ export default function SignIn() {
                             value={userName}
                         />
                         <TextField
-                            error={error}
-                            helperText={error ? 'Password incorreto' : false}
+                            error={passwordError}
+                            helperText={passwordError ? 'Password incorreto' : false}
                             margin="normal"
                             required
                             fullWidth

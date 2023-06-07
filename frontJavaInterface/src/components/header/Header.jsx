@@ -6,9 +6,19 @@ import Typography from '@mui/material/Typography';
 import AssignmentIcon from '@mui/icons-material/Assignment';
 import { useContext } from 'react';
 import { MyContext } from '../../context/MyContext';
+import Button from '@mui/material/Button';
+import ClickAwayListener from '@mui/material/ClickAwayListener';
+import Grow from '@mui/material/Grow';
+import Paper from '@mui/material/Paper';
+import Popper from '@mui/material/Popper';
+import MenuItem from '@mui/material/MenuItem';
+import MenuList from '@mui/material/MenuList';
+import Stack from '@mui/material/Stack';
 
 export const Header = () => {
 const  { userName, setIsLogged } = useContext(MyContext);
+
+
   return (
     <Box sx={{ flexGrow: 1, position:"relative" }}>
       <AppBar position="static">
@@ -34,7 +44,9 @@ const  { userName, setIsLogged } = useContext(MyContext);
             <Typography>
               usuario logado: {userName}
             </Typography>  
+            <>
             <button onClick={()=>setIsLogged(false)}> Sair</button>
+            </>
           </Box>       
         </Toolbar>
       </AppBar>
