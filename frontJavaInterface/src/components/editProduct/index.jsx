@@ -24,21 +24,21 @@ export const EditProduct = () => {
     console.log('inputValues:', inputValues);
   }
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
     const novoItem = {
-      cod: inputValues.cod,
-      nome: inputValues.nome,
-      valor: inputValues.valor,
-      estoque: inputValues.estoque,
-      dataCadastro: inputValues.dataCadastro,
+      id: inputValues.cod,
+      name: inputValues.nome,
+      price: inputValues.valor,
+      stock: inputValues.estoque,
     };
 
-    api.put(`/produtc/${itemSelected}`, novoItem)
+    api.post(`/produtc/${itemSelected}`, novoItem)
       .then((response) => {
         console.log('Item criado com sucesso:', response.data);
       })
       .catch((error) => {
-        alert('Erro ao criar o item:', error);
+        console.log('Erro ao criar o item:', error);
       });
 
     setInputValues({
