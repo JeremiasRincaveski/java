@@ -10,6 +10,7 @@ function App() {
   const [modalIsOpen, setModalIsOpen] = React.useState(false);
   const [editItemModal, setEditItemModal] = React.useState(false);
   const [item, setItem] = React.useState([]);
+  const [itemSelected, setItemSelected] = React.useState('')
   const [error, setError] = React.useState(true);
   const [userName, setUserName] = React.useState('');
   const [password, setPassWord] = React.useState('');
@@ -46,6 +47,8 @@ function App() {
           setEditItemModal,
           item,
           setItem,
+          itemSelected,
+          setItemSelected,
           modalIsOpen,
           handleInputs,
           userName,
