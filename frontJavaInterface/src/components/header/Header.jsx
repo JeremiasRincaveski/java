@@ -4,9 +4,11 @@ import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import AssignmentIcon from '@mui/icons-material/Assignment';
+import { useContext } from 'react';
+import { MyContext } from '../../context/MyContext';
 
 export const Header = () => {
-
+const  { userName, setIsLogged } = useContext(MyContext);
   return (
     <Box sx={{ flexGrow: 1, position:"relative" }}>
       <AppBar position="static">
@@ -27,7 +29,13 @@ export const Header = () => {
             sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block', textTransform: 'uppercase' } }}
           >
             controle total
-          </Typography>         
+          </Typography>
+          <Box>
+            <Typography>
+              usuario logado: {userName}
+            </Typography>  
+            <button onClick={()=>setIsLogged(false)}> Sair</button>
+          </Box>       
         </Toolbar>
       </AppBar>
     </Box>

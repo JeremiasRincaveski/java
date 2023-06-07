@@ -59,7 +59,8 @@ function App() {
           userName,
           password,
           error,
-          handleLogin
+          handleLogin,
+          setIsLogged
         }}>
         <GlobalStyle />
         {isLogged ?
