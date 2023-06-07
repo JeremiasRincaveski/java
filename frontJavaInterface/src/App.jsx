@@ -10,11 +10,19 @@ function App() {
   const [modalIsOpen, setModalIsOpen] = React.useState(false);
   const [editItemModal, setEditItemModal] = React.useState(false);
   const [item, setItem] = React.useState([]);
-  const [error, setError] = React.useState(true);
+  const [error, setError] = React.useState(false);
   const [userName, setUserName] = React.useState('');
   const [password, setPassWord] = React.useState('');
-  const [isLogged, setIsLogged] = React.useState(true);
+  const [isLogged, setIsLogged] = React.useState(false);
 
+
+  const handleLogin = () =>{
+    if(userName === 'user123' && password === 'password123'){
+      setIsLogged(true)
+    }
+    else if(userName !== 'user123' && password !== 'password123')
+      setError(true)
+  }
   const handleInputs = (event) => {
     const { name, value } = event.target;
 
@@ -50,7 +58,8 @@ function App() {
           handleInputs,
           userName,
           password,
-          error
+          error,
+          handleLogin
         }}>
         <GlobalStyle />
         {isLogged ?

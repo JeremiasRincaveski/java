@@ -31,7 +31,7 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function SignIn() {
- const { password, userName, handleInputs, error} = React.useContext(MyContext);
+ const { password, userName, handleInputs, error, handleLogin} = React.useContext(MyContext);
 
     return (
         <ThemeProvider theme={defaultTheme}>
@@ -88,6 +88,7 @@ export default function SignIn() {
                             fullWidth
                             variant="contained"
                             sx={{ mt: 3, mb: 2 }}
+                            onClick={handleLogin}
                         >
                             Sign In
                         </Button>
