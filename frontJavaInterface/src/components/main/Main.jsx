@@ -31,6 +31,7 @@ export const Main = () => {
 
     const removeItem = async (id) => {
         setIsLoading(true);
+        setIsLoading(true);
         try {
             await api.delete(`/product/${id}`);
             const newList = item.filter((item) => item.id !== id);

@@ -57,7 +57,7 @@ export const Product = () => {
     };
 
     return (
-        <Modal isOpen={modalIsOpen}>
+        <Modal>
             <ContentForm onSubmit={handleSubmit}>
                 <Box>
                     <TextField  label="código"  name={'cod'} variant="filled" onChange={handleInputChange} type={'number'} value={cod} />

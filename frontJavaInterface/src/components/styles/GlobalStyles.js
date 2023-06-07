@@ -11,11 +11,11 @@ export const GlobalStyle = createGlobalStyle`
     border: none;
 
     input::-webkit-outer-spin-button,
-      input::-webkit-inner-spin-button {
-        display: none;
-        -webkit-appearance: none;
-        margin: 0;
-      }
+    input::-webkit-inner-spin-button {
+      display: none;
+      -webkit-appearance: none;
+      margin: 0;
+    }
 
     input[type=number] {
       appearance: textfield;
@@ -90,10 +90,10 @@ export const StyledDiv = styled.div`
   display: flex;
   gap: 1rem;
 
-    button{
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: .2rem;
-    }
+  button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .2rem;
+  }
 `
