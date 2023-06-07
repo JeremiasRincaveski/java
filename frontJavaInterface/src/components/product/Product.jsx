@@ -1,18 +1,13 @@
-import React, { useContext, useState } from 'react'
+import { useContext, useState } from 'react'
 import { Modal } from '../modal/Modal'
 import { MyContext } from '../../context/MyContext'
-import { ContentForm, StyledInput } from '../styles/GlobalStyles'
-import { Button } from '../CustomButton/CustomButtom'
+import { ContentForm } from '../styles/GlobalStyles'
+import Button from '@mui/material/Button';
 import { api } from '../../services/api'
+import * as React from 'react';
+import TextField from '@mui/material/TextField';
+import { Box } from '@mui/material';
 
-const Input = ({ type = 'text', label, disabled, onChange, name, value, id}) => {
-    return (
-        <StyledInput>
-            <label htmlFor={label}>{label}</label>
-            <input id={label} type={type} disabled={disabled} onChange={onChange} name={name} value={value} autoComplete='off' />
-        </StyledInput>
-    )
-}
 
 export const Product = () => {
     const [cod, setCod] = useState('');
@@ -24,45 +19,24 @@ export const Product = () => {
     const disabled = cod && nome && valor ;
 
     const handleInputChange = (event) => {
-        
-        const date = new Date;
-
-        let day = date.getDate();
-        let month = date.getMonth() + 1;
-        let year = date.getFullYear();
-
-        if (month < 10) {
-            month = '0' + month;
-        }
-
-        const formattedDate = day + '/' + month + '/' + year
-
         const { name, value } = event.target;
-
         if (name === 'cod') {
             setCod(value);
-            console.log(value)
         } else if (name === 'nome') {
             setNome(value);
-            console.log(value)
         } else if (name === 'valor') {
             setValor(value);
-            console.log(value)
         } else if (name === 'estoque') {
-            setEstoque(value);
-            console.log(value)
-        } 
-        setDataCadastro(formattedDate);
+            setEstoque(value);        } 
     };
 
     const handleSubmit = () => {
         // Criação do objeto com os dados coletados do formulário
         const novoItem = {
-            // cod,
+            cod : cod,
             name: nome,
             price: valor,
             stock: estoque,
-            date: dataCadastro,
         };
 
         // Envio da solicitação POST para a API
@@ -71,7 +45,7 @@ export const Product = () => {
                 console.log('Item criado com sucesso:', response.data);
             })
             .catch((error) => {
-                console.error('Erro ao criar o item:', error);
+                alert('Erro ao criar o item:', error);
             });
 
         // Limpar os campos de entrada após o envio do formulário
@@ -85,21 +59,20 @@ export const Product = () => {
     return (
         <Modal isOpen={modalIsOpen}>
             <ContentForm onSubmit={handleSubmit}>
-                <div>
-                    <Input label={'código'} name={'cod'} value={cod} type={'number'} onChange={handleInputChange} />
-                    <Input label={'nome'} name={'nome'} value={nome} onChange={handleInputChange} />
-                    <Input label={'valor unitário'} name={'valor'} value={valor} onChange={handleInputChange} />
-                    <Input label={' qt. estoque'} name={'estoque'} value={estoque}  onChange={handleInputChange} />
-                    <Input label={'data de cadastro'} name={'dataCadastro'} value={dataCadastro} onChange={handleInputChange} disabled={true}  id={'last'}/>
-                </div>
+                <Box>
+                    <TextField  label="código"  name={'cod'} variant="filled" onChange={handleInputChange} type={'number'} value={cod} />
+                    <TextField  label="nome"  name={'nome'} variant="filled" onChange={handleInputChange} type={'text'} value={nome} />
+                    <TextField  label="valor"  name={'valor'} variant="filled" onChange={handleInputChange} type={'text'} value={valor} />
+                    <TextField  label="qt.estoque"  name={'estoque'} variant="filled" onChange={handleInputChange} type={'number'} value={estoque} />
+                    <TextField  label="data de cadastro"  name={'dataCadastro'} variant="filled" onChange={handleInputChange} type={'number'} value={dataCadastro} disabled/>
+                </Box>
                 <Button
-                    wSize={'430px'}
-                    bgColor={'black'}
-                    fColor={'white'}
-                    style={{ alignSelf: 'flex-end' }}
+                    variant="contained"
                     type={'submit'}
                     disabled={!disabled}
-                />
+                >
+                    Enviar
+                </Button>
             </ContentForm>
         </Modal>
     )

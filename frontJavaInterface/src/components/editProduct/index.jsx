@@ -1,11 +1,13 @@
-import React, { useContext, useState } from 'react';
+import  * as React from 'react';
 import { api } from '../../services/api';
 import { MyContext } from '../../context/MyContext';
+import { Modal } from '../modal/Modal.jsx'
 
 export const EditProduct = () => {
-  const { item, setItem } = useContext(MyContext);
-  const [editingItemId, setEditingItemId] = useState('');
-  const [inputValues, setInputValues] = useState({
+
+  const { item, setItem, editItemModal } = React.useContext(MyContext);
+  const [editingItemId, setEditingItemId] = React.useState('');
+  const [inputValues, setInputValues] = React.useState({
     nome: '',
   });
 
@@ -48,6 +50,7 @@ export const EditProduct = () => {
   };
 
   return (
+    <Modal isOpen={editItemModal}>
     <div>
       <ul>
         {item.map((item) => (
@@ -74,6 +77,8 @@ export const EditProduct = () => {
           </li>
         ))}
       </ul>
-    </div>
+    </div>                       
+   </Modal>
+    
   );
 };

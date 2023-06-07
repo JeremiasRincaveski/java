@@ -1,11 +1,11 @@
+import * as React from 'react'
 import styled from "styled-components"
-import { Overlay } from "../overlay/Overlay"
+import { MyContext } from "../../context/MyContext"
 
 
 const ModalWrapper = styled.div`
     height: 500px;
     width: 700px;
-    border-radius: 10px;
     position: absolute;
     top:50%;
     left:50%;
@@ -16,32 +16,35 @@ const ModalWrapper = styled.div`
     box-shadow: 0 0.875rem 1.75rem rgb(31 50 81 / 25%), 0 0.625rem 0.625rem rgb(31 50 81 / 22%);
 `
 
-export const Modal = ( { children, isOpen=false } ) => {
-    return(
-        <>
-            {isOpen &&(
-                <Overlay>
-                    <ModalWrapper className={ isOpen ? 'ModalOn' : ''}>
-                        {children}
-                    </ModalWrapper>
-                </Overlay>        
-            )}
-        </>
+const StyledDiv = styled.div`
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(7, 7, 7, 0.3);
+    position: absolute;
+    z-index: 1;
+`
+
+const Overlay = ({ children, closeModal }) => {
+    const { handleCloseModal } = React.useContext(MyContext);
+    return (
+        <StyledDiv onClick={handleCloseModal} closeModal={closeModal}>
+            {children}
+        </StyledDiv>
     )
 }
- 
-// .modalOn {
-//     animation-name: modalOn;
-//     animation-duration: .5s;
-// }
 
-// @keyframes modalOn {
-//     from {
-//         opacity: 0;
-//         transform: translateY(-70%);
-//     }
-//     to {
-//         opacity: 0.9;
-//         transform: translateY(0);
-//     }
-// }
+export const Modal = ({ children, isOpen=false }) => {
+    return (
+        <>
+            {isOpen && (
+                <Overlay>
+                    <ModalWrapper>
+                        {children}
+                    </ModalWrapper>
+                </Overlay>
+            )}
+        </>
+    );
+};

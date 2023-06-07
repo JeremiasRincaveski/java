@@ -1,31 +1,26 @@
-import React, { useContext } from 'react'
-import {  AiOutlinePlusCircle } from "react-icons/ai";
+import * as React from 'react';
 import { MyContext } from '../../context/MyContext';
-import { Button } from '../CustomButton/CustomButtom';
-import { HiRefresh } from "react-icons/hi";
 import { StyledDiv } from '../styles/GlobalStyles';
+import Button from '@mui/material/Button';
 
-export const Nav = ({ getProdustList, getaddItemFunciton }) => {
-    const { handleModalOpen } = useContext(MyContext);
+
+export const Nav = ({ getProdustList }) => {
+    const { handleModalOpen } = React.useContext(MyContext);
     return (
         <>
             <StyledDiv>
                 <Button
-                    btnName={'Adicionar Produto'}
-                    Icon={AiOutlinePlusCircle}
-                    size={25}
-                    fColor={'#fff'}
-                    bgColor={'#00a65a'}
+                    variant="contained"
                     onClick={handleModalOpen}
-                />
+                    color="success"
+                >Adicionar Produto
+                </Button>
+
                 <Button
-                    btnName='refresh'
-                    Icon={HiRefresh}
-                    size={24}
-                    fColor={'#fff'}
-                    bgColor={'#1976D2'}
+                    variant="contained"
                     onClick={getProdustList}
-                />
+                >refresh
+                </Button>
             </StyledDiv>
         </>
     )

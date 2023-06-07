@@ -1,13 +1,10 @@
 import * as React from 'react';
 import { ThemeProvider } from "styled-components"
 import { Container } from "./components/container/Container"
-import { Header } from "./components/header/Header"
-import { Main } from "./components/main/Main"
 import { MyContext } from "./context/MyContext"
 import { theme } from './theme/theme'
 import { GlobalStyle } from "./components/styles/GlobalStyles"
 import SignIn from "./components/loginPage/Login"
-import { Product } from './components/product/Product';
 
 function App() {
   const [modalIsOpen, setModalIsOpen] = React.useState(false);
@@ -29,8 +26,7 @@ function App() {
     }
   };
   const handleModalOpen = () => {
-    setModalIsOpen(true)
-    setEditItemModal(true)
+    setModalIsOpen(true);
   }
 
   const handleCloseModal = (e) => {
@@ -58,11 +54,7 @@ function App() {
         }}>
         <GlobalStyle />
         {isLogged ?
-          <Container>
-            <Header />
-            <Main />
-            <Product />
-          </Container>
+          <Container />
           : <SignIn />}
       </MyContext.Provider>
     </ThemeProvider>

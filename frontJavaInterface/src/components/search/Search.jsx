@@ -6,7 +6,7 @@ const Search = styled('div')(({ theme }) => ({
     position: 'absolute',
     top: 0,
     right: 5,
-    marginTop: '1.9rem',
+    marginTop: '.75rem',
     color: alpha(theme.palette.common.white, .8),
     borderRadius: theme.shape.borderRadius,
     backgroundColor: alpha(theme.palette.common.white, 0.15),

@@ -1,19 +1,19 @@
-import { useContext, useEffect, useState } from "react"
+import * as React from 'react';
 import { api } from '../../services/api.js'
 import { Nav } from "../nav/Nav.jsx"
-import { Button } from "../CustomButton/CustomButtom.jsx"
-import { MdDeleteSweep, MdEditDocument } from "react-icons/md";
 import { Modal } from "../modal/Modal.jsx"
 import { MyContext } from "../../context/MyContext.jsx"
-import { Box, Skeleton } from "@mui/material"
+import { Box, IconButton, Skeleton } from "@mui/material"
 import { SearchComponent } from "../search/Search.jsx"
 import { StyledTable } from "../styles/GlobalStyles.js"
 import { EditProduct } from "../editProduct/index.jsx";
+import DeleteIcon from '@mui/icons-material/Delete';
+import EditNoteIcon from '@mui/icons-material/EditNote';
 
 export const Main = () => {
-    const { handleCloseModal, editItemModal, setEditItemModal, item, setItem, modalIsOpen } = useContext(MyContext)
-    const [isLoading, setIsLoading] = useState(false);
-    const [search, setSearch] = useState('');
+    const { handleCloseModal, setEditItemModal, item, setItem } = React.useContext(MyContext)
+    const [isLoading, setIsLoading] = React.useState(false);
+    const [search, setSearch] = React.useState('');
 
     const getList = () => {
         setIsLoading(true);
@@ -25,12 +25,12 @@ export const Main = () => {
         }, 2000);
     };
 
-    useEffect(() => {
+    React.useEffect(() => {
         getList();
     }, []);
 
     const removeItem = async (id) => {
-        setIsLoading(false);
+        setIsLoading(true);
         try {
             await api.delete(`/product/${id}`);
             const newList = item.filter((item) => item.id !== id);
@@ -52,21 +52,17 @@ export const Main = () => {
                 <SearchComponent
                     search={search}
                     setSearch={setSearch}
-                    isOpen={modalIsOpen}
                 />
             </Box>
-            <StyledTable 
-                onClick={handleCloseModal}
-                isloading={isLoading}
-                
+            {isLoading ? (
+                <Skeleton
+                    height={40}
+                />
+            ) : (
+                <StyledTable
+                    onClick={handleCloseModal}
+                    isloading={isLoading}
                 >
-                {isLoading ? (
-                    <Box>
-                        <Skeleton
-                            height={40}
-                        />
-                    </Box>
-                ) : (
                     <>
                         <thead>
                             <tr>
@@ -79,42 +75,34 @@ export const Main = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {item.filter((item)=> item.name?.toLowerCase().includes(search.toLowerCase())).map((item, index) => (
+                            {item.filter((item) => item.name?.toLowerCase().includes(search.toLowerCase())).map((item, index) => (
                                 <tr key={index}>
                                     <td>{item.id}</td>
                                     <td>{item.name}</td>
                                     <td>{item.price}</td>
                                     <td>{item.stock}</td>
                                     <td>{item.date}</td>
-                                    <td>            
-                                        <Button
-                                            wSize={'30px'}
-                                            hSize={'30px'}
-                                            btnName=''
-                                            Icon={MdDeleteSweep}
-                                            size={22}
+                                    <td>
+                                        <IconButton aria-label="delete" size="small"
                                             onClick={() => removeItem(item.id)}
-                                        />
-                                        <Button
-                                            wSize={'30px'}
-                                            hSize={'30px'}
-                                            btnName=''
-                                            Icon={MdEditDocument}
-                                            size={22}
+
+                                        >
+                                            <DeleteIcon fontSize="small" />
+                                        </IconButton>
+
+                                        <IconButton aria-label="delete" size="small"
                                             onClick={setEditItemModal}
-                                        />
+                                        >
+                                            <EditNoteIcon fontSize="small" />
+                                        </IconButton>
                                     </td>
                                 </tr>
                             ))}
                         </tbody>
-                        {editItemModal && (
-                           <Modal isOpen={editItemModal}>
-                                <EditProduct />
-                            </Modal>
-                        )}
+                        
                     </>
-                )}
-            </StyledTable>
+                </StyledTable>
+            )};
         </>
     );
 };

@@ -9,7 +9,6 @@ export const Header = () => {
 
   return (
     <Box sx={{ flexGrow: 1, position:"relative" }}>
-      x
       <AppBar position="static">
         <Toolbar>
           <IconButton
