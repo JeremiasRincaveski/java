@@ -27,18 +27,18 @@ export const EditProduct = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const novoItem = {
-      id: inputValues.cod,
-      name: inputValues.nome,
-      price: inputValues.valor,
-      stock: inputValues.estoque,
+      id: inputValues.id,
+      name: inputValues.name,
+      price: inputValues.price,
+      stock: inputValues.stock,
     };
 
-    api.post(`/produtc/${itemSelected}`, novoItem)
+    api.put(`/product`, novoItem)
       .then((response) => {
-        console.log('Item criado com sucesso:', response.data);
+        console.log('Item editado com sucesso:', response.data);
       })
       .catch((error) => {
-        console.log('Erro ao criar o item:', error);
+        console.log('Erro ao editar o item:', error);
       });
 
     setInputValues({
@@ -46,7 +46,7 @@ export const EditProduct = () => {
       name: '',
       price: '',
       stock: '',
-      dataCadastro: '',
+      date: '',
     });
   }
 
@@ -55,10 +55,10 @@ export const EditProduct = () => {
     <ContentForm onSubmit={handleSubmit}>
       <Box>
           <TextField value={inputValues.id}  label="código"  name={'id'} variant="filled" onChange={handleInputChange} type={'number'} />
-          <TextField  label="nome"  name={'name'} variant="filled" onChange={handleInputChange} type={'text'} value={inputValues.name} />
-          <TextField  label="valor"  name={'price'} variant="filled" onChange={handleInputChange} type={'number'} value={inputValues.price} />
-          <TextField  label="qt.estoque"  name={'stock'} variant="filled" onChange={handleInputChange} type={'number'} value={inputValues.stock} />
-          <TextField  label="data de cadastro"  name={'dataCadastro'} variant="filled" onChange={handleInputChange} type={'text'} value={inputValues.dataCadastro} disabled/>
+          <TextField value={inputValues.name} label="nome"  name={'name'} variant="filled" onChange={handleInputChange} type={'text'}  />
+          <TextField value={inputValues.price} label="valor"  name={'price'} variant="filled" onChange={handleInputChange} type={'number'}  />
+          <TextField value={inputValues.stock} label="qt.estoque"  name={'stock'} variant="filled" onChange={handleInputChange} type={'number'}  />
+          <TextField value={inputValues.date} label="data de cadastro"  name={'date'} variant="filled" type={'text'}  disabled/>
       </Box>
       <Button
           variant="contained"

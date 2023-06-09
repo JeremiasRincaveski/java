@@ -30,10 +30,11 @@ export const Product = () => {
             setEstoque(value);        } 
     };
 
-    const handleSubmit = () => {
+    const handleSubmit = (e) => {
+        e.preventDefault();
         // Criação do objeto com os dados coletados do formulário
         const novoItem = {
-            cod : cod,
+            id : cod,
             name: nome,
             price: valor,
             stock: estoque,
@@ -45,7 +46,7 @@ export const Product = () => {
                 console.log('Item criado com sucesso:', response.data);
             })
             .catch((error) => {
-                alert('Erro ao criar o item:', error);
+                console.log('Erro ao criar o item:', error);
             });
 
         // Limpar os campos de entrada após o envio do formulário
