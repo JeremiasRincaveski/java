@@ -9,7 +9,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import EditNoteIcon from '@mui/icons-material/EditNote';
 
 export const Main = () => {
-    const { handleCloseModal, setEditItemModal, item, setItem } = React.useContext(MyContext)
+    const { handleCloseModal, setEditItemModal, item, setItem, setItemSelected } = React.useContext(MyContext)
     const [isLoading, setIsLoading] = React.useState(false);
     const [search, setSearch] = React.useState('');
 
@@ -89,8 +89,10 @@ export const Main = () => {
                                             <DeleteIcon fontSize="small" />
                                         </IconButton>
 
-                                        <IconButton aria-label="delete" size="small"
-                                            onClick={setEditItemModal}
+                                        <IconButton aria-label="edit" size="small"
+                                            onClick={() => {
+                                                setEditItemModal(true)
+                                                setItemSelected(item.id)}}
                                         >
                                             <EditNoteIcon fontSize="small" />
                                         </IconButton>
