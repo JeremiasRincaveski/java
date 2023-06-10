@@ -9,8 +9,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import EditNoteIcon from '@mui/icons-material/EditNote';
 
 export const Main = () => {
-    const { handleCloseModal, setEditItemModal, item, setItem, setItemSelected } = React.useContext(MyContext)
-    const [isLoading, setIsLoading] = React.useState(false);
+    const { handleCloseModal, setEditItemModal, item, setItem, setItemSelected, setIsLoading, isLoading  } = React.useContext(MyContext)
     const [search, setSearch] = React.useState('');
 
     const getList = () => {

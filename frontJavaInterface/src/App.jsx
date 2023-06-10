@@ -5,7 +5,7 @@ import { MyContext } from "./context/MyContext"
 import { theme } from './theme/theme'
 import { GlobalStyle } from "./components/styles/GlobalStyles"
 import SignIn from "./components/loginPage/Login"
-import { log } from 'react-modal/lib/helpers/ariaAppHider';
+import { useLocalStorage } from './services/useLocalStorage';
 
 function App() {
   const [modalIsOpen, setModalIsOpen] = React.useState(false);
@@ -16,12 +16,17 @@ function App() {
   const [passwordError, setPasswordError] = React.useState(false);
   const [userName, setUserName] = React.useState('');
   const [password, setPassWord] = React.useState('');
-  const [isLogged, setIsLogged] = React.useState(false);
+  const [isLogged, setIsLogged] = useLocalStorage('isLogged', false);
   const [savePassword, setSavePassword] = React.useState(false);
+  const [isLogginOut, setIsLoggingOut] = React.useState(false);
+  const [isLoading, setIsLoading] = React.useState(false);
 
+  const handleLogout = (event) => {
+    event.stopPropagation();
+    setIsLoggingOut(!isLogginOut);
+  };
 
   const handleLogin = () =>{
-
     if(savePassword){
       localStorage.setItem('userName', userName);
       localStorage.setItem('password', password);
@@ -92,7 +97,14 @@ function App() {
           passwordError,
           handleLogin,
           setIsLogged,
-          handleCheckbox
+          handleCheckbox,
+          isLogginOut,
+          setIsLoggingOut,
+          handleLogout,
+          isLoading,
+          setIsLoading,
+          setModalIsOpen,
+          savePassword
         }}>
         <GlobalStyle />
         {isLogged ?

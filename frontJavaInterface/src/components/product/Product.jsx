@@ -1,22 +1,23 @@
-import { useContext, useState } from 'react'
+import * as React from 'react';
 import { Modal } from '../modal/Modal'
 import { MyContext } from '../../context/MyContext'
 import { ContentForm } from '../styles/GlobalStyles'
 import Button from '@mui/material/Button';
 import { api } from '../../services/api'
-import * as React from 'react';
 import TextField from '@mui/material/TextField';
 import { Box } from '@mui/material';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 export const Product = () => {
-    const [cod, setCod] = useState('');
-    const [nome, setNome] = useState('');
-    const [valor, setValor] = useState('');
-    const [estoque, setEstoque] = useState('');
-    const [dataCadastro, setDataCadastro] = useState('');
-    const { modalIsOpen } = useContext(MyContext);
-    const disabled = cod && nome && valor ;
+    const [cod, setCod] = React.useState('');
+    const [nome, setNome] = React.useState('');
+    const [valor, setValor] = React.useState('');
+    const [estoque, setEstoque] = React.useState('');
+    const [dataCadastro, setDataCadastro] = React.useState('');
+    const { modalIsOpen, setIsLoading, setItem, setModalIsOpen } = React.useContext(MyContext);
+    const disabled = cod && nome && valor;
 
     const handleInputChange = (event) => {
         const { name, value } = event.target;
@@ -27,54 +28,83 @@ export const Product = () => {
         } else if (name === 'valor') {
             setValor(value);
         } else if (name === 'estoque') {
-            setEstoque(value);        } 
+            setEstoque(value);
+        }
+    };
+    const getList = () => {
+        setIsLoading(true);
+        setTimeout(() => {
+            (api).get('/product').then(response => {
+                setItem(response.data);
+            });
+            setIsLoading(false);
+        }, 1000);
     };
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
         // Criação do objeto com os dados coletados do formulário
         const novoItem = {
-            id : cod,
+            id: cod,
             name: nome,
             price: valor,
             stock: estoque,
         };
 
         // Envio da solicitação POST para a API
-         api.post('/product', novoItem)
-            .then((response) => {
-                console.log('Item criado com sucesso:', response.data);
+        api.post('/product', novoItem)
+            .then(() => {
+                toast.success('Item Adicionado com Sucesso!');
             })
             .catch((error) => {
                 console.log('Erro ao criar o item:', error);
             });
 
         // Limpar os campos de entrada após o envio do formulário
+
         setCod('');
         setNome('');
         setValor('');
         setEstoque('');
         setDataCadastro('');
+        getList();
+        setModalIsOpen(false);
     };
 
     return (
-        <Modal isOpen={modalIsOpen}>
-            <ContentForm onSubmit={handleSubmit}>
-                <Box>
-                    <TextField  label="código"  name={'cod'} variant="filled" onChange={handleInputChange} type={'number'} value={cod} />
-                    <TextField  label="nome"  name={'nome'} variant="filled" onChange={handleInputChange} type={'text'} value={nome} />
-                    <TextField  label="valor"  name={'valor'} variant="filled" onChange={handleInputChange} type={'text'} value={valor} />
-                    <TextField  label="qt.estoque"  name={'estoque'} variant="filled" onChange={handleInputChange} type={'number'} value={estoque} />
-                    <TextField  label="data de cadastro"  name={'dataCadastro'} variant="filled" onChange={handleInputChange} type={'number'} value={dataCadastro} disabled/>
-                </Box>
-                <Button
-                    variant="contained"
-                    type={'submit'}
-                    disabled={!disabled}
-                >
-                    Enviar
-                </Button>
-            </ContentForm>
-        </Modal>
+        <>
+            <Modal isOpen={modalIsOpen}>
+                <ContentForm onSubmit={handleSubmit}>
+                    <Box>
+                        <TextField label="código" name={'cod'} variant="filled" onChange={handleInputChange} type={'number'} value={cod} />
+                        <TextField label="nome" name={'nome'} variant="filled" onChange={handleInputChange} type={'text'} value={nome} />
+                        <TextField label="valor" name={'valor'} variant="filled" onChange={handleInputChange} type={'text'} value={valor} />
+                        <TextField label="qt.estoque" name={'estoque'} variant="filled" onChange={handleInputChange} type={'number'} value={estoque} />
+                        <TextField label="data de cadastro" name={'dataCadastro'} variant="filled" onChange={handleInputChange} type={'number'} value={dataCadastro} disabled />
+                    </Box>
+                    <Button
+                        variant="contained"
+                        type={'submit'}
+                        disabled={!disabled}
+                    >
+                        Enviar
+                    </Button>
+                </ContentForm>
+            </Modal>
+            <ToastContainer
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+            />
+            <ToastContainer />
+        </>
     )
 }

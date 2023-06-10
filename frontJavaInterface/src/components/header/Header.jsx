@@ -21,16 +21,12 @@ const ButtonShowLogout = ({ Icon, size, onClick = () => { } }) => {
 }
 
 export const Header = () => {
-  const { userName, setIsLogged } = React.useContext(MyContext);
-  const [isLogginOut, setIsLoggingOut] = React.useState(false);
+  const { userName, setIsLogged, isLogginOut, handleLogout } = React.useContext(MyContext);
 
-  const handleLogout = () => {
-    setIsLoggingOut(!isLogginOut);
-  };
 
   return (
-    <Box sx={{ flexGrow: 1, position: "relative" }}>
-      <AppBar position="static">
+    <Box sx={{ flexGrow: 1, position: "relative" }}> 
+      <AppBar position="static" >
         <Toolbar>
           <IconButton
             size="large"
