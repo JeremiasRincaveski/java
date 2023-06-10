@@ -1,12 +1,10 @@
 import * as React from 'react';
 import { api } from '../../services/api.js'
 import { Nav } from "../nav/Nav.jsx"
-import { Modal } from "../modal/Modal.jsx"
 import { MyContext } from "../../context/MyContext.jsx"
 import { Box, IconButton, Skeleton } from "@mui/material"
 import { SearchComponent } from "../search/Search.jsx"
 import { StyledTable } from "../styles/GlobalStyles.js"
-import { EditProduct } from "../editProduct/index.jsx";
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditNoteIcon from '@mui/icons-material/EditNote';
 
@@ -24,9 +22,9 @@ export const Main = () => {
             setIsLoading(false);
         }, 2000);
     };
-
     React.useEffect(() => {
         getList();
+       
     }, []);
 
     const removeItem = async (id) => {
@@ -58,6 +56,7 @@ export const Main = () => {
             {isLoading ? (
                 <Skeleton
                     height={40}
+                    sx={{margin: 4}}
                 />
             ) : (
                 <StyledTable

@@ -1,26 +1,35 @@
+import * as React from "react"
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import AssignmentIcon from '@mui/icons-material/Assignment';
-import { useContext } from 'react';
 import { MyContext } from '../../context/MyContext';
-import Button from '@mui/material/Button';
-import ClickAwayListener from '@mui/material/ClickAwayListener';
-import Grow from '@mui/material/Grow';
-import Paper from '@mui/material/Paper';
-import Popper from '@mui/material/Popper';
-import MenuItem from '@mui/material/MenuItem';
-import MenuList from '@mui/material/MenuList';
-import Stack from '@mui/material/Stack';
+import { IoMdArrowDropdown, IoMdArrowDropup } from "react-icons/io";
+import { styled } from 'styled-components';
+import { MenuItem, Paper, Stack } from "@mui/material";
+
+const StyledButtonLogOut = styled.button`
+  background-color: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+`
+const ButtonShowLogout = ({ Icon, size, onClick = () => { } }) => {
+  return (<StyledButtonLogOut onClick={onClick}>{Icon ? <Icon size={size} /> : <></>} </StyledButtonLogOut>)
+}
 
 export const Header = () => {
-const  { userName, setIsLogged } = useContext(MyContext);
+  const { userName, setIsLogged } = React.useContext(MyContext);
+  const [isLogginOut, setIsLoggingOut] = React.useState(false);
 
+  const handleLogout = () => {
+    setIsLoggingOut(!isLogginOut);
+  };
 
   return (
-    <Box sx={{ flexGrow: 1, position:"relative" }}>
+    <Box sx={{ flexGrow: 1, position: "relative" }}>
       <AppBar position="static">
         <Toolbar>
           <IconButton
@@ -43,11 +52,23 @@ const  { userName, setIsLogged } = useContext(MyContext);
           <Box>
             <Typography>
               usuario logado: {userName}
-            </Typography>  
-            <>
-            <button onClick={()=>setIsLogged(false)}> Sair</button>
-            </>
-          </Box>       
+              <ButtonShowLogout
+                Icon={ isLogginOut ? IoMdArrowDropup :  IoMdArrowDropdown }
+                size={18}
+                onClick={handleLogout}
+              />
+            </Typography>
+            {isLogginOut &&
+              (
+                <Stack 
+                sx={{position: "absolute", right: 35}}
+                direction="row" spacing={0}>
+                  <Paper>
+                      <MenuItem sx={{fontSize: 13}} onClick={() => setIsLogged(false)}>Sair</MenuItem>
+                  </Paper>
+                </Stack>
+              )}
+          </Box>
         </Toolbar>
       </AppBar>
     </Box>

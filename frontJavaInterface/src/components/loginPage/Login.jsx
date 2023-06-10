@@ -31,7 +31,7 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function SignIn() {
- const { password, userName, handleInputs, handleLogin, passwordError, userError} = React.useContext(MyContext);
+ const { password, userName, handleInputs, handleLogin, passwordError, userError, handleCheckbox} = React.useContext(MyContext);
 
     return (
         <ThemeProvider theme={defaultTheme}>
@@ -81,7 +81,7 @@ export default function SignIn() {
                             value={password}
                         />
                         <FormControlLabel
-                            control={<Checkbox value="remember" color="primary" />}
+                            control={<Checkbox value="remember" color="primary" name='checkbox' onChange={handleCheckbox}/>}
                             label="Remember me"
                         />
                         <Button

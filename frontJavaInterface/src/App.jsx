@@ -5,6 +5,7 @@ import { MyContext } from "./context/MyContext"
 import { theme } from './theme/theme'
 import { GlobalStyle } from "./components/styles/GlobalStyles"
 import SignIn from "./components/loginPage/Login"
+import { log } from 'react-modal/lib/helpers/ariaAppHider';
 
 function App() {
   const [modalIsOpen, setModalIsOpen] = React.useState(false);
@@ -15,27 +16,35 @@ function App() {
   const [userName, setUserName] = React.useState('');
   const [password, setPassWord] = React.useState('');
   const [isLogged, setIsLogged] = React.useState(false);
+  const [savePassword, setSavePassword] = React.useState(false);
 
 
   const handleLogin = () =>{
-    if(userName === 'user123' && password === 'password123'){
+
+    if(savePassword){
+      localStorage.setItem('userName', userName);
+      localStorage.setItem('password', password);
+    }
+    if (userName === 'user123' && password === 'password123') {
       setIsLogged(true);
-       setUserError(false);
+      setUserError(false);
       setPasswordError(false);
+    } else {
+      setUserError(userName !== 'user123');
+      setPasswordError(password !== 'password123');
     }
-    else if(userName !== 'user123'){
-      setUserError(true);
-    }
+  };
 
-    else if( password !== 'password123'){
-      setPasswordError(true);
-    }
+  React.useEffect(()=>{
+    const savedUser = localStorage.getItem('userName');
+    const savedPassword = localStorage.getItem('password');
 
-    else if (userName !== 'user123' || password !== 'password123'){
-      setUserError(true);
-      setPasswordError(true);
+    if(savedUser && savedPassword){
+      setUserName(savedUser);
+      setPassWord(savedPassword);
+      setSavePassword(true);
     }
-  }
+  },[])
 
   const handleInputs = (event) => {
     const { name, value } = event.target;
@@ -47,6 +56,10 @@ function App() {
       setPassWord(value)
     }
   };
+
+  const handleCheckbox = (event) => {
+    setSavePassword(event.target.checked);
+  }
   const handleModalOpen = () => {
     setModalIsOpen(true);
   }
@@ -75,7 +88,8 @@ function App() {
           userError,
           passwordError,
           handleLogin,
-          setIsLogged
+          setIsLogged,
+          handleCheckbox
         }}>
         <GlobalStyle />
         {isLogged ?
