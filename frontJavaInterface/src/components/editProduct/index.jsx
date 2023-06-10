@@ -11,6 +11,7 @@ export const EditProduct = () => {
   const [inputValues, setInputValues] = React.useState({});
 
   React.useEffect(() => {
+    
     api.get(`/product/${itemSelected}`)
     .then((resposta) => {
       setInputValues(resposta.data)
@@ -63,6 +64,7 @@ export const EditProduct = () => {
       <Button
           variant="contained"
           type={'submit'}
+          onClick={!editItemModal}
       >
           Enviar
       </Button>
