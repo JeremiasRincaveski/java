@@ -1,6 +1,7 @@
 import * as React from 'react'
 import styled from "styled-components"
 import { MyContext } from "../../context/MyContext"
+import { StyledModal } from '../styles/GlobalStyles'
 
 
 const ModalWrapper = styled.div`
@@ -24,6 +25,7 @@ const StyledDiv = styled.div`
     background-color: rgba(7, 7, 7, 0.3);
     position: absolute;
     z-index: 1;
+
 `
 
 const Overlay = ({ children, closeModal }) => {
@@ -40,10 +42,23 @@ export const Modal = ({ children, isOpen=false }) => {
         <>
             {isOpen && (
                 <Overlay>
-                    <ModalWrapper>
+                    <ModalWrapper className={ isOpen ? 'modalOn' : ''}>
                         {children}
                     </ModalWrapper>
                 </Overlay>
+            )}
+        </>
+    );
+};
+
+
+export const DropdownModal = ( {isOpen, children} ) => {
+  return (
+        <>
+            {isOpen && (
+                <StyledModal className={ isOpen ? 'modalOn' : ''}>
+                    {children}
+                </StyledModal>
             )}
         </>
     );

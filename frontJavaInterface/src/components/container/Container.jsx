@@ -11,7 +11,7 @@ const StyledContainer = styled.main`
   box-sizing: border-box;
 `
 export const Container = () => {
-  const { setIsLoggingOut,isLogginOut } = React.useContext(MyContext);
+  const { setIsLoggingOut } = React.useContext(MyContext);
 
   return (
     <StyledContainer onClick={() => setIsLoggingOut(false)}>

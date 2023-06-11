@@ -6,6 +6,7 @@ import { theme } from './theme/theme'
 import { GlobalStyle } from "./components/styles/GlobalStyles"
 import SignIn from "./components/loginPage/Login"
 import { useLocalStorage } from './services/useLocalStorage';
+import { api } from './services/api';
 
 function App() {
   const [modalIsOpen, setModalIsOpen] = React.useState(false);
@@ -77,6 +78,16 @@ function App() {
     }
   }
 
+  const getList = () => {
+    setIsLoading(true);
+    setTimeout(() => {
+        (api).get('/product').then(response => {
+            setItem(response.data);
+        });
+        setIsLoading(false);
+    }, 2000);
+};
+
   return (
     <ThemeProvider theme={theme}>
       <MyContext.Provider
@@ -104,7 +115,8 @@ function App() {
           isLoading,
           setIsLoading,
           setModalIsOpen,
-          savePassword
+          savePassword,
+          getList
         }}>
         <GlobalStyle />
         {isLogged ?

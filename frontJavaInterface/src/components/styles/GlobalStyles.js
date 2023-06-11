@@ -32,7 +32,7 @@ export const StyledTable = styled.table`
     padding: 0;
 
     tr{
-      background-color: ${(props) =>  props.theme.colors.softWhite};
+      background-color: ${(props) => props.theme.colors.softWhite};
     }
     
     th,td {
@@ -66,9 +66,6 @@ export const StyledTable = styled.table`
     }
 
 `
-
-
-
 export const ContentForm = styled.form`
     width: 100%;
     height: 100%;
@@ -98,4 +95,28 @@ export const StyledDiv = styled.div`
     justify-content: center;
     gap: .2rem;
   }
+`;
+
+export const StyledModal = styled.nav`
+  position: absolute;
+  right: 35px;
+  top: 3rem;
 `
+
+export const Content = styled.div`
+  .modalOn {
+    animation-name: modalOn;
+    animation-duration: .3s;
+  }
+
+  @keyframes modalOn {
+    from{
+      opacity: 0;
+      transform: translateY(-85%);
+    }
+    to{
+      opacity: 0.8;
+      transform: translateY(0);
+    }
+  }
+`;

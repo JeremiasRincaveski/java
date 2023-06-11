@@ -13,13 +13,15 @@ export const Nav = ({ getProdustList }) => {
                     variant="contained"
                     onClick={handleModalOpen}
                     color="success"
-                >Adicionar Produto
+                    sx={{ textTransform: "capitalize" }}
+                >adicionar produto
                 </Button>
 
                 <Button
                     variant="contained"
                     onClick={getProdustList}
-                >refresh
+                    sx={{ textTransform: "capitalize" }}
+                >atualizar
                 </Button>
             </StyledDiv>
         </>

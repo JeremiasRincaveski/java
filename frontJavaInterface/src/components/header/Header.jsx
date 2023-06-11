@@ -8,7 +8,9 @@ import AssignmentIcon from '@mui/icons-material/Assignment';
 import { MyContext } from '../../context/MyContext';
 import { IoMdArrowDropdown, IoMdArrowDropup } from "react-icons/io";
 import { styled } from 'styled-components';
-import { MenuItem, Paper, Stack } from "@mui/material";
+import { MenuItem, Paper } from "@mui/material";
+import { DropdownModal } from "../modal/Modal";
+import { Content } from "../styles/GlobalStyles";
 
 const StyledButtonLogOut = styled.button`
   background-color: transparent;
@@ -21,11 +23,11 @@ const ButtonShowLogout = ({ Icon, size, onClick = () => { } }) => {
 }
 
 export const Header = () => {
-  const { userName, setIsLogged, isLogginOut, handleLogout } = React.useContext(MyContext);
+  const { userName, setIsLogged, isLogginOut, handleLogout, getList } = React.useContext(MyContext);
 
 
   return (
-    <Box sx={{ flexGrow: 1, position: "relative" }}> 
+    <Content> 
       <AppBar position="static" >
         <Toolbar>
           <IconButton
@@ -34,6 +36,7 @@ export const Header = () => {
             color="inherit"
             aria-label="open drawer"
             sx={{ mr: 0 }}
+            onClick={getList}
           >
             <AssignmentIcon />
           </IconButton>
@@ -54,19 +57,16 @@ export const Header = () => {
                 onClick={handleLogout}
               />
             </Typography>
-            {isLogginOut &&
-              (
-                <Stack 
-                sx={{position: "absolute", right: 35}}
-                direction="row" spacing={0}>
-                  <Paper>
-                      <MenuItem sx={{fontSize: 13}} onClick={() => setIsLogged(false)}>Sair</MenuItem>
-                  </Paper>
-                </Stack>
-              )}
+            <DropdownModal
+              isOpen={isLogginOut}       
+            >
+              <Paper>
+                <MenuItem sx={{fontSize: 13}} onClick={() => setIsLogged(false)}>Sair</MenuItem>
+              </Paper>
+            </DropdownModal>
           </Box>
         </Toolbar>
       </AppBar>
-    </Box>
+    </Content>
   )
 }

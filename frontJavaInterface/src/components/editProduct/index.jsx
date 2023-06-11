@@ -3,13 +3,13 @@ import { api } from '../../services/api';
 import { MyContext } from '../../context/MyContext';
 import { Modal } from '../modal/Modal.jsx'
 import { Box, Button, TextField } from '@mui/material';
-import { ContentForm } from '../styles/GlobalStyles'
+import { Content, ContentForm } from '../styles/GlobalStyles'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 export const EditProduct = () => {
 
-  const { editItemModal, itemSelected, setIsLoading, setItem, setEditItemModal } = React.useContext(MyContext);
+  const { editItemModal, itemSelected, setEditItemModal,getList } = React.useContext(MyContext);
   const [inputValues, setInputValues] = React.useState({});
 
   React.useEffect(() => {
@@ -24,15 +24,6 @@ export const EditProduct = () => {
     const { name, value } = event.target;
     setInputValues({ ...inputValues, [name]: value });
   }
-  const getList = () => {
-    setIsLoading(true);
-    setTimeout(() => {
-        (api).get('/product').then(response => {
-            setItem(response.data);
-        });
-        setIsLoading(false);
-    }, 1000);
-};
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -63,7 +54,7 @@ export const EditProduct = () => {
   }
 
   return (
-    <>
+    <Content>
       <Modal isOpen={editItemModal}>
         <ContentForm onSubmit={handleSubmit}>
           <Box>
@@ -94,7 +85,7 @@ export const EditProduct = () => {
         theme="light"
       />
       <ToastContainer />
-    </>
+    </Content>
 
   );
 };

@@ -9,18 +9,9 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import EditNoteIcon from '@mui/icons-material/EditNote';
 
 export const Main = () => {
-    const { handleCloseModal, setEditItemModal, item, setItem, setItemSelected, setIsLoading, isLoading  } = React.useContext(MyContext)
+    const { handleCloseModal, setEditItemModal, item, setItem, setItemSelected, setIsLoading, isLoading, getList  } = React.useContext(MyContext)
     const [search, setSearch] = React.useState('');
 
-    const getList = () => {
-        setIsLoading(true);
-        setTimeout(() => {
-            (api).get('/product').then(response => {
-                setItem(response.data);
-            });
-            setIsLoading(false);
-        }, 2000);
-    };
     React.useEffect(() => {
         getList();
        

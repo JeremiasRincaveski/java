@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Modal } from '../modal/Modal'
 import { MyContext } from '../../context/MyContext'
-import { ContentForm } from '../styles/GlobalStyles'
+import { Content, ContentForm } from '../styles/GlobalStyles'
 import Button from '@mui/material/Button';
 import { api } from '../../services/api'
 import TextField from '@mui/material/TextField';
@@ -10,13 +10,13 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
-export const Product = () => {
+export const Product = ({isOpen}) => {
     const [cod, setCod] = React.useState('');
     const [nome, setNome] = React.useState('');
     const [valor, setValor] = React.useState('');
     const [estoque, setEstoque] = React.useState('');
     const [dataCadastro, setDataCadastro] = React.useState('');
-    const { modalIsOpen, setIsLoading, setItem, setModalIsOpen } = React.useContext(MyContext);
+    const { modalIsOpen, setModalIsOpen, getList } = React.useContext(MyContext);
     const disabled = cod && nome && valor;
 
     const handleInputChange = (event) => {
@@ -31,16 +31,6 @@ export const Product = () => {
             setEstoque(value);
         }
     };
-    const getList = () => {
-        setIsLoading(true);
-        setTimeout(() => {
-            (api).get('/product').then(response => {
-                setItem(response.data);
-            });
-            setIsLoading(false);
-        }, 1000);
-    };
-
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -73,8 +63,10 @@ export const Product = () => {
     };
 
     return (
-        <>
-            <Modal isOpen={modalIsOpen}>
+        <Content>
+            <Modal 
+                isOpen={modalIsOpen}
+            >
                 <ContentForm onSubmit={handleSubmit}>
                     <Box>
                         <TextField label="código" name={'cod'} variant="filled" onChange={handleInputChange} type={'number'} value={cod} />
@@ -105,6 +97,6 @@ export const Product = () => {
                 theme="light"
             />
             <ToastContainer />
-        </>
+        </Content>
     )
 }
