@@ -97,7 +97,6 @@ export default function SignIn() {
                             Icon={toggleShowPassword === 'text' ? BiHide : BiShowAlt}
                             color={'#000c'} size={20}
                             onClick={handleToggleShowPassword}
-                            
                         />
                         </StyledFormLogin>
                         <FormControlLabel

@@ -21,6 +21,7 @@ function App() {
   const [savePassword, setSavePassword] = React.useState(false);
   const [isLogginOut, setIsLoggingOut] = React.useState(false);
   const [isLoading, setIsLoading] = React.useState(false);
+  const [open, setOpen] = React.useState(false);
 
   const handleLogout = (event) => {
     event.stopPropagation();
@@ -116,7 +117,8 @@ function App() {
           setIsLoading,
           setModalIsOpen,
           savePassword,
-          getList
+          getList,open,
+           setOpen
         }}>
         <GlobalStyle />
         {isLogged ?

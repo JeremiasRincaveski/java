@@ -7,10 +7,12 @@ import { SearchComponent } from "../search/Search.jsx"
 import { StyledTable } from "../styles/GlobalStyles.js"
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditNoteIcon from '@mui/icons-material/EditNote';
+import { DeleteConfirmation } from '../DeleteConfirmation.jsx';
 
 export const Main = () => {
-    const { handleCloseModal, setEditItemModal, item, setItem, setItemSelected, setIsLoading, isLoading, getList  } = React.useContext(MyContext)
+    const { handleCloseModal, setEditItemModal, item, setItem, setItemSelected, setIsLoading, isLoading, getList, setOpen, open  } = React.useContext(MyContext)
     const [search, setSearch] = React.useState('');
+
 
     React.useEffect(() => {
         getList();
@@ -73,7 +75,8 @@ export const Main = () => {
                                     <td>{item.date}</td>
                                     <td>
                                         <IconButton aria-label="delete" size="small"
-                                            onClick={() => removeItem(item.id)}
+                                            // onClick={() => removeItem(item.id)}
+                                            onClick={()=>setOpen(true)}
 
                                         >
                                             <DeleteIcon fontSize="small" />
@@ -86,11 +89,14 @@ export const Main = () => {
                                         >
                                             <EditNoteIcon fontSize="small" />
                                         </IconButton>
+                                    <DeleteConfirmation 
+                                        isOpen={open}
+                                        getDeleteFunction={()=> removeItem(item.id)}
+                                    />
                                     </td>
                                 </tr>
                             ))}
                         </tbody>
-                        
                     </>
                 </StyledTable>
             )};

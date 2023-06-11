@@ -24,11 +24,11 @@ const StyledDiv = styled.div`
     bottom: 0;
     background-color: rgba(7, 7, 7, 0.3);
     position: absolute;
-    z-index: 1;
+ 
 
 `
 
-const Overlay = ({ children, closeModal }) => {
+export const Overlay = ({ children, closeModal }) => {
     const { handleCloseModal } = React.useContext(MyContext);
     return (
         <StyledDiv onClick={handleCloseModal} closeModal={closeModal}>
