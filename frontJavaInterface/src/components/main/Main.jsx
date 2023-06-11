@@ -4,7 +4,7 @@ import { Nav } from "../nav/Nav.jsx"
 import { MyContext } from "../../context/MyContext.jsx"
 import { Box, IconButton, Skeleton } from "@mui/material"
 import { SearchComponent } from "../search/Search.jsx"
-import { StyledTable } from "../styles/GlobalStyles.js"
+import { Content, StyledTable } from "../styles/GlobalStyles.js"
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditNoteIcon from '@mui/icons-material/EditNote';
 import { DeleteConfirmation } from '../DeleteConfirmation.jsx';
@@ -35,7 +35,7 @@ export const Main = () => {
     };
 
     return (
-        <>
+        <Content>
             <Box>
                 <Nav
                     getProdustList={getList}
@@ -100,6 +100,6 @@ export const Main = () => {
                     </>
                 </StyledTable>
             )};
-        </>
+        </Content>
     );
 };

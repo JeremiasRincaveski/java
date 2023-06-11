@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Box, Button, Typography } from '@mui/material';
+import { Box, Button, Divider, Typography } from '@mui/material';
 import { styled } from 'styled-components';
 import { MyContext } from '../context/MyContext';
 
@@ -9,12 +9,12 @@ import { MyContext } from '../context/MyContext';
     height: 180px;
     padding: 2rem;
     border-radius: .2rem;
-    box-shadow: 0 0 1.75rem rgb(31 50 81 / 25%), 0 0.525rem 0.625rem rgb(31 50 81 / 22%);
+    box-shadow: 0 0 1.75rem rgb(31 50 81 / 25%), 0 0.525rem 0.625rem rgb(31 50 81 / 12%);
     position: absolute;
     z-index: 100;
     top:50%;
-    right:50%;
-    transform: translate(50%, -50%);
+    left:50%;
+    transform: translate(-50%, -50%);
 
     #confirm{
         position: absolute;
@@ -54,10 +54,11 @@ export const DeleteConfirmation = ({ isOpen=false, getDeleteFunction }) => {
                 >
                     <Modal
                         onClick={((event) => event.stopPropagation())}
-                        
                     >
                         <Typography variant="h6" component="h6" color={'primary'} fontWeight={500}>
                             Tem certeza que gostaria de excluir esse item?
+                            <Divider variant="fullWidth" color={'#3687d8'} sx={{mt: 1}} />
+
                         </Typography>
                       <Box>
                       <Button 
