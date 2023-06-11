@@ -18,13 +18,12 @@ const StyledButtonLogOut = styled.button`
   color: white;
   cursor: pointer;
 `
-const ButtonShowLogout = ({ Icon, size, onClick = () => { } }) => {
-  return (<StyledButtonLogOut onClick={onClick}>{Icon ? <Icon size={size} /> : <></>} </StyledButtonLogOut>)
+export const ButtonShowLogout = ({ Icon, size, onClick =()=> {}, color, style }) => {
+  return (<StyledButtonLogOut onClick={onClick} type="button">{Icon ? <Icon size={size} color={color} style={style}/> : <></>} </StyledButtonLogOut>)
 }
 
 export const Header = () => {
   const { userName, setIsLogged, isLogginOut, handleLogout, getList } = React.useContext(MyContext);
-
 
   return (
     <Content> 

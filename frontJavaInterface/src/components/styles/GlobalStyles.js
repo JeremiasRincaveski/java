@@ -120,3 +120,14 @@ export const Content = styled.div`
     }
   }
 `;
+
+export const StyledFormLogin = styled.form`
+  position: relative;
+
+  button{
+    position: absolute;
+    top: 71%;
+    right: 10px;
+
+  }
+`

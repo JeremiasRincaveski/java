@@ -12,6 +12,9 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { MyContext } from '../../context/MyContext';
+import { BiShowAlt, BiHide } from "react-icons/bi";
+import { ButtonShowLogout } from '../header/Header';
+import { StyledFormLogin } from '../styles/GlobalStyles';
 
 function Copyright(props) {
     return (
@@ -29,7 +32,16 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function SignIn() {
- const { password, userName, handleInputs, handleLogin, passwordError, userError, handleCheckbox, savePassword} = React.useContext(MyContext);
+    const { password, userName, handleInputs, handleLogin, passwordError, userError, handleCheckbox, savePassword } = React.useContext(MyContext);
+    const [toggleShowPassword, setToggleShowPassword] = React.useState('password');
+
+    const handleToggleShowPassword = () => {
+        if (toggleShowPassword === 'password') {
+            setToggleShowPassword('text');
+        } else {
+            setToggleShowPassword('password');
+        }
+    }
 
     return (
         <ThemeProvider theme={defaultTheme}>
@@ -37,7 +49,8 @@ export default function SignIn() {
                 <CssBaseline />
                 <Box
                     sx={{
-                        marginTop: 10,
+                        marginTop: 50,
+                        transform: 'translateY(-50%)',
                         display: 'flex',
                         flexDirection: 'column',
                         alignItems: 'center',
@@ -50,34 +63,43 @@ export default function SignIn() {
                         Controle Total
                     </Typography>
                     <Box component="form" noValidate sx={{ mt: 1 }}>
-                        <TextField
-                            error={userError}
-                            helperText={userError ? 'Login incorreto' : false}
-                            margin="normal"
-                            required
-                            fullWidth
-                            id="email"
-                            label="Login"
-                            name="username"
-                            autoComplete="email"
-                            autoFocus
-                            onChange={handleInputs}
-                            value={userName}
+                        <StyledFormLogin>
+                            <TextField
+                                error={userError}
+                                helperText={userError ? 'Login incorreto' : false}
+                                margin="normal"
+                                required
+                                fullWidth
+                                id="email"
+                                label="Login"
+                                name="username"
+                                autoComplete="email"
+                                autoFocus
+                                onChange={handleInputs}
+                                value={userName}
+                                />
+                            <TextField
+                                error={passwordError}
+                                helperText={passwordError ? 'Password incorreto' : false}
+                                margin="normal"
+                                required
+                                fullWidth
+                                name="password"
+                                label="Password"
+                                type={toggleShowPassword}
+                                id="password"
+                                autoComplete="current-password"
+                                onChange={handleInputs}
+                                value={password}
+                                className='password-input'
+                            />
+                        <ButtonShowLogout
+                            Icon={toggleShowPassword === 'text' ? BiHide : BiShowAlt}
+                            color={'#000c'} size={20}
+                            onClick={handleToggleShowPassword}
+                            
                         />
-                        <TextField
-                            error={passwordError}
-                            helperText={passwordError ? 'Password incorreto' : false}
-                            margin="normal"
-                            required
-                            fullWidth
-                            name="password"
-                            label="Password"
-                            type="password"
-                            id="password"
-                            autoComplete="current-password"
-                            onChange={handleInputs}
-                            value={password}
-                        />
+                        </StyledFormLogin>
                         <FormControlLabel
                             control={<Checkbox color="primary" name='checkbox' onChange={handleCheckbox} checked={savePassword} />}
                             label="Remember me"
@@ -85,14 +107,14 @@ export default function SignIn() {
                         <Button
                             fullWidth
                             variant="contained"
-                            sx={{ mt: 3, mb: 2 }}
+                            sx={{ mt: 3, mb: 4 }}
                             onClick={handleLogin}
                         >
                             Sign In
                         </Button>
                     </Box>
+                    <Copyright sx={{ mt: 0, mb: 0 }} />
                 </Box>
-                <Copyright sx={{ mt: 2, mb: 4 }} />
             </Container>
         </ThemeProvider>
     );
