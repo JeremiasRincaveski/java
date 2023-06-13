@@ -84,6 +84,7 @@ function App() {
     setTimeout(() => {
         (api).get('/product').then(response => {
             setItem(response.data);
+
         });
         setIsLoading(false);
     }, 2000);

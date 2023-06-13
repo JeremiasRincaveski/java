@@ -12,7 +12,7 @@ import { MenuItem, Paper } from "@mui/material";
 import { DropdownModal } from "../modal/Modal";
 import { Content } from "../styles/GlobalStyles";
 
-const StyledButtonLogOut = styled.button`
+export const StyledButtonLogOut = styled.button`
   background-color: transparent;
   border: none;
   color: white;

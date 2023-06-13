@@ -43,45 +43,36 @@ export const Overlay = styled.div`
     justify-content: center;
 `
 
-export const DeleteConfirmation = ({ isOpen=false, getDeleteFunction }) => {
+export const DeleteConfirmation = ({ isOpen = false, id, getDeleteFunction }) => {
     const { setOpen } = React.useContext(MyContext);
     return (
-        <>
-            {isOpen && (
-                <Overlay
-                    onClick={()=>setOpen(false)}
-                    
+      <>
+        {isOpen && (
+          <Overlay onClick={() => setOpen(false)}>
+            <Modal onClick={(event) => event.stopPropagation()}>
+              <Typography variant="h6" component="h6" color="primary" fontWeight={500}>
+                Tem certeza que gostaria de excluir esse item?
+                <Divider variant="fullWidth" color="#3687d8" sx={{ mt: 1 }} />
+              </Typography>
+              <Box>
+                <Button
+                  variant="text"
+                  id="confirm"
+                  onClick={() => {
+                    getDeleteFunction(id);
+                    setOpen(false);
+                  }}
                 >
-                    <Modal
-                        onClick={((event) => event.stopPropagation())}
-                    >
-                        <Typography variant="h6" component="h6" color={'primary'} fontWeight={500}>
-                            Tem certeza que gostaria de excluir esse item?
-                            <Divider variant="fullWidth" color={'#3687d8'} sx={{mt: 1}} />
-
-                        </Typography>
-                      <Box>
-                      <Button 
-                            variant="text"
-                            id='confirm'
-                            onClick={()=> {
-                                getDeleteFunction()
-                                setOpen(false)
-                            }}
-                        >
-                            confirm
-                        </Button>
-                        <Button 
-                            variant="text"
-                            id='cancel'
-                            onClick={()=>setOpen(false)}
-                        >
-                            cancel
-                        </Button>
-                      </Box>
-                    </Modal>
-                </Overlay>
-            )}
-        </>
+                  Confirmar
+                </Button>
+                <Button variant="text" id="cancel" onClick={() => setOpen(false)}>
+                  Cancelar
+                </Button>
+              </Box>
+            </Modal>
+          </Overlay>
+        )}
+      </>
     );
-};
+  };
+  
