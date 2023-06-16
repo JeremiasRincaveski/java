@@ -30,11 +30,6 @@ export const Main = () => {
 
     }, []);
 
-    // const ordenarItens = (campo) => {
-    //     const itensOrdenados = [...item].sort((a, b) => a[campo].localeCompare(b[campo]));
-    //     setItem(itensOrdenados);
-    //   };
-
     const ordenarItens = (campo) => {
         const itensOrdenados = [...item].sort((a, b) => {
           if (typeof a[campo] === 'string' && typeof b[campo] === 'string') {
@@ -44,8 +39,7 @@ export const Main = () => {
           }
         });
         setItem(itensOrdenados);
-      };
-      
+    };
 
     const removeItem = async (id) => {
         setIsLoading(true);
@@ -87,11 +81,11 @@ export const Main = () => {
           <tr>
             <th>
               cod
-              <SetBy Icon={ IoMdArrowDropdown } onClick={() => ordenarItens('id')} />
+              <SetBy Icon={IoMdArrowDropdown} onClick={() => ordenarItens('id')} />
             </th>
             <th>
               nome
-              <SetBy Icon={ IoMdArrowDropdown } onClick={() => ordenarItens('name')} />
+              <SetBy Icon={IoMdArrowDropdown} onClick={() => ordenarItens('name')} />
             </th>
             <th>
               valor

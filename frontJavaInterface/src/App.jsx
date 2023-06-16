@@ -70,14 +70,14 @@ function App() {
   }
   const handleModalOpen = () => {
     setModalIsOpen(true);
-  }
+  };
 
   const handleCloseModal = (e) => {
     if (e.currentTarget === e.target) {
       setModalIsOpen(false)
       setEditItemModal(false)
     }
-  }
+  };
 
   const getList = () => {
     setIsLoading(true);
@@ -124,10 +124,12 @@ function App() {
         <GlobalStyle />
         {isLogged ?
           <Container />
-          : <SignIn />}
+          : 
+          <SignIn />
+        }
       </MyContext.Provider>
     </ThemeProvider>
   )
 }
 
-export default App
+export default App;
