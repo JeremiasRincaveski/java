@@ -1,4 +1,5 @@
 import * as React from "react"
+import  * as S   from "../styles/GlobalStyles";
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -10,7 +11,6 @@ import { IoMdArrowDropdown, IoMdArrowDropup } from "react-icons/io";
 import { styled } from 'styled-components';
 import { MenuItem, Paper } from "@mui/material";
 import { DropdownModal } from "../modal/Modal";
-import { Content } from "../styles/GlobalStyles";
 
 export const StyledButtonLogOut = styled.button`
   background-color: transparent;
@@ -26,7 +26,7 @@ export const Header = () => {
   const { userName, setIsLogged, isLogginOut, handleLogout, getList } = React.useContext(MyContext);
 
   return (
-    <Content> 
+    <S.Content> 
       <AppBar position="static" >
         <Toolbar>
           <IconButton
@@ -66,6 +66,6 @@ export const Header = () => {
           </Box>
         </Toolbar>
       </AppBar>
-    </Content>
+    </S.Content>
   )
 }

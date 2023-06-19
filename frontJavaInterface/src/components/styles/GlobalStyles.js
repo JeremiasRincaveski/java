@@ -22,6 +22,10 @@ export const GlobalStyle = createGlobalStyle`
     }
   }
 `
+export const StyledContainer = styled.main`
+  height: 100vh;
+  box-sizing: border-box;
+`
 
 export const StyledTable = styled.table`
     
@@ -45,7 +49,13 @@ export const StyledTable = styled.table`
     } 
 
     td:last-of-type{
-      width: 50px;
+      width:60px;
+      div{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
     }
 
     td:first-of-type{
@@ -128,12 +138,14 @@ export const Content = styled.div`
 `;
 
 export const StyledFormLogin = styled.form`
-  position: relative;
-
-  button{
+input{
+    position: relative;
+  }
+  svg{
     position: absolute;
-    top: 71%;
+    top: 50%;
     right: 10px;
+    transform: translateY(-50%);
 
   }
 `
