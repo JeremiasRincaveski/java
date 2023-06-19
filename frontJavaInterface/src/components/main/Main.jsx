@@ -61,11 +61,12 @@ export const Main = () => {
             <Box>
                 <Nav
                     getProdustList={getList}
-                />
-                <SearchComponent
-                    search={search}
-                    setSearch={setSearch}
-                />
+                >
+                    <SearchComponent
+                        search={search}
+                        setSearch={setSearch}
+                    />
+                </Nav>
             </Box>
             {isLoading ? (
                 <Skeleton

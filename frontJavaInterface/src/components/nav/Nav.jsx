@@ -4,7 +4,7 @@ import { StyledDiv } from '../styles/GlobalStyles';
 import Button from '@mui/material/Button';
 
 
-export const Nav = ({ getProdustList }) => {
+export const Nav = ({ getProdustList, children }) => {
     const { handleModalOpen } = React.useContext(MyContext);
     return (
         <>
@@ -23,6 +23,7 @@ export const Nav = ({ getProdustList }) => {
                     sx={{ textTransform: "capitalize" }}
                 >atualizar
                 </Button>
+                {children}
             </StyledDiv>
         </>
     )

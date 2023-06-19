@@ -84,16 +84,22 @@ export const ContentForm = styled.form`
     }
 `
 export const StyledDiv = styled.div`
+  align-items: center;
   width: calc(100% - 4rem);
   margin: 1rem 2rem;
   display: flex;
   gap: 1rem;
+  justify-content: flex-start;
 
   button{
     display: flex;
     align-items: center;
     justify-content: center;
     gap: .2rem;
+  }
+
+  :last-child {
+    margin-left: auto;
   }
 `;
 
