@@ -11,6 +11,7 @@ import { IoMdArrowDropdown, IoMdArrowDropup } from "react-icons/io";
 import { styled } from 'styled-components';
 import { MenuItem, Paper } from "@mui/material";
 import { DropdownModal } from "../modal/Modal";
+import { makeStyles } from "@material-ui/core";
 
 export const StyledButtonLogOut = styled.button`
   background-color: transparent;
@@ -22,13 +23,24 @@ export const ButtonShowLogout = ({ Icon, size, onClick =()=> {}, color, style })
   return (<StyledButtonLogOut onClick={onClick} type="button">{Icon ? <Icon size={size} color={color} style={style}/> : <></>} </StyledButtonLogOut>)
 }
 
+const useStyles = makeStyles((theme) => ({
+    root: {
+      backgroundColor: '#1c1c1c',
+      [theme.breakpoints.down('xs')]: {
+        justifyContent: 'space-between'
+      }
+    }
+}))
+
 export const Header = () => {
   const { userName, setIsLogged, isLogginOut, handleLogout, getList } = React.useContext(MyContext);
+
+  const classes = useStyles()
 
   return (
     <S.Content> 
       <AppBar position="static" >
-        <Toolbar>
+        <Toolbar className={classes.root}>
           <IconButton
             size="large"
             edge="start"
@@ -43,7 +55,11 @@ export const Header = () => {
             variant="h6"
             noWrap
             component="div"
-            sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block', textTransform: 'uppercase' } }}
+            sx={{ 
+              flexGrow: 1,
+              display: { xs: 'none', sm: 'block' },
+              textTransform: 'uppercase' }
+          }
           >
             controle total
           </Typography>
