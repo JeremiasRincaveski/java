@@ -122,12 +122,14 @@ export const Content = styled.div`
 `;
 
 export const StyledFormLogin = styled.form`
-  position: relative;
-
-  button{
+input{
+    position: relative;
+  }
+  svg{
     position: absolute;
-    top: 71%;
+    top: 50%;
     right: 10px;
+    transform: translateY(-50%);
 
   }
 `

@@ -54,6 +54,7 @@ export default function SignIn() {
                         display: 'flex',
                         flexDirection: 'column',
                         alignItems: 'center',
+                        height: '487px',
                     }}
                 >
                     <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
@@ -62,11 +63,10 @@ export default function SignIn() {
                     <Typography component="h1" variant="h5">
                         Controle Total
                     </Typography>
-                    <Box component="form" noValidate sx={{ mt: 1 }}>
-                        <StyledFormLogin>
+                    <Box component="form" noValidate sx={{ mt: 1, width: '100%' }}>
                             <TextField
                                 error={userError}
-                                helperText={userError ? 'Login incorreto' : false}
+                                helperText={userError ? 'Login incorreto' : ' '}
                                 margin="normal"
                                 required
                                 fullWidth
@@ -78,9 +78,10 @@ export default function SignIn() {
                                 onChange={handleInputs}
                                 value={userName}
                                 />
+                                <StyledFormLogin>
                             <TextField
                                 error={passwordError}
-                                helperText={passwordError ? 'Password incorreto' : false}
+                                helperText={passwordError ? 'Password incorreto' : ' '}
                                 margin="normal"
                                 required
                                 fullWidth
