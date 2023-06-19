@@ -1,11 +1,11 @@
 import * as React from 'react';
+import * as S from "./components/styles/GlobalStyles"
 import { ThemeProvider } from "styled-components"
 import { Container } from "./components/container/Container"
 import { MyContext } from "./context/MyContext"
 import { theme } from './theme/theme'
-import { GlobalStyle } from "./components/styles/GlobalStyles"
 import SignIn from "./components/loginPage/Login"
-import { useLocalStorage } from './services/useLocalStorage';
+import { useLocalStorage } from '../hooks/useLocalStorage';
 import { api } from './services/api';
 
 function App() {
@@ -121,8 +121,8 @@ function App() {
           getList,open,
            setOpen
         }}>
-        <GlobalStyle />
-        {isLogged ?
+        <S.GlobalStyle />
+        { isLogged ?
           <Container />
           : 
           <SignIn />

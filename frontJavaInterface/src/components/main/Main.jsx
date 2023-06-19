@@ -1,23 +1,23 @@
 import * as React from 'react';
+import * as S from "../styles/GlobalStyles.js"
 import { api } from '../../services/api.js'
 import { Nav } from "../nav/Nav.jsx"
 import { MyContext } from "../../context/MyContext.jsx"
 import { Box, IconButton, Skeleton } from "@mui/material"
 import { SearchComponent } from "../search/Search.jsx"
-import { Content, StyledTable } from "../styles/GlobalStyles.js"
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditNoteIcon from '@mui/icons-material/EditNote';
 import { DeleteConfirmation } from '../DeleteConfirmation.jsx';
 import { IoMdArrowDropdown, IoMdArrowDropup } from "react-icons/io";
 import { StyledButtonLogOut } from '../header/Header.jsx';
 
-const SetBy = ({ Icon, onClick =()=> {} }) => {
+const SetBy = ({ Icon, onClick = () => { } }) => {
     return (
-        <StyledButtonLogOut 
+        <StyledButtonLogOut
             onClick={onClick}
         >
-                {Icon? <Icon size={15} color={'#000c'}/>: <></> }
-            </StyledButtonLogOut>
+            {Icon ? <Icon size={15} color={'#000c'} /> : <></>}
+        </StyledButtonLogOut>
     )
 };
 
@@ -32,11 +32,11 @@ export const Main = () => {
 
     const ordenarItens = (campo) => {
         const itensOrdenados = [...item].sort((a, b) => {
-          if (typeof a[campo] === 'string' && typeof b[campo] === 'string') {
-            return a[campo].localeCompare(b[campo]);
-          } else {
-            return a[campo] - b[campo];
-          }
+            if (typeof a[campo] === 'string' && typeof b[campo] === 'string') {
+                return a[campo].localeCompare(b[campo]);
+            } else {
+                return a[campo] - b[campo];
+            }
         });
         setItem(itensOrdenados);
     };
@@ -57,7 +57,7 @@ export const Main = () => {
     };
 
     return (
-        <Content>
+        <S.Content>
             <Box>
                 <Nav
                     getProdustList={getList}
@@ -73,35 +73,35 @@ export const Main = () => {
                     sx={{ margin: 4 }}
                 />
             ) : (
-                <StyledTable
+                <S.StyledTable
                     onClick={handleCloseModal}
                 >
                     <>
-                    <thead>
-          <tr>
-            <th>
-              cod
-              <SetBy Icon={IoMdArrowDropdown} onClick={() => ordenarItens('id')} />
-            </th>
-            <th>
-              nome
-              <SetBy Icon={IoMdArrowDropdown} onClick={() => ordenarItens('name')} />
-            </th>
-            <th>
-              valor
-              <SetBy Icon={IoMdArrowDropdown} onClick={() => ordenarItens('price')} />
-            </th>
-            <th>
-              estoque
-              <SetBy Icon={IoMdArrowDropdown} onClick={() => ordenarItens('stock')} />
-            </th>
-            <th>
-              data cadastro
-              <SetBy Icon={IoMdArrowDropdown} onClick={() => ordenarItens('date')} />
-            </th>
-            <th>ações</th>
-          </tr>
-        </thead>
+                        <thead>
+                            <tr>
+                                <th>
+                                    cod
+                                    <SetBy Icon={IoMdArrowDropdown} onClick={() => ordenarItens('id')} />
+                                </th>
+                                <th>
+                                    nome
+                                    <SetBy Icon={IoMdArrowDropdown} onClick={() => ordenarItens('name')} />
+                                </th>
+                                <th>
+                                    valor
+                                    <SetBy Icon={IoMdArrowDropdown} onClick={() => ordenarItens('price')} />
+                                </th>
+                                <th>
+                                    estoque
+                                    <SetBy Icon={IoMdArrowDropdown} onClick={() => ordenarItens('stock')} />
+                                </th>
+                                <th>
+                                    data cadastro
+                                    <SetBy Icon={IoMdArrowDropdown} onClick={() => ordenarItens('date')} />
+                                </th>
+                                <th>ações</th>
+                            </tr>
+                        </thead>
                         <tbody>
                             {item.filter((item) => item.name?.toLowerCase().includes(search.toLowerCase())).map((item, index) => (
                                 <tr key={index}>
@@ -137,8 +137,8 @@ export const Main = () => {
                             ))}
                         </tbody>
                     </>
-                </StyledTable>
+                </S.StyledTable>
             )};
-        </Content>
+        </S.Content>
     );
 };

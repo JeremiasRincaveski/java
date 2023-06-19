@@ -14,7 +14,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { MyContext } from '../../context/MyContext';
 import { BiShowAlt, BiHide } from "react-icons/bi";
 import { ButtonShowLogout } from '../header/Header';
-import { StyledFormLogin } from '../styles/GlobalStyles';
+import  * as S   from '../styles/GlobalStyles';
 
 function Copyright(props) {
     return (
@@ -78,7 +78,7 @@ export default function SignIn() {
                                 onChange={handleInputs}
                                 value={userName}
                                 />
-                                <StyledFormLogin>
+                                <S.StyledFormLogin>
                             <TextField
                                 error={passwordError}
                                 helperText={passwordError ? 'Password incorreto' : ' '}
@@ -99,11 +99,11 @@ export default function SignIn() {
                             color={'#000c'} size={20}
                             onClick={handleToggleShowPassword}
                         />
-                        </StyledFormLogin>
                         <FormControlLabel
                             control={<Checkbox color="primary" name='checkbox' onChange={handleCheckbox} checked={savePassword} />}
                             label="Remember me"
                         />
+                        </S.StyledFormLogin>
                         <Button
                             fullWidth
                             variant="contained"

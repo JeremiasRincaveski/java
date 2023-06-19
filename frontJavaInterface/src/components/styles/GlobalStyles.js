@@ -22,6 +22,10 @@ export const GlobalStyle = createGlobalStyle`
     }
   }
 `
+export const StyledContainer = styled.main`
+  height: 100vh;
+  box-sizing: border-box;
+`
 
 export const StyledTable = styled.table`
     
