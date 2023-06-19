@@ -111,7 +111,8 @@ export const Main = () => {
                                     <td>{item.stock}</td>
                                     <td>{item.date}</td>
                                     <td>
-                                        <IconButton aria-label="delete" size="small"
+                                       <div>
+                                       <IconButton aria-label="delete" size="small"
                                             // onClick={() => removeItem(item.id)}
                                             onClick={() => setOpen(true)}
 
@@ -132,6 +133,7 @@ export const Main = () => {
                                             id={item.id}
                                             getDeleteFunction={() => removeItem(item.id)}
                                         />
+                                       </div>
                                     </td>
                                 </tr>
                             ))}

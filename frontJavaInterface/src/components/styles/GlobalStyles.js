@@ -49,7 +49,13 @@ export const StyledTable = styled.table`
     } 
 
     td:last-of-type{
-      width: 50px;
+      width:60px;
+      div{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
     }
 
     td:first-of-type{
