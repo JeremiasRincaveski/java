@@ -19,49 +19,40 @@ export const StyledButtonLogOut = styled.button`
   border: none;
   color: white;
   cursor: pointer;
+  padding: 0;
 `
 export const ButtonShowLogout = ({ Icon, size, onClick =()=> {}, color, style }) => {
   return (<StyledButtonLogOut onClick={onClick} type="button">{Icon ? <Icon size={size} color={color} style={style}/> : <></>} </StyledButtonLogOut>)
 }
 
-const styles = makeStyles((theme) => ({
-    root: {
-      backgroundColor: '#1c1c1c',
-      justifyContent: 'space-between',
-      '& > div': {
-      [theme.breakpoints.down(400)]: {
-        '&:nth-of-type(1)': {
-          display: 'none',
-        },
-      },
-     },
-    },
-  //   root: {
-  //   backgroundColor: '#1c1c1c',
-  //   '& > *': {
-  //     backgroundColor: 'red',
-  //     '&:nth-of-type(2)': {
-  //       display: 'none',
-  //     },
-  //     [theme.breakpoints.down(400)]: {
-  //       '&:nth-of-type(2)': {
-  //         display: 'block',
-  //       },
-  //     },
-  //   },
+const myStyles = makeStyles((theme) => ({
+  // container : {
+  //   width: '100vw',
   // },
+  navBar: {
+    justifyContent: 'space-between',
+    height: '4rem',
+    padding: '0',
+    '& > div': {
+    [theme.breakpoints.down(460)]: {
+      '&:nth-of-type(1)': {
+        display: 'none',
+      },
+    },
+    },
+  },
 }))
 
 
 
 export const Header = () => {
   const { userName, setIsLogged, isLogginOut, handleLogout, getList } = React.useContext(MyContext);
-  const classes = styles()
+  const classes = myStyles()
 
   return (
     <S.Content> 
       <AppBar position="static" >
-        <Toolbar className={classes.root}>
+        <Toolbar className={classes.navBar}>
           <IconButton
             size="large"
             edge="start"
@@ -78,7 +69,6 @@ export const Header = () => {
             component="div"
             sx={{ 
               flexGrow: 1,
-              // display: { 450 : 'none', sm: 'block' },
               textTransform: 'uppercase' }
           }
           >

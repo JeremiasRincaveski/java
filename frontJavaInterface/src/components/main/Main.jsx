@@ -8,7 +8,7 @@ import { SearchComponent } from "../search/Search.jsx"
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditNoteIcon from '@mui/icons-material/EditNote';
 import { DeleteConfirmation } from '../DeleteConfirmation.jsx';
-import { IoMdArrowDropdown, IoMdArrowDropup } from "react-icons/io";
+import { IoMdArrowDropdown } from "react-icons/io";
 import { StyledButtonLogOut } from '../header/Header.jsx';
 
 const SetBy = ({ Icon, onClick = () => { } }) => {
@@ -62,7 +62,8 @@ export const Main = () => {
                 <Nav
                     getProdustList={getList}
                 >
-                    <SearchComponent
+                    <div></div>
+                    <SearchComponent cla
                         search={search}
                         setSearch={setSearch}
                     />
@@ -116,7 +117,6 @@ export const Main = () => {
                                        <IconButton aria-label="delete" size="small"
                                             // onClick={() => removeItem(item.id)}
                                             onClick={() => setOpen(true)}
-
                                         >
                                             <DeleteIcon fontSize="small" />
                                         </IconButton>
@@ -127,7 +127,7 @@ export const Main = () => {
                                                 setItemSelected(item.id)
                                             }}
                                         >
-                                            <EditNoteIcon fontSize="small" />
+                                        <EditNoteIcon fontSize="small" />
                                         </IconButton>
                                         <DeleteConfirmation
                                             isOpen={open}
@@ -141,7 +141,7 @@ export const Main = () => {
                         </tbody>
                     </>
                 </S.StyledTable>
-            )};
+            )}
         </S.Content>
     );
 };

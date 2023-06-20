@@ -29,18 +29,19 @@ export const StyledContainer = styled.main`
 
 export const StyledTable = styled.table`
     
-    margin: 2rem 2rem 0;
+    margin: 2rem;
     width: calc(100% - 4rem );
     text-align: left;
     border-collapse: collapse;
     padding: 0;
+    overflow-x: scroll;
+    transition: all .3s ease-in-out;
 
     tr{
       background-color: ${(props) => props.theme.colors.softWhite};
     }
     
     th,td {
-      padding: .2rem;
       border: 2px solid ${props => props.theme.colors.darkGray};
     }
     
@@ -59,22 +60,29 @@ export const StyledTable = styled.table`
     }
 
     td:first-of-type{
-      width: 60px;
+      min-width: 45px;
+      width: 50px;
     }
 
     td:nth-child(2){
+      min-width: 120px;
       width: 400px;
     }
-    td:nth-child(4){
-      width: 400px; 
-    }
+
     td:nth-child(3){
+      min-width: 60px;
       width: 400px; 
     }
-    td:nth-child(5){
-      width: 200px; 
+    
+    td:nth-child(4){
+    min-width: 80px;
+    width: 400px; 
     }
 
+    td:nth-child(5){
+      min-width: 120px;
+      width: 200px; 
+    }
 `
 export const ContentForm = styled.form`
     width: 100%;
@@ -94,10 +102,12 @@ export const ContentForm = styled.form`
     }
 `
 export const StyledDiv = styled.div`
+  box-sizing: border-box;
   align-items: center;
   width: calc(100% - 4rem);
   margin: 1rem 2rem;
   display: flex;
+  flex-wrap: wrap;
   gap: 1rem;
   justify-content: flex-start;
 
@@ -106,10 +116,36 @@ export const StyledDiv = styled.div`
     align-items: center;
     justify-content: center;
     gap: .2rem;
+    flex: 1 0 152px;
   }
 
-  :last-child {
-    margin-left: auto;
+  > :last-child {
+    flex: 1 0 200px;
+  }
+
+  :nth-child(3){
+    flex: 10 10 1px;
+    height: 10px;
+  }
+
+  @media screen and (max-width: 730px){
+    :nth-child(3) {
+      display: none;
+    }
+  }
+
+  @media (max-width: 400px) {
+    :nth-child(1) {
+      order: 2;
+    }
+
+    :nth-child(2) {
+      order: 1;
+    }
+
+    :last-child {
+      order: 3;
+    }
   }
 `;
 

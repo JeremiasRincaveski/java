@@ -6,12 +6,7 @@ import { StyledModal } from '../styles/GlobalStyles'
 
 const ModalWrapper = styled.div`
     height: 500px;
-    width: 700px;
-    position: absolute;
-    top:50%;
-    left:50%;
-    margin-top: calc((500px / 2) * -1);
-    margin-left: calc((700px / 2) * -1);
+    width: min(700px, 90vw);
     z-index: 1000;
     background-color: ${props => props.theme.colors.softGray};
     box-shadow: 0 0.875rem 1.75rem rgb(31 50 81 / 25%), 0 0.625rem 0.625rem rgb(31 50 81 / 22%);
@@ -24,7 +19,9 @@ const StyledDiv = styled.div`
     bottom: 0;
     background-color: rgba(7, 7, 7, 0.3);
     position: absolute;
- 
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
 `
 
