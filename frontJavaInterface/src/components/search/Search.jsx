@@ -38,7 +38,6 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
         width: '100%',
        
             '&:focus': {
-                width: '30ch',
                 padding: theme.spacing(1, 1, 1, 2),
             },
         

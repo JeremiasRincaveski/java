@@ -34,7 +34,7 @@ export const StyledTable = styled.table`
     text-align: left;
     border-collapse: collapse;
     padding: 0;
-    overflow-x: scroll;
+    overflow-x: hidden;
     transition: all .3s ease-in-out;
 
     tr{
@@ -162,6 +162,9 @@ export const StyledModal = styled.nav`
 `
 
 export const Content = styled.div`
+
+  overflow: auto;
+
   .modalOn {
     animation-name: modalOn;
     animation-duration: .3s;

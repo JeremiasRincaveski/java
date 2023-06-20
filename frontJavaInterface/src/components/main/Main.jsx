@@ -56,18 +56,19 @@ export const Main = () => {
     };
 
     return (
-        <S.Content>
+        <>
             <Box>
                 <Nav
                     getProdustList={getList}
-                >
+                    >
                     <div />
                     <SearchComponent cla
                         search={search}
                         setSearch={setSearch}
-                    />
+                        />
                 </Nav>
             </Box>
+            <S.Content>
             {isLoading ? (
                 <Skeleton
                     height={40}
@@ -77,7 +78,7 @@ export const Main = () => {
                 <S.StyledTable
                     onClick={handleCloseModal}
                 >
-                    <>
+                    
                         <thead>
                             <tr>
                                 <th>
@@ -138,9 +139,10 @@ export const Main = () => {
                                 </tr>
                             ))}
                         </tbody>
-                    </>
+                    
                 </S.StyledTable>
             )}
         </S.Content>
+        </>
     );
 };
