@@ -153,6 +153,12 @@ export const StyledModal = styled.nav`
   position: absolute;
   right: 35px;
   top: 3rem;
+  z-index: 1000;
+
+  @media screen and (max-width: 600px){
+    right: 20px;
+  }
+
 `
 
 export const Content = styled.div`

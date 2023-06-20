@@ -13,6 +13,7 @@ import { MenuItem, Paper } from "@mui/material";
 import { DropdownModal } from "../modal/Modal";
 import { makeStyles } from "@material-ui/core";
 import { blue } from "@mui/material/colors";
+import zIndex from "@mui/material/styles/zIndex";
 
 export const StyledButtonLogOut = styled.button`
   background-color: transparent;
@@ -41,6 +42,18 @@ const myStyles = makeStyles((theme) => ({
     },
     },
   },
+  modal:{
+    [theme.breakpoints.down(600)]: {
+      display: 'flex',
+      alignItems: 'center',
+      height: '30px',
+      '& > li': {
+        '&:hover':{
+
+        }
+      }
+    }
+  }
 }))
 
 
@@ -86,7 +99,7 @@ export const Header = () => {
             <DropdownModal
               isOpen={isLogginOut}       
             >
-              <Paper>
+              <Paper className={classes.modal}>
                 <MenuItem sx={{fontSize: 13}} onClick={() => setIsLogged(false)}>Sair</MenuItem>
               </Paper>
             </DropdownModal>
