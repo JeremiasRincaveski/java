@@ -63,7 +63,7 @@ export default function SignIn() {
                     <Typography component="h1" variant="h5">
                         Controle Total
                     </Typography>
-                    <Box component="form" noValidate sx={{ mt: 1, width: '100%' }}>
+                    <Box noValidate sx={{ mt: 1, width: '100%' }}>
                             <TextField
                                 error={userError}
                                 helperText={userError ? 'Login incorreto' : ' '}
@@ -99,16 +99,17 @@ export default function SignIn() {
                             color={'#000c'} size={20}
                             onClick={handleToggleShowPassword}
                         />
+                        </S.StyledFormLogin>
                         <FormControlLabel
                             control={<Checkbox color="primary" name='checkbox' onChange={handleCheckbox} checked={savePassword} />}
                             label="Remember me"
                         />
-                        </S.StyledFormLogin>
                         <Button
                             fullWidth
                             variant="contained"
                             sx={{ mt: 3, mb: 4 }}
                             onClick={handleLogin}
+                            type='button'
                         >
                             Sign In
                         </Button>

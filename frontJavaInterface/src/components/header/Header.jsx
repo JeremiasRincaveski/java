@@ -33,11 +33,10 @@ const myStyles = makeStyles((theme) => ({
   navBar: {
     justifyContent: 'space-between',
     height: '4rem',
-    padding: '0',
     '& > div': {
-    [theme.breakpoints.down(460)]: {
-      '&:nth-of-type(1)': {
-        display: 'none',
+      [theme.breakpoints.down(460)]: {
+        '&:nth-of-type(1)': {
+          display: 'none',
       },
     },
     },

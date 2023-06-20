@@ -46,7 +46,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export const SearchComponent = ({ search, setSearch }) => {
-    const [state, setstate] = useState(true)
+    const [state, setstate] = useState(true);
 
     return (
         <Search>

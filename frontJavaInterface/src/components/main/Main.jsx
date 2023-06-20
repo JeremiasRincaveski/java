@@ -11,7 +11,7 @@ import { DeleteConfirmation } from '../DeleteConfirmation.jsx';
 import { IoMdArrowDropdown } from "react-icons/io";
 import { StyledButtonLogOut } from '../header/Header.jsx';
 
-const SetBy = ({ Icon, onClick = () => { } }) => {
+const SetBy = ({ Icon, onClick = () => {} }) => {
     return (
         <StyledButtonLogOut
             onClick={onClick}
@@ -27,7 +27,6 @@ export const Main = () => {
 
     React.useEffect(() => {
         getList();
-
     }, []);
 
     const ordenarItens = (campo) => {
@@ -62,7 +61,7 @@ export const Main = () => {
                 <Nav
                     getProdustList={getList}
                 >
-                    <div></div>
+                    <div />
                     <SearchComponent cla
                         search={search}
                         setSearch={setSearch}
