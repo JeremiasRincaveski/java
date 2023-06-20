@@ -20,4 +20,3 @@ export const darkThemeColor  = {
     softGray: '#cccc',
     darkGray: 'rgb(246, 248, 255)'
 }
-
