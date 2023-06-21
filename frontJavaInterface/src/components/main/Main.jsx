@@ -75,7 +75,7 @@ export const Main = () => {
                         height={40}
                         sx={{ margin: 4 }}
                     />
-                ) : (
+                ) : (   
                     <S.StyledTable
                         onClick={ handleCloseModal }
                     >

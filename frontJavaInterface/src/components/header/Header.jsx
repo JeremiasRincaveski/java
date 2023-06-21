@@ -52,7 +52,7 @@ export const Header = () => {
   const classes = myStyles()
 
   return (
-    <S.Content> 
+    <S.Content style={{overflow: 'unset'}}> 
       <AppBar position="static" >
         <Toolbar className={ classes.navBar }>
           <IconButton

@@ -65,7 +65,6 @@ export const EditProduct = () => {
             <TextField value={ inputValues.stock } label="qt.estoque" name={ 'stock' } variant="filled" onChange={ handleInputChange } type={ 'number' } />
             <TextField value={ inputValues.date } label="data de cadastro" name={ 'date' } variant="filled" type={ 'text' } disabled />
           </Box>
-
           <Button
             type={ 'submit' }
             variant="contained"
@@ -74,21 +73,6 @@ export const EditProduct = () => {
           </Button>
         </ContentForm>
       </Modal>
-
-      <ToastContainer
-        autoClose={ 5000 }
-        closeOnClick
-        draggable
-        hideProgressBar={ false }
-        newestOnTop={ false }
-        pauseOnFocusLoss
-        pauseOnHover
-        position="top-right"
-        rtl={ false }
-        theme="light"
-      />
-      {/* posso excluir ?? tem no product.jsx linha 99
-      <ToastContainer /> */}
     </Content>
   );
 };

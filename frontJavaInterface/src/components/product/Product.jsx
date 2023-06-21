@@ -47,7 +47,7 @@ export const Product = ({ }) => {
             toast.success('Item Adicionado com Sucesso!');
         })
         .catch((error) => {
-            console.log('Erro ao criar o item:', error);
+            toast.error('Erro ao criar o item:', error);
         });
         // Limpar os campos de entrada após o envio do formulário
 
@@ -83,12 +83,11 @@ export const Product = ({ }) => {
                     </Button>
                 </ContentForm>
             </Modal>
-
             <ToastContainer
                 autoClose={ 5000 }
                 closeOnClick
                 draggable
-                hideProgressBar={ true }
+                hideProgressBar={ false }
                 newestOnTop={ false }
                 pauseOnFocusLoss
                 pauseOnHover
@@ -96,8 +95,6 @@ export const Product = ({ }) => {
                 rtl={ false }
                 theme="light"
             /> 
-            {/* posso excluir ?? tem no editProduct linha 90
-            <ToastContainer /> */}
         </Content>
     )
 }
