@@ -3,18 +3,18 @@ import { createGlobalStyle, styled } from "styled-components";
 export const GlobalStyle = createGlobalStyle`
   body{
     background-color:${props => props.theme.colors.softGray};
-    font-family: Arial, Helvetica, sans-serif;
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    outline: none;
     border: none;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    outline: none;
+    padding: 0;
 
-    input::-webkit-outer-spin-button,
-    input::-webkit-inner-spin-button {
+    input::-webkit-inner-spin-button,
+    input::-webkit-outer-spin-button {
       display: none;
-      -webkit-appearance: none;
       margin: 0;
+      -webkit-appearance: none;
     }
 
     input[type=number] {
@@ -23,100 +23,100 @@ export const GlobalStyle = createGlobalStyle`
   }
 `
 export const StyledContainer = styled.main`
-  height: 100vh;
   box-sizing: border-box;
+  height: 100vh;
 `
 
 export const StyledTable = styled.table`
-    
-    margin: 2rem;
-    width: calc(100% - 4rem );
-    text-align: left;
-    border-collapse: collapse;
-    padding: 0;
-    overflow-x: hidden;
-    transition: all .3s ease-in-out;
+  border-collapse: collapse;
+  margin: 2rem;
+  overflow-x: hidden;
+  padding: 0;
+  text-align: left;
+  transition: all .3s ease-in-out;
+  width: calc(100% - 4rem );
 
-    tr{
-      background-color: ${(props) => props.theme.colors.softWhite};
-    }
-    
-    th,td {
-      border: 2px solid ${props => props.theme.colors.darkGray};
-    }
-    
-    tr:nth-child(even) {
-        background-color: ${props => props.theme.colors.softGray};
-    } 
+  tr{
+    background-color: ${(props) => props.theme.colors.softWhite};
+  }
+  
+  th,td {
+    border: 2px solid ${props => props.theme.colors.darkGray};
+  }
+  
+  tr:nth-child(even) {
+    background-color: ${props => props.theme.colors.softGray};
+  } 
 
-    td:last-of-type{
-      width:60px;
-      div{
-        width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-    }
+  td:last-of-type{
+    width: 60px;
 
-    td:first-of-type{
-      min-width: 45px;
-      width: 50px;
+    div{
+      align-items: center;
+      display: flex;
+      justify-content: center;
+      width: 100%;
     }
+  }
 
-    td:nth-child(2){
-      min-width: 120px;
-      width: 400px;
-    }
+  td:first-of-type{
+    min-width: 45px;
+    width: 50px;
+  }
 
-    td:nth-child(3){
-      min-width: 60px;
-      width: 400px; 
-    }
-    
-    td:nth-child(4){
+  td:nth-child(2){
+    min-width: 120px;
+    width: 400px;
+  }
+
+  td:nth-child(3){
+    min-width: 60px;
+    width: 400px; 
+  }
+  
+  td:nth-child(4){
     min-width: 80px;
     width: 400px; 
-    }
+  }
 
-    td:nth-child(5){
-      min-width: 120px;
-      width: 200px; 
-    }
+  td:nth-child(5){
+    min-width: 120px;
+    width: 200px; 
+  }
 `
 export const ContentForm = styled.form`
-    width: 100%;
-    height: 100%;
-    text-transform: uppercase;
-    margin: 1rem, 2rem;
-    padding: 2rem;
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-    box-sizing: border-box;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-between;
+  margin: 1rem, 2rem;
+  padding: 2rem;
+  text-transform: uppercase;
+  width: 100%;
 
-    > div {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
+  > div {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
 `
 export const StyledDiv = styled.div`
-  box-sizing: border-box;
   align-items: center;
-  width: calc(100% - 4rem);
-  margin: 1rem 2rem;
+  box-sizing: border-box;
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
   justify-content: flex-start;
-
+  margin: 1rem 2rem;
+  width: calc(100% - 4rem);
+  
   button{
-    display: flex;
     align-items: center;
-    justify-content: center;
-    gap: .2rem;
+    display: flex;
     flex: 1 0 152px;
+    gap: .2rem;
+    justify-content: center;
   }
 
   > :last-child {
@@ -158,11 +158,9 @@ export const StyledModal = styled.nav`
   @media screen and (max-width: 600px){
     right: 20px;
   }
-
 `
 
 export const Content = styled.div`
-
   overflow: auto;
 
   .modalOn {
@@ -175,6 +173,7 @@ export const Content = styled.div`
       opacity: 0;
       transform: translateY(-85%);
     }
+
     to{
       opacity: 0.8;
       transform: translateY(0);
@@ -183,14 +182,14 @@ export const Content = styled.div`
 `;
 
 export const StyledFormLogin = styled.form`
-input{
+  input{
     position: relative;
   }
+
   svg{
     position: absolute;
-    top: 50%;
     right: 10px;
+    top: 50%;
     transform: translateY(-50%);
-
   }
 `

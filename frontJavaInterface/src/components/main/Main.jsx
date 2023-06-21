@@ -14,15 +14,15 @@ import { StyledButtonLogOut } from '../header/Header.jsx';
 const SetBy = ({ Icon, onClick = () => {} }) => {
     return (
         <StyledButtonLogOut
-            onClick={onClick}
+            onClick={ onClick }
         >
-            {Icon ? <Icon size={15} color={'#000c'} /> : <></>}
+            { Icon ? <Icon size={ 15 } color={ '#000c' } /> : <></> }
         </StyledButtonLogOut>
     )
 };
 
 export const Main = () => {
-    const { handleCloseModal, setEditItemModal, item, setItem, setItemSelected, setIsLoading, isLoading, getList, setOpen, open } = React.useContext(MyContext)
+    const { getList, handleCloseModal, isLoading, item, open, setEditItemModal, setIsLoading, setItem, setItemSelected, setOpen } = React.useContext(MyContext)
     const [search, setSearch] = React.useState('');
 
     React.useEffect(() => {
@@ -42,9 +42,8 @@ export const Main = () => {
 
     const removeItem = async (id) => {
         setIsLoading(true);
-        setIsLoading(true);
         try {
-            await api.delete(`/product/${id}`);
+            await api.delete(`/product/${ id }`);
             const newList = item.filter((item) => item.id !== id);
             setTimeout(() => {
                 setItem(newList);
@@ -59,90 +58,97 @@ export const Main = () => {
         <>
             <Box>
                 <Nav
-                    getProdustList={getList}
-                    >
+                    getProdustList={ getList }
+                >
                     <div />
+
                     <SearchComponent cla
-                        search={search}
-                        setSearch={setSearch}
-                        />
+                        search={ search }
+                        setSearch={ setSearch }
+                    />
                 </Nav>
             </Box>
+
             <S.Content>
-            {isLoading ? (
-                <Skeleton
-                    height={40}
-                    sx={{ margin: 4 }}
-                />
-            ) : (
-                <S.StyledTable
-                    onClick={handleCloseModal}
-                >
-                    
+                { isLoading ? (
+                    <Skeleton
+                        height={40}
+                        sx={{ margin: 4 }}
+                    />
+                ) : (
+                    <S.StyledTable
+                        onClick={ handleCloseModal }
+                    >
+                        
                         <thead>
                             <tr>
                                 <th>
                                     cod
-                                    <SetBy Icon={IoMdArrowDropdown} onClick={() => ordenarItens('id')} />
+                                    <SetBy Icon={ IoMdArrowDropdown } onClick={ () => ordenarItens('id') } />
                                 </th>
+
                                 <th>
                                     nome
-                                    <SetBy Icon={IoMdArrowDropdown} onClick={() => ordenarItens('name')} />
+                                    <SetBy Icon={ IoMdArrowDropdown } onClick={ () => ordenarItens('name') } />
                                 </th>
+
                                 <th>
                                     valor
-                                    <SetBy Icon={IoMdArrowDropdown} onClick={() => ordenarItens('price')} />
+                                    <SetBy Icon={ IoMdArrowDropdown } onClick={ () => ordenarItens('price') } />
                                 </th>
+
                                 <th>
                                     estoque
-                                    <SetBy Icon={IoMdArrowDropdown} onClick={() => ordenarItens('stock')} />
+                                    <SetBy Icon={ IoMdArrowDropdown } onClick={ () => ordenarItens('stock') } />
                                 </th>
+
                                 <th>
                                     data cadastro
-                                    <SetBy Icon={IoMdArrowDropdown} onClick={() => ordenarItens('date')} />
+                                    <SetBy Icon={ IoMdArrowDropdown } onClick={ () => ordenarItens('date') } />
                                 </th>
+
                                 <th>ações</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            {item.filter((item) => item.name?.toLowerCase().includes(search.toLowerCase())).map((item, index) => (
-                                <tr key={index}>
-                                    <td>{item.id}</td>
-                                    <td>{item.name}</td>
-                                    <td>{item.price}</td>
-                                    <td>{item.stock}</td>
-                                    <td>{item.date}</td>
-                                    <td>
-                                       <div>
-                                       <IconButton aria-label="delete" size="small"
-                                            // onClick={() => removeItem(item.id)}
-                                            onClick={() => setOpen(true)}
-                                        >
-                                            <DeleteIcon fontSize="small" />
-                                        </IconButton>
 
-                                        <IconButton aria-label="edit" size="small"
-                                            onClick={() => {
-                                                setEditItemModal(true)
-                                                setItemSelected(item.id)
-                                            }}
-                                        >
-                                        <EditNoteIcon fontSize="small" />
-                                        </IconButton>
-                                        <DeleteConfirmation
-                                            isOpen={open}
-                                            id={item.id}
-                                            getDeleteFunction={() => removeItem(item.id)}
-                                        />
-                                       </div>
+                        <tbody>
+                            { item.filter((item) => item.name?.toLowerCase().includes(search.toLowerCase())).map((item, index) => (
+                                <tr key={ index }>
+                                    <td>{ item.id }</td>
+                                    <td>{ item.name }</td>
+                                    <td>{ item.price }</td>
+                                    <td>{ item.stock }</td>
+                                    <td>{ item.date }</td>
+                                    <td>
+                                        <div>
+                                            <IconButton aria-label="delete" size="small"
+                                                onClick={ () => setOpen(true) }
+                                            >
+                                                <DeleteIcon fontSize="small" />
+                                            </IconButton>
+
+                                            <IconButton aria-label="edit" size="small"
+                                                onClick={ () => {
+                                                    setEditItemModal(true)
+                                                    setItemSelected(item.id)
+                                                }}
+                                            >
+                                                <EditNoteIcon fontSize="small" />
+                                            </IconButton>
+
+                                            <DeleteConfirmation
+                                                id={ item.id }
+                                                isOpen={ open }
+                                                getDeleteFunction={ () => removeItem(item.id) }
+                                            />
+                                        </div>
                                     </td>
                                 </tr>
                             ))}
                         </tbody>
-                    
-                </S.StyledTable>
-            )}
-        </S.Content>
+                    </S.StyledTable>
+                )}
+            </S.Content>
         </>
     );
 };

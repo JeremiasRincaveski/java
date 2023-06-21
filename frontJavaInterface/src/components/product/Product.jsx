@@ -1,21 +1,20 @@
 import * as React from 'react';
-import { Modal } from '../modal/Modal'
-import { MyContext } from '../../context/MyContext'
-import { Content, ContentForm } from '../styles/GlobalStyles'
-import Button from '@mui/material/Button';
-import { api } from '../../services/api'
+import { ToastContainer, toast } from 'react-toastify';
 import TextField from '@mui/material/TextField';
 import { Box } from '@mui/material';
-import { ToastContainer, toast } from 'react-toastify';
+import Button from '@mui/material/Button';
+import { api } from '../../services/api'
+import { Content, ContentForm } from '../styles/GlobalStyles'
+import { Modal } from '../modal/Modal'
+import { MyContext } from '../../context/MyContext'
 import 'react-toastify/dist/ReactToastify.css';
 
-
-export const Product = ({isOpen}) => {
+export const Product = ({ }) => {
+    const [dataCadastro, setDataCadastro] = React.useState('');
+    const [estoque, setEstoque] = React.useState('');
     const [cod, setCod] = React.useState('');
     const [nome, setNome] = React.useState('');
     const [valor, setValor] = React.useState('');
-    const [estoque, setEstoque] = React.useState('');
-    const [dataCadastro, setDataCadastro] = React.useState('');
     const { modalIsOpen, setModalIsOpen, getList } = React.useContext(MyContext);
     const disabled = cod && nome && valor;
 
@@ -44,59 +43,61 @@ export const Product = ({isOpen}) => {
 
         // Envio da solicitação POST para a API
         api.post('/product', novoItem)
-            .then(() => {
-                toast.success('Item Adicionado com Sucesso!');
-            })
-            .catch((error) => {
-                console.log('Erro ao criar o item:', error);
-            });
-
+        .then(() => {
+            toast.success('Item Adicionado com Sucesso!');
+        })
+        .catch((error) => {
+            console.log('Erro ao criar o item:', error);
+        });
         // Limpar os campos de entrada após o envio do formulário
 
+        getList();
         setCod('');
+        setDataCadastro('');
+        setEstoque('');
+        setModalIsOpen(false);
         setNome('');
         setValor('');
-        setEstoque('');
-        setDataCadastro('');
-        getList();
-        setModalIsOpen(false);
     };
 
     return (
         <Content>
             <Modal 
-                isOpen={modalIsOpen}
+                isOpen={ modalIsOpen }
             >
-                <ContentForm onSubmit={handleSubmit}>
+                <ContentForm onSubmit={ handleSubmit }>
                     <Box>
-                        <TextField label="código" name={'cod'} variant="filled" onChange={handleInputChange} type={'number'} value={cod} />
-                        <TextField label="nome" name={'nome'} variant="filled" onChange={handleInputChange} type={'text'} value={nome} />
-                        <TextField label="valor" name={'valor'} variant="filled" onChange={handleInputChange} type={'text'} value={valor} />
-                        <TextField label="qt.estoque" name={'estoque'} variant="filled" onChange={handleInputChange} type={'number'} value={estoque} />
-                        <TextField label="data de cadastro" name={'dataCadastro'} variant="filled" onChange={handleInputChange} type={'number'} value={dataCadastro} disabled />
+                        <TextField label="código" name={ 'cod' } variant="filled" onChange={ handleInputChange } type={ 'number' } value={ cod } />
+                        <TextField label="nome" name={ 'nome' } variant="filled" onChange={ handleInputChange } type={ 'text' } value={ nome } />
+                        <TextField label="valor" name={ 'valor' } variant="filled" onChange={ handleInputChange } type={ 'text' } value={ valor } />
+                        <TextField label="qt.estoque" name={ 'estoque' } variant="filled" onChange={ handleInputChange } type={ 'number' } value={ estoque } />
+                        <TextField label="data de cadastro" name={ 'dataCadastro' } variant="filled" onChange={ handleInputChange } type={' number' } value={ dataCadastro } disabled />
                     </Box>
+
                     <Button
+                        disabled={ !disabled }
+                        type={ 'submit' }
                         variant="contained"
-                        type={'submit'}
-                        disabled={!disabled}
                     >
                         Enviar
                     </Button>
                 </ContentForm>
             </Modal>
+
             <ToastContainer
-                position="top-right"
-                autoClose={5000}
-                hideProgressBar={false}
-                newestOnTop={false}
+                autoClose={ 5000 }
                 closeOnClick
-                rtl={false}
-                pauseOnFocusLoss
                 draggable
+                hideProgressBar={ true }
+                newestOnTop={ false }
+                pauseOnFocusLoss
                 pauseOnHover
+                position="top-right"
+                rtl={ false }
                 theme="light"
-            />
-            <ToastContainer />
+            /> 
+            {/* posso excluir ?? tem no editProduct linha 90
+            <ToastContainer /> */}
         </Content>
     )
 }

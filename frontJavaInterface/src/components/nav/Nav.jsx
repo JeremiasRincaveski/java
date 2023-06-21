@@ -6,12 +6,13 @@ import Button from '@mui/material/Button';
 
 export const Nav = ({ getProdustList, children }) => {
     const { handleModalOpen } = React.useContext(MyContext);
+    
     return (
         <>
             <StyledDiv>
                 <Button
                     variant="contained"
-                    onClick={handleModalOpen}
+                    onClick={ handleModalOpen }
                     color="success"
                     sx={{ textTransform: "capitalize" }}
                 >
@@ -19,12 +20,12 @@ export const Nav = ({ getProdustList, children }) => {
                 </Button>
                 <Button
                     variant="contained"
-                    onClick={getProdustList}
+                    onClick={ getProdustList }
                     sx={{ textTransform: "capitalize" }}
                 >
                 atualizar
                 </Button>
-                {children}
+                { children }
             </StyledDiv>
         </>
     )
