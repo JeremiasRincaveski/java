@@ -54,7 +54,7 @@ export const Header = () => {
   return (
     <S.Content style={{overflow: 'unset'}}> 
       <AppBar position="static" >
-        <Toolbar className={ classes.navBar }>
+        <Toolbar style={{backgroundColor: 'pink'}} className={ classes.navBar }>
           <IconButton
             aria-label="open drawer"
             color="inherit"
