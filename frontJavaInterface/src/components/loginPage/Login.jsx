@@ -56,10 +56,10 @@ export default function SignIn() {
     return (
         <ThemeProvider theme={defaultTheme}>
             <div style={{display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', backgroundColor: '#FFE4DE', width:'100vw', height: '100vh'}}>
-                <div style={{position: 'absolute' }}>
-                    <img src="/logo.jpg" alt=""style={{height: '520px', opacity: '0.7', borderRadius: '20px' }} />
+                <div style={{position: 'absolute', width: 'min(550px, 95vw)', height: '550px' }}>
+                    <img src="/logo.jpg" alt=""style={{height: '100%', width: '100%', opacity: '0.7', borderRadius: '20px' }} />
                 </div>
-            <Container component="main" maxWidth="xs">
+                <Container component="main" maxWidth="xs">
                 <CssBaseline />
                 <Box
                     sx={{
