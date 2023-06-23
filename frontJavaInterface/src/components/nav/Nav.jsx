@@ -15,7 +15,7 @@ export const Nav = ({ getProdustList, children }) => {
                     onClick={ handleModalOpen }
                     color="success"
                     sx={{ textTransform: "capitalize" }}
-                    style={{backgroundColor: 'pink', color: 'brown'}}
+                   
                 >
                 adicionar produto
                 </Button>
@@ -23,7 +23,7 @@ export const Nav = ({ getProdustList, children }) => {
                     variant="contained"
                     onClick={ getProdustList }
                     sx={{ textTransform: "capitalize" }}
-                    style={{backgroundColor: 'pink'}}
+                   
                 >
                 atualizar
                 </Button>
