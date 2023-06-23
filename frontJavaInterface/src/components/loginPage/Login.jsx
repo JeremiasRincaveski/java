@@ -15,6 +15,7 @@ import { MyContext } from '../../context/MyContext';
 import { BiShowAlt, BiHide } from "react-icons/bi";
 import { ButtonShowLogout } from '../header/Header';
 import  * as S   from '../styles/GlobalStyles';
+import styled from 'styled-components';
 
 function Copyright(props) {
     return (
@@ -28,6 +29,15 @@ function Copyright(props) {
         </Typography>
     );
 }
+const StyledDivRef = styled.div`
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    background-color: #FFE4DE;
+    width: 100vw;
+    height: 100vh;
+    
+`
 
 const defaultTheme = createTheme();
 
@@ -45,7 +55,7 @@ export default function SignIn() {
 
     return (
         <ThemeProvider theme={defaultTheme}>
-            <div style={{display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', backgroundColor: '#FFE4DE', width:'100vw', height: '100%'}}>
+            <div style={{display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', backgroundColor: '#FFE4DE', width:'100vw', height: '100vh'}}>
                 <div style={{position: 'absolute' }}>
                     <img src="/logo.jpg" alt=""style={{height: '520px', opacity: '0.7', borderRadius: '20px' }} />
                 </div>
