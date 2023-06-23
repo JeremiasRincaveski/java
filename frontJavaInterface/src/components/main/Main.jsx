@@ -7,7 +7,7 @@ import { Box, IconButton, Skeleton } from "@mui/material"
 import { SearchComponent } from "../search/Search.jsx"
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditNoteIcon from '@mui/icons-material/EditNote';
-import { DeleteConfirmation } from '../DeleteConfirmation.jsx';
+import { DeleteConfirmation } from '../deleteProduct/DeleteConfirmation.jsx';
 import { IoMdArrowDropdown } from "react-icons/io";
 import { StyledButtonLogOut } from '../header/Header.jsx';
 

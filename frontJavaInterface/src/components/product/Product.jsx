@@ -69,7 +69,7 @@ export const Product = ({ }) => {
                     <Box>
                         <TextField label="código" name={ 'cod' } variant="filled" onChange={ handleInputChange } type={ 'number' } value={ cod } />
                         <TextField label="nome" name={ 'nome' } variant="filled" onChange={ handleInputChange } type={ 'text' } value={ nome } />
-                        <TextField label="valor" name={ 'valor' } variant="filled" onChange={ handleInputChange } type={ 'text' } value={ valor } />
+                        <TextField label="valor" name={ 'valor' } variant="filled" onChange={ handleInputChange } type={ 'number' } value={ valor } />
                         <TextField label="qt.estoque" name={ 'estoque' } variant="filled" onChange={ handleInputChange } type={ 'number' } value={ estoque } />
                         <TextField label="data de cadastro" name={ 'dataCadastro' } variant="filled" onChange={ handleInputChange } type={' number' } value={ dataCadastro } disabled />
                     </Box>

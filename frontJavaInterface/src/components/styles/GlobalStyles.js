@@ -30,7 +30,6 @@ export const StyledContainer = styled.main`
 export const StyledTable = styled.table`
   border-collapse: collapse;
   margin: 2rem;
-  overflow-x: hidden;
   padding: 0;
   text-align: left;
   transition: all .3s ease-in-out;
@@ -51,7 +50,7 @@ export const StyledTable = styled.table`
   td:last-of-type{
     width: 60px;
 
-    div{
+    > div{
       align-items: center;
       display: flex;
       justify-content: center;

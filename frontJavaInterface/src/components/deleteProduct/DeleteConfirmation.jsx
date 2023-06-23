@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { Box, Button, Divider, Typography } from '@mui/material';
 import { styled } from 'styled-components';
-import { MyContext } from '../context/MyContext';
+import { MyContext } from '../../context/MyContext';
 
 const Modal = styled.div`
   background-color: ${(props) => props.theme.colors.softWhite};
@@ -13,7 +13,7 @@ const Modal = styled.div`
   position: absolute;
   top:50%;
   transform: translate(-50%, -50%);
-  width: 550px;
+  width: min(550px, 550px);
   z-index: 100;
   
   #confirm{
@@ -29,6 +29,12 @@ const Modal = styled.div`
     position: absolute;
     right: 100px;
   }
+
+  @media screen and (max-width: 620px){
+    width: calc(100% - 5rem);
+  }
+
+  
 `
 
 export const Overlay = styled.div`
@@ -66,7 +72,6 @@ export const DeleteConfirmation = ({ isOpen = false, id, getDeleteFunction }) =>
               >
                 Confirmar
               </Button>
-
               <Button variant="text" id="cancel" onClick={ () => setOpen(false) }>
                 Cancelar
               </Button>
