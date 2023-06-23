@@ -33,8 +33,6 @@ const Modal = styled.div`
   @media screen and (max-width: 620px){
     width: calc(100% - 5rem);
   }
-
-  
 `
 
 export const Overlay = styled.div`
